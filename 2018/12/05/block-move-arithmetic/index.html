@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Solve the problem that karaf fails to start when SDN builds datalesson: It is very likely that some feature download failures do not exist. In this case, according to the error message on karaf, the c">
+<meta name="description" content="The author is a sophomore in the School of Information and Software Engineering at the University of Electronic of Science and Technology of China. I am interested in algorithm research and focuses on">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My First Post">
-<meta property="og:url" content="https://hanjiaxing521.github.io/2018/11/18/My-First-Post/index.html">
+<meta property="og:title" content="block move arithmetic">
+<meta property="og:url" content="https://hanjiaxing521.github.io/2018/12/05/block-move-arithmetic/index.html">
 <meta property="og:site_name" content="Microsoft Studio of UESTC">
-<meta property="og:description" content="Solve the problem that karaf fails to start when SDN builds datalesson: It is very likely that some feature download failures do not exist. In this case, according to the error message on karaf, the c">
+<meta property="og:description" content="The author is a sophomore in the School of Information and Software Engineering at the University of Electronic of Science and Technology of China. I am interested in algorithm research and focuses on">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-19T00:49:34.755Z">
+<meta property="og:updated_time" content="2018-12-04T18:56:48.675Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My First Post">
-<meta name="twitter:description" content="Solve the problem that karaf fails to start when SDN builds datalesson: It is very likely that some feature download failures do not exist. In this case, according to the error message on karaf, the c">
+<meta name="twitter:title" content="block move arithmetic">
+<meta name="twitter:description" content="The author is a sophomore in the School of Information and Software Engineering at the University of Electronic of Science and Technology of China. I am interested in algorithm research and focuses on">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://hanjiaxing521.github.io/2018/11/18/My-First-Post/">
+  <link rel="canonical" href="https://hanjiaxing521.github.io/2018/12/05/block-move-arithmetic/">
 
 
 
 
 
-  <title>My First Post | Microsoft Studio of UESTC</title>
+  <title>block move arithmetic | Microsoft Studio of UESTC</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hanjiaxing521.github.io/2018/11/18/My-First-Post/">
+    <link itemprop="mainEntityOfPage" href="https://hanjiaxing521.github.io/2018/12/05/block-move-arithmetic/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bless Han">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">My First Post</h1>
+          <h1 class="post-title" itemprop="name headline">block move arithmetic</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-18T00:44:31+08:00">
-                2018-11-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-05T02:54:08+08:00">
+                2018-12-05
               </time>
             
 
@@ -299,9 +299,42 @@
       
 
       
-        <p>Solve the problem that karaf fails to start when SDN builds datalesson:</p>
-<p>It is very likely that some feature download failures do not exist. In this case, according to the error message on karaf, the corresponding feature of the project is deleted in the Eclipse folder, and then the project is re-established, so that the project can automatically download and add features again. There will be a great chance to solve this error.</p>
+        <p>The author is a sophomore in the School of Information and Software Engineering at the University of Electronic of Science and Technology of China. I am interested in algorithm research and focuses on machine learning. When I participated in the 2019 Microsoft Imagine Cup, I encountered a problem that needed to solve the problem of determining which attributes of a group of samples were representative. I accidentally thought of an algorithm, but I don��t know if the predecessors had created it, or the algorithm is less feasible. In short, let’s share it today, welcome everyone to correct me.<br>The specific problem is this:<br>Now that there are a group of patients with unknown infectious diseases, doctors want to find out their common characteristic diseases for research, so he is ready to screen out the representative properties of these diseases.<br>Problem abstraction:<br>There is a set of samples that are known to have similarities, but I don’t know where they are. The number of attributes is known, the boundaries of the various attributes are known, and the attributes of the set of samples have similarities.<br>Algorithm process:<br>Sort the data in each attribute from small to large (assuming there are 10 data in total, plus 12 data in the upper and lower bounds of the data):</p>
+<p>Num1, num2, num3…num10</p>
+<ol start="2">
+<li>Divide the interval into 12 blocks, one for each block��</li>
+<li>Of course, the distribution of data will not be so average, there must be concentration and dispersion, then move the data along with the data block back to the real position:</li>
+<li>If the distance between the data is close, the database squeezes each other, so ��blank�� is left in the interval. The larger the blank, the more concentrated the data is. Then we calculate the top k attributes with the total length of the gap. It is a representative attribute.</li>
+<li>Method of calculating the blank length: When the average distribution data is in the middle of the data block, the relative distance between the data when the data block is moved is the blank area left.</li>
+</ol>
+<p>code show as below:<br>def mainFeature(dataset, labels, r, k):<br>    sortDataset = dataset  #To prevent the original data set from being modified, use                                               a copy for subsequent operations.<br>    sortDataset.sort(axis=1)  #Sort the data in each dimension from small to large<br>    numDimen = sortDataset.shape[0]  #Calculating dimensions<br>    featureCount = {}</p>
+<pre><code>#Calculate the space occupancy of each dimension:
+for i in range(numDimen):
+    numDataIndimen = sortDataset[i].shape[0]
+    dimenSize = sortDataset[i][-1] - sortDataset[i][0]
+    segmentSize = dimenSize / numDataIndimen  #Calculation section                                               length
+    blankSize = 0
+    #Calculate the blank length
+    for j in range(numDataIndimen):
+        if j == (numDataIndimen - 1):
+            break
+        if (sortDataset[i][j+1] - sortDataset[i][j]) &gt; segmentSize:
+            blankSize += sortDataset[i][j+1] - sortDataset[i][j] -segmentSize
+    #Calculate the white space rate and add items larger than r to a dictionary
+    blankSpaceRate = blankSize / dimenSize
+    if blankSpaceRate &gt; r:
+        featureCount[labels[i][0]] = blankSpaceRate
 
+#Count the top k dimensions (ie, features) with the largest blank rate and return
+sortedFeatureCount = sorted(featureCount.items(), key=operator.itemgetter(1))
+sortedFeatureCount = sortedFeatureCount[::-1]
+
+sortedFeature = np.array([])
+for i in range(k):
+    sortedFeature = np.append(sortedFeature, sortedFeatureCount[i][0])
+
+return sortedFeature
+</code></pre>
       
     </div>
     
@@ -325,8 +358,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/18/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/11/18/My-First-Post/" rel="next" title="My First Post">
+                <i class="fa fa-chevron-left"></i> My First Post
               </a>
             
           </div>
@@ -334,10 +367,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/05/block-move-arithmetic/" rel="prev" title="block move arithmetic">
-                block move arithmetic <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
