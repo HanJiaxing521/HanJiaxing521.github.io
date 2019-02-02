@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="一、程序设计相关编码准则1.人数限制（精简至上）小规模项目如游戏开发：4~5人大规模项目：10人，再多的人员只能作为辅助人员2.未熟练掌握新技术前，慎重采用3.禁用RAF（先出结果再修改）开发策略4.标准开发策略：（1）增加在程序构思阶段投入的时间（2）采用流程图和伪代码，充分梳理程序逻辑（3）在纸">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Bless Han">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Regulation of Code">
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Hand in hand forever">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>Regulation of Code - Hand in hand forever</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/02/03/Regulation-of-Code/">
+                Regulation of Code
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-02-03</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>一、程序设计相关编码准则<br>1.人数限制（精简至上）<br>小规模项目如游戏开发：4~5人<br>大规模项目：10人，再多的人员只能作为辅助人员<br>2.未熟练掌握新技术前，慎重采用<br>3.禁用RAF（先出结果再修改）开发策略<br>4.标准开发策略：<br>（1）增加在程序构思阶段投入的时间<br>（2）采用流程图和伪代码，充分梳理程序逻辑<br>（3）在纸上投入的时间，要多于在电脑上投入的时间<br>（4）事先预测程序可能出现的问题，并寻找解决方法<br>（5）深思熟虑后再编写代码</p>
+<p>二、间隔相关编码准则<br>1.一行只写一条语句<br>2.声明语句部分和执行语句部分之间插入一个空行<br>3.同一功能语句组成代码段，段间用空行隔开<br>4.各控制语句间用空行隔开，如：</p>
+<p>if()<br>    printf();</p>
+<p>if()<br>    printf();</p>
+<p>switch(a){</p>
+<pre><code>case 1 :
+    printf();
+    break;
+
+case 2:
+    printf();
+    break;
+
+default:
+    printf();
+</code></pre><p>}<br>switch语句适用的段落划分准则：<br>(1)switch语句开始部分单独占据一行<br>(2)以空行区分各case语句<br>(3)像case语句一样，用空行隔开default语句，以示区分。</p>
+<p>5.各函数定义之间至少间隔两个空行<br>6.运算符前后留出空格<br>7.不要在一元运算符与操作数之间插入空格<br>8.分号前不要插入空格<br>9.能使用一两个空格的，不要使用tab<br>10.逗号后必须插入一个空格<br>11.声明变量时，初始值（带=）按列对齐，同时考虑变量的含义，通过空格的多少控制不同含义的变量初始值在不同位置对齐。<br>12.一行只声明一个变量</p>
+<p>三、缩进相关编码准则<br>1.大括号和语句分占不同行，例:<br>while(!END)<br>{<br>    printf();<br>}<br>若有两条控制语句连在一起，则用”{“代替空行将其隔开，例:<br>for(;;)<br>{<br>    for(;;)<br>    {<br>        printf();<br>    }<br>}<br>2.缩进字符数统一为4<br>3.代码块必须缩进<br>4.程序完结之前、与他人进行程序交接之前、文件改写完成之后需要检查缩进</p>
+<p>四、注释相关编码准则</p>
+<ol>
+<li>在程序或者函数的起始部分使用注释框进行注释，在主体语句中使用单行注释进行注释<br>2.添加变量字典：在每个变量声明后添加单行注释，解释变量的各种信息<br>3.推荐在程序头部添加伪代码注释块，简要陈述程序逻辑<br>4.头注释内容：文件名、目标代码名、可执行代码名、编写者（或者出处）、目标（对程序进行精要解释，遵循六何原则：何时、何地、何人、何事、为何、如何）、使用方式、所需文件（文件名、属性、是否可读可写可修改可删除、更新周期……）、限制条件、程序中达到异常处理条目、历史记录（时间、修改人员、修改的功能……）<br>5.在多个“}”连续出现时，必须在每个“}”后添加注释说明此“}”结束的是哪条语句<br>6.对于使用的生僻函数、自定义函数，需要添加注释说明函数目标、各参数允许的数据类型及含义、返回值应用于何处<br>7.若项目开发限时较短，程序本身又能说明问题，则不必添加或不必严格添加注释</li>
+</ol>
+<p>五、标识符名称定义相关编码准则（匈牙利命名法）<br>1.为变量添加前缀<br>为变量加上表示其数据类型的前缀：<br>a    数组<br>arr    数组<br>b    bool，布尔型变量<br>c    character，字符型变量<br>d    double型变量<br>f    float型变量<br>fd    文件描述符<br>fp    文件指针型变量<br>h    handle，句柄<br>i    int，整数型变量<br>n    int，整数型变量<br>p    指针型变量<br>pfn    函数指针<br>r    引用型变量<br>s    String，字符串型变量<br>str    CString型变量<br>u    无符号整形（unsigned int）变量<br>w    word型变量=无符号整形<br>为变量加上表示其存储类型的前缀：<br>a    自动（auto）变量<br>s    静态（static）变量<br>g    全局（global）变量<br>e    外部（extern）变量<br>f    寄存器（register）变量<br>同时添加两种前缀时，存储类型前缀在前，数据类型前缀在后，中间用_隔开，如：<br>static int s_iMyNum;<br>变量名采用驼峰大小写<br>2.在函数名前添加前缀表示函数功能：<br>Avr    计算平均值<br>Cnt    计算数据个数<br>Check    检查某数值<br>Get    获取某数值<br>Set    设定某数值<br>Is    用于提出“是什么”的疑问<br>Key    从数据中只获取关键字的值<br>Max    计算最大值<br>Mid    计算中间值<br>Min    计算最小值<br>3.也可自定义前缀，但也一样需具备1&amp;2中的功能，另外需添加注释对此前缀进行说明<br>4.用有意义的名称命名<br>5.不要使用相似的变量名<br>6.在不影响含义的前提下尽可能简短命名<br>下表给出软件工程师惯用缩写：<br>function    func<br>number        num<br>day        d或dd<br>month        m或mm<br>year        y或yy<br>temporary    temp<br>terminate    end<br>terminal    term<br>……<br>其他单词可根据这种风格进行缩写<br>7.用下划线和大小写区分较长变量名<br>可缩写的单词进行缩写并使用驼峰大小写，无法缩写的单词用下划线隔开，如：<br>BreakControlSystemPanel-&gt;BrkCtlSys_panel<br>8.变量名不要以下划线开始<br>编写编译器的工程师为防止自己的变量名和调用头文件的程序员的变量名重名，在头文件中以下划线或者两个下划线开头，因此我们应该自觉避免让我们的变量名以下划线开头<br>9.禁止出现连续多个下划线<br>10.区分大小写惯例：<br>（1）变量和对象名以小写字母开始<br>（2）函数、类、结构体、共用体等名称以大写字母开始（包括方法）<br>（3）符号常量或宏函数名的所有字母均大写<br>11.不要用大小写来区分变量名、类名和用其声明的变量名<br>12.在用某类声明的变量名前加上该类缩写的前缀，如：MyClass类声明的对象mcFirstVar<br>13.偶尔可用大写字母表示变量名中需要强调的部分，如：localButIMPORTANT</p>
+<p>六、运算符相关编码准则<br>1.复杂混合运算中需添加括号，避免单纯使用运算符优先级来判断运算顺序<br>2.指针运算符紧接变量名<br>3.慎选以为运算，多用算术运算<br>4.不要为了追求运行效率而编写复杂语句</p>
+<p>七、编写清晰代码所需编码准则<br>1.切忌混淆条件语句中关系运算符和赋值运算符的优先级<br>在while、for、if这种条件表达式中，最好不要进行条件运算之外的其他运算(比如赋值运算),若要使用则必须使用括号来区分优先级<br>2.不要直接用数值进行真假判断，尽量用TRUE和FALSE<br>3.尽可能避免产生副作用<br>4.在函数原型中标注参数的数据类型<br>5.必须标注返回值的数据类型<br>6.如果else语句使用大括号，那么if语句也应该使用<br>7.所有函数末尾必须有return语句，返回值为void的函数末尾的return语句不带返回值</p>
+<p>八、编写可移植代码所需编码准则<br>1.文件名不得超过14个字符（某些旧版本操作系统对文件名限制较大，因此需避免程序难以移植）<br>2.文件统一使用英文命名<br>下面给出需要限制文件名的文件种类：<br>数据文件、头文件、库文件、目录、程序文件、错误信息文件、临时文件、项目文件、压缩文件、位图文件<br>3.路径中“\”统一换为“/”,以防被识别为控制字符<br>4.利用条件编译可增强移植性<br>5.在编写代码之前，需查看编译器对单个模块大小的限制（估算出每个模块代码不得超过多少行）、对数组大小的限制、对嵌套深度的限制、对标识符长度的限制、各种数据类型的长度（在变量旁用注释标注）<br>6.引用头文件时禁止指定文件的绝对路径，只需填写文件名即可<br>7.项目开发前确定更偏重可移植性还是高效性（二者往往不能兼得）<br>8.数组可移植性更高，指针效率更高,开发嵌入式程序更偏向于使用指针<br>9.不要在相对高级的语言中插入低级语言编写的代码，如若需要则先将低级语言代码编写为库，事先编译，然后再以函数形式调用</p>
+<p>九、编写精确代码所需编码准则<br>1.尽量避免使用浮点数进行运算<br>2.double型比float型精确度更高，推荐在使用float时改用double</p>
+<p>十、提升性能所需编码准则<br>1.printf()、scanf()系列函数运算成本较高，为使程序较快运行应尽量减少使用这些函数<br>2.在保证运算精确度的情况下尽量用运算成本较低的运算方式代替成本较高的：<br>位运算、逻辑运算&lt;加减法运算&lt;乘法运算&lt;除法运算&lt;处理浮点数<br>3.如果程序性能至关重要或需要节约存储空间，最好选用二进制文件而非ASCII文件(C语言通常处理ASCII文件）<br>4.在信号处理程序中使用位域运算压缩结构体</p>
+<p>十一、编写易于理解的代码所需编码准则<br>1.不要使用goto语句<br>2.使用typedef重定义数据类型名，从而缩短过长的数据类型名称<br>3.如无特殊需要，数组维数限制在三维之内<br>4.将常量替换为符号常量或const形态常量<br>5.尽可能不使用全局变量</p>
+<p>十二、编写0漏洞代码所需编码准则<br>1.置换字符串时必须使用括号<br>2.打开文件后，在程序返回前不要忘记关闭文件<br>3.不要无视编译器的警告错误，高标准的程序必须0 error，0 warning<br>4.用静态变量声明大数组（不方便模块化管理，慎重使用）</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/03/Regulation-of-Code/">Regulation of Code</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/03/Answers-of-Cpp/">Answers of Cpp</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/05/block-move-arithmetic/">block move arithmetic</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/11/18/A-SDN-Problem/">A SDN Problem</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:test@example.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
