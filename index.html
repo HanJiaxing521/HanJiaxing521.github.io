@@ -147,6 +147,85 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2019/03/09/sohu-Question/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-03-09</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="搜狐面试真题"><a href="#搜狐面试真题" class="headerlink" title="搜狐面试真题"></a>搜狐面试真题</h2><p>人生参加的第一次校招，还是sohu这样的大厂，遇到一道不错的好题分享给大家：<br>求数组[6,3,1,2,5]中最长的数值连续子序列的长度<br>本人答案如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def mergeSort(lyst):</span><br><span class="line">    copyBuffer = np.zeros(len(lyst), dtype=int)</span><br><span class="line">    mergeSortHelper(lyst, copyBuffer, 0, len(lyst) - 1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def mergeSortHelper(lyst, copyBuffer, low, high):</span><br><span class="line">    if low &lt; high:</span><br><span class="line">        middle = (low + high) // 2</span><br><span class="line">        mergeSortHelper(lyst, copyBuffer, low, middle)</span><br><span class="line">        mergeSortHelper(lyst, copyBuffer, middle + 1, high)</span><br><span class="line">        merge(lyst, copyBuffer, low, middle, high)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def merge(lyst, copyBuffer, low, middle, high):</span><br><span class="line">    i1 = low</span><br><span class="line">    i2 = middle + 1</span><br><span class="line"></span><br><span class="line">    for i in range(low, high + 1):</span><br><span class="line">        if i1 &gt; middle:</span><br><span class="line">            copyBuffer[i] = lyst[i2]</span><br><span class="line">            i2 += 1</span><br><span class="line">        elif i2 &gt; high:</span><br><span class="line">            copyBuffer[i] = lyst[i1]</span><br><span class="line">            i1 += 1</span><br><span class="line">        elif lyst[i1] &lt; lyst[i2]:</span><br><span class="line">            copyBuffer[i] = lyst[i1]</span><br><span class="line">            i1 += 1</span><br><span class="line">        else:</span><br><span class="line">            copyBuffer[i] = lyst[i2]</span><br><span class="line">            i2 += 1</span><br><span class="line">    for i in range(low, high + 1):</span><br><span class="line">        lyst[i] = copyBuffer[i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def search(lyst):</span><br><span class="line">    mergeSort(lyst)</span><br><span class="line">    i = 0</span><br><span class="line">    start = i</span><br><span class="line">    sum = 0</span><br><span class="line">    lengest = 0</span><br><span class="line">    while i &lt; len(lyst)-1:</span><br><span class="line">        if lyst[i + 1] == lyst[i] + 1:</span><br><span class="line">            i += 1</span><br><span class="line">        else:</span><br><span class="line">            sum = i - start + 1</span><br><span class="line">            if sum &gt; lengest:</span><br><span class="line">                lengest = sum</span><br><span class="line">            i += 1</span><br><span class="line">            start = i</span><br><span class="line">    sum = i - start + 1</span><br><span class="line">    if sum &gt; lengest:</span><br><span class="line">        lengest = sum</span><br><span class="line">    return lengest</span><br></pre></td></tr></table></figure>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/03/07/hello/机器学习/README/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-03-07</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="这是四个机器学习算法代码，依次为PCA降维，支持向量机，决策树以及一些图形处理操作"><a href="#这是四个机器学习算法代码，依次为PCA降维，支持向量机，决策树以及一些图形处理操作" class="headerlink" title="这是四个机器学习算法代码，依次为PCA降维，支持向量机，决策树以及一些图形处理操作"></a>这是四个机器学习算法代码，依次为PCA降维，支持向量机，决策树以及一些图形处理操作</h2>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/03/07/hello/杂项/README/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-03-07</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="这是我练习的三个算法，依次为回溯、链表、折半相关问题"><a href="#这是我练习的三个算法，依次为回溯、链表、折半相关问题" class="headerlink" title="这是我练习的三个算法，依次为回溯、链表、折半相关问题"></a>这是我练习的三个算法，依次为回溯、链表、折半相关问题</h2>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2019/02/03/Search-and-sort/">
                 Search and sort
             </a>
@@ -489,19 +568,19 @@ While count &lt;= N
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/03/09/sohu-Question/">Untitled</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/07/hello/机器学习/README/">Untitled</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/07/hello/杂项/README/">Untitled</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/02/03/Search-and-sort/">Search and sort</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/02/03/Weekly-Achievement/">Weekly Achievement</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/02/03/Regulation-of-Code/">Regulation of Code</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/02/03/Answers-of-Cpp/">Answers of Cpp</a>
             </li>
             
         </ul>
