@@ -10,7 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="这是四个机器学习算法代码，依次为PCA降维，支持向量机，决策树以及一些图形处理操作">
+        <meta name="description" content="OS课程作业，在linux下完成多线程不同速度改变共享变量的并发程序12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626">
     
 
     <!--Author-->
@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Go With Me Together">
+        <meta property="og:title" content="Concurrent program">
     
 
     <!--Open Graph Description-->
@@ -31,7 +31,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
@@ -42,7 +42,7 @@
 
     <!-- Title -->
     
-    <title>Go With Me Together</title>
+    <title>Concurrent program - Go With Me Together</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -146,13 +146,13 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2019/03/07/hello/机器学习/README/">
-                Untitled
+            <a href="/2019/03/10/OStest-Concurrent/">
+                Concurrent program
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2019-03-07</span>
+                <span class="date">2019-03-10</span>
             
             
             
@@ -165,11 +165,16 @@
         
 
         <!-- Post Content -->
-        <h2 id="这是四个机器学习算法代码，依次为PCA降维，支持向量机，决策树以及一些图形处理操作"><a href="#这是四个机器学习算法代码，依次为PCA降维，支持向量机，决策树以及一些图形处理操作" class="headerlink" title="这是四个机器学习算法代码，依次为PCA降维，支持向量机，决策树以及一些图形处理操作"></a>这是四个机器学习算法代码，依次为PCA降维，支持向量机，决策树以及一些图形处理操作</h2>
+        <h2 id="OS课程作业，在linux下完成多线程不同速度改变共享变量的并发程序"><a href="#OS课程作业，在linux下完成多线程不同速度改变共享变量的并发程序" class="headerlink" title="OS课程作业，在linux下完成多线程不同速度改变共享变量的并发程序"></a>OS课程作业，在linux下完成多线程不同速度改变共享变量的并发程序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;pthread.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">void *childthread1(void *m)</span><br><span class="line">&#123;</span><br><span class="line">	int *n;</span><br><span class="line">	n=(int*)m;</span><br><span class="line">	for (int i; i &lt; 10; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		*n += 1;</span><br><span class="line">		printf(&quot;%d\n&quot;, *n);</span><br><span class="line">		*n = 0;</span><br><span class="line">		sleep(1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void *childthread2(void *m)</span><br><span class="line">&#123;</span><br><span class="line">	int *n;</span><br><span class="line">	n=(int*)m;</span><br><span class="line">	for (int i = 0; i &lt; 10; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d\n&quot;, *n);</span><br><span class="line">		*n = 0;</span><br><span class="line">		*n += 1;</span><br><span class="line">		sleep(1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void *childthread3(void* m)</span><br><span class="line">&#123;</span><br><span class="line">	int *n;</span><br><span class="line">	n=(int*)m;</span><br><span class="line">	for (int i = 0; i &lt; 10; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d\n&quot;, *n);</span><br><span class="line">		*n += 1;</span><br><span class="line">		*n = 0;</span><br><span class="line">		sleep(1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	pthread_t tid1;</span><br><span class="line">	pthread_t tid2;</span><br><span class="line">	pthread_t tid3;</span><br><span class="line"></span><br><span class="line">	int var = 0;</span><br><span class="line">	int *n;</span><br><span class="line">	int ret_thrd1, ret_thrd2, ret_thrd3;</span><br><span class="line"></span><br><span class="line">	n=&amp;var;</span><br><span class="line"></span><br><span class="line">	ret_thrd1=pthread_create(&amp;tid1, NULL, (void*)childthread1, (void*)n);</span><br><span class="line">	ret_thrd2=pthread_create(&amp;tid2, NULL, (void*)childthread2, (void*)n);</span><br><span class="line">	ret_thrd3=pthread_create(&amp;tid3, NULL, (void*)childthread3, (void*)n);</span><br><span class="line">	</span><br><span class="line">	if (ret_thrd1 != 0) </span><br><span class="line">	&#123;</span><br><span class="line">            printf(&quot;线程1创建失败\n&quot;);</span><br><span class="line">        &#125; </span><br><span class="line">	else </span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;线程1创建成功\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        if (ret_thrd2 != 0) </span><br><span class="line">	&#123;</span><br><span class="line">            printf(&quot;线程2创建失败\n&quot;);</span><br><span class="line">        &#125; </span><br><span class="line">	else </span><br><span class="line">	&#123;</span><br><span class="line">            printf(&quot;线程2创建成功\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">	if (ret_thrd3 !=0)</span><br><span class="line">	&#123;</span><br><span class="line">	    printf(&quot;线程3创建失败\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">	    printf(&quot;线程3创建成功\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	pthread_join(tid1,NULL);</span><br><span class="line">	pthread_join(tid2,NULL);</span><br><span class="line">	pthread_join(tid3,NULL);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
 
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/OS/">#OS</a>
+        </div>
     
 
     <!-- Comments -->
