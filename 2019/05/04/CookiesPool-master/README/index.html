@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> - Go With Me Together</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    <meta name="description" content="CookiesPool可扩展的Cookies池，目前对接了新浪微博，m.weibo.cn，可自行扩展其他站点
+安装1pip3 install -r requirements.txt
+基础配置接口基本,"> 
+    <meta name="author" content="Bless Han"> 
+    <link rel="alternative" href="atom.xml" title="Go With Me Together" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="/font/Rubik-Bold-kern-latin.woff2" as="font" type="font/woff2" crossorigin="">
+    <link href="/font/Rubik-Regular-kern-latin.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nuy6s3evgdk.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css">
+</head>
+</html>
+<body class="loading">
+    <div class="la-ball-atom la-2x">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <span id="config-title" style="display:none">Go With Me Together</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a id="home-icon" class="image-icon icon-home iconfont animated fadeIn" href="javascript:;" data-url="https://hanjiaxing521.github.io"></a>
+    <div id="play-icon" title="Play/Pause" class="iconfont icon-play animated fadeIn"></div>
+    <h3 class="subtitle"></h3>
+    <div class="social">
+<!--        <div class="like-icon">-->
+<!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+<!--        </div>-->
+        <div>
+            <div class="share animated fadeIn">
+                
+                    <a href="javascript:;" class="iconfont icon-share1"></a>
+                    <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class="article-header-wrapper">
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                    <a href="javascript:;"><b>「 </b>文章<b> 」</b></a>
+                
+                五月 04, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/05/04/CookiesPool-master/README/" title="Untitled">Untitled</a></h3>
+            
+                <p class="post-count animated fadeInDown">
+                    
+                        <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        9.3k
+                    </span>
+                    
+                    
+                        <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        8 mins.
+                    </span>
+                    
+                    
+                    
+                        <span id="busuanzi_container_page_pv">
+                            <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                            <span id="busuanzi_value_page_pv">0</span>
+                        </span>
+                    
+                </p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span></span>  
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class="main">
+        <div class="content markdown animated fadeIn slower">
+            <h1 id="CookiesPool"><a href="#CookiesPool" class="headerlink" title="CookiesPool"></a>CookiesPool</h1><p>可扩展的Cookies池，目前对接了新浪微博，<a href="https://m.weibo.cn" target="_blank" rel="noopener">m.weibo.cn</a>，可自行扩展其他站点</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><h3 id="接口基本配置"><a href="#接口基本配置" class="headerlink" title="接口基本配置"></a>接口基本配置</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Redis数据库地址</span></span><br><span class="line">REDIS_HOST = <span class="string">'localhost'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Redis端口</span></span><br><span class="line">REDIS_PORT = <span class="number">6379</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Redis密码，如无填None</span></span><br><span class="line">REDIS_PASSWORD = <span class="string">'foobared'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 产生器使用的浏览器</span></span><br><span class="line">BROWSER_TYPE = <span class="string">'Chrome'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 产生器类，如扩展其他站点，请在此配置</span></span><br><span class="line">GENERATOR_MAP = &#123;</span><br><span class="line">    <span class="string">'weibo'</span>: <span class="string">'WeiboCookiesGenerator'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试类，如扩展其他站点，请在此配置</span></span><br><span class="line">TESTER_MAP = &#123;</span><br><span class="line">    <span class="string">'weibo'</span>: <span class="string">'WeiboValidTester'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检测器检测接口</span></span><br><span class="line">TEST_URL_MAP = &#123;</span><br><span class="line">    <span class="string">'weibo'</span>: <span class="string">'https://m.weibo.cn/api/container/getIndex?uid=1804544030&amp;type=uid&amp;page=1&amp;containerid=1076031804544030'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 产生器和验证器循环周期</span></span><br><span class="line">CYCLE = <span class="number">120</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># API地址和端口</span></span><br><span class="line">API_HOST = <span class="string">'0.0.0.0'</span></span><br><span class="line">API_PORT = <span class="number">5000</span></span><br></pre></td></tr></table></figure>
+<h3 id="进程开关"><a href="#进程开关" class="headerlink" title="进程开关"></a>进程开关</h3><p>在config.py修改</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 产生器开关，模拟登录添加Cookies</span></span><br><span class="line">GENERATOR_PROCESS = <span class="keyword">True</span></span><br><span class="line"><span class="comment"># 验证器开关，循环检测数据库中Cookies是否可用，不可用删除</span></span><br><span class="line">VALID_PROCESS = <span class="keyword">True</span></span><br><span class="line"><span class="comment"># API接口服务</span></span><br><span class="line">API_PROCESS = <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h2 id="账号购买"><a href="#账号购买" class="headerlink" title="账号购买"></a>账号购买</h2><p>账号可在淘宝购买</p>
+<h2 id="导入账号"><a href="#导入账号" class="headerlink" title="导入账号"></a>导入账号</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 importer.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">请输入账号密码组, 输入exit退出读入</span><br><span class="line">18459748505----astvar3647</span><br><span class="line">14760253606----gmidy8470</span><br><span class="line">14760253607----uoyuic8427</span><br><span class="line">18459749258----rktfye8937</span><br><span class="line">账号 18459748505 密码 astvar3647</span><br><span class="line">录入成功</span><br><span class="line">账号 14760253606 密码 gmidy8470</span><br><span class="line">录入成功</span><br><span class="line">账号 14760253607 密码 uoyuic8427</span><br><span class="line">录入成功</span><br><span class="line">账号 18459749258 密码 rktfye8937</span><br><span class="line">录入成功</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>请先导入一部分账号之后再运行，运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 run.py</span><br></pre></td></tr></table></figure>
+<h2 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h2><p>三个进程全部开启：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">API接口开始运行</span><br><span class="line"> * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)</span><br><span class="line">Cookies生成进程开始运行</span><br><span class="line">Cookies检测进程开始运行</span><br><span class="line">正在生成Cookies 账号 14747223314 密码 asdf1129</span><br><span class="line">正在测试Cookies 用户名 14747219309</span><br><span class="line">Cookies有效 14747219309</span><br><span class="line">正在测试Cookies 用户名 14740626332</span><br><span class="line">Cookies有效 14740626332</span><br><span class="line">正在测试Cookies 用户名 14740691419</span><br><span class="line">Cookies有效 14740691419</span><br><span class="line">正在测试Cookies 用户名 14740618009</span><br><span class="line">Cookies有效 14740618009</span><br><span class="line">正在测试Cookies 用户名 14747222472</span><br><span class="line">Cookies有效 14747222472</span><br><span class="line">Cookies检测完成</span><br><span class="line">验证码位置 420 580 384 544</span><br><span class="line">成功匹配</span><br><span class="line">拖动顺序 [1, 4, 2, 3]</span><br><span class="line">成功获取到Cookies &#123;&apos;SUHB&apos;: &apos;08J77UIj4w5n_T&apos;, &apos;SCF&apos;: &apos;AimcUCUVvHjswSBmTswKh0g4kNj4K7_U9k57YzxbqFt4SFBhXq3Lx4YSNO9VuBV841BMHFIaH4ipnfqZnK7W6Qs.&apos;, &apos;SSOLoginState&apos;: &apos;1501439488&apos;, &apos;_T_WM&apos;: &apos;99b7d656220aeb9207b5db97743adc02&apos;, &apos;M_WEIBOCN_PARAMS&apos;: &apos;uicode%3D20000174&apos;, &apos;SUB&apos;: &apos;_2A250elZQDeRhGeBM6VAR8ifEzTuIHXVXhXoYrDV6PUJbkdBeLXTxkW17ZoYhhJ92N_RGCjmHpfv9TB8OJQ..&apos;&#125;</span><br><span class="line">成功保存Cookies</span><br></pre></td></tr></table></figure>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="/statics/chengdu.mp3"></li>
+                        
+                    
+                </ul>
+            
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1571154379/TriDiamondLogoCircleLighting_llbad2.png" height="300" width="300">
+                    <p>Bless Han</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        <dd><a href="https://github.com/TriDiamond" target="_blank"><span class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/TriDiamond6" target="_blank"><span class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="https://stackoverflow.com/users/7602324/tridiamond?tab=profile" target="_blank"><span class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">14 <p>文章</p></a></li>
+                    <li><a href="/categories">0 <p>分类</p></a></li>
+                    <li><a href="/tags">3 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+                
+                
+                    <div class="box sticky animated fadeInRight faster">
+                        <div id="toc" class="subbox">
+                            <h4>目录</h4>
+                            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CookiesPool"><span class="toc-number">1.</span> <span class="toc-text">CookiesPool</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础配置"><span class="toc-number">1.2.</span> <span class="toc-text">基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#接口基本配置"><span class="toc-number">1.2.1.</span> <span class="toc-text">接口基本配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程开关"><span class="toc-number">1.2.2.</span> <span class="toc-text">进程开关</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#账号购买"><span class="toc-number">1.3.</span> <span class="toc-text">账号购买</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入账号"><span class="toc-number">1.4.</span> <span class="toc-text">导入账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行"><span class="toc-number">1.5.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行效果"><span class="toc-number">1.6.</span> <span class="toc-text">运行效果</span></a></li></ol></li></ol>
+                        </div>
+                    </div>
+                
+            
+        </div>
+    </div>
+</div>
+
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            Bless Han
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.3.1" target="_blank" rel="noopener">v1.3.1</a></small>
+    </p>
+</footer>
+
+<script src="//cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="/css/dracula.css">
+    <script src="//cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js">
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Think like an artist, develop like an artisan", "艺术家思维去思考问题，工匠创造精神去开发"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+</html>
