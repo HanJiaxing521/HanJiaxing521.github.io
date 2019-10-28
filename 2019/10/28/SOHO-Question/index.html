@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>A SDN Problem - Just In Star</title>
+    <title>SOHU-Question - Just In Star</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="hanjiaxing,"> 
-    <meta name="description" content="Solve the problem that karaf fails to start when SDN builds datalesson:
-It is very likely that some,"> 
+    <meta name="description" content="搜狐面试真题人生参加的第一次校招，还是sohu这样的大厂，遇到一道不错的好题分享给大家：求数组[6,3,1,2,5]中最长的数值连续子序列的长度本人答案如下
+12345678910111213141,"> 
     <meta name="author" content="Justin Han"> 
     <link rel="alternative" href="atom.xml" title="Just In Star" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -39,7 +39,7 @@ It is very likely that some,">
     <div class="bar" style="width: 0;"></div>
     <a id="home-icon" class="image-icon icon-home iconfont animated fadeIn" href="javascript:;" data-url="https://hanjiaxing521.github.io"></a>
     <div id="play-icon" title="Play/Pause" class="iconfont icon-play animated fadeIn"></div>
-    <h3 class="subtitle">A SDN Problem</h3>
+    <h3 class="subtitle">SOHU-Question</h3>
     <div class="social">
 <!--        <div class="like-icon">-->
 <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -70,21 +70,21 @@ It is very likely that some,">
                 
                     <a href="javascript:;"><b>「 </b>文章<b> 」</b></a>
                 
-                十一月 18, 2018
+                十月 28, 2019
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2018/11/18/A-SDN-Problem/" title="A SDN Problem">A SDN Problem</a></h3>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/10/28/SOHO-Question/" title="SOHU-Question">SOHU-Question</a></h3>
             
                 <p class="post-count animated fadeInDown">
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        445
+                        5.1k
                     </span>
                     
                     
                         <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        1 mins.
+                        5 mins.
                     </span>
                     
                     
@@ -96,6 +96,8 @@ It is very likely that some,">
                     
                 </p>
             
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li></ul>
             
         </div>
     </div>
@@ -116,9 +118,8 @@ It is very likely that some,">
 <div class="article">
     <div class="main">
         <div class="content markdown animated fadeIn slower">
-            <p>Solve the problem that karaf fails to start when SDN builds datalesson:</p>
-<p>It is very likely that some feature download failures do not exist. In this case, according to the error message on karaf, the corresponding feature of the project is deleted in the Eclipse folder, and then the project is re-established, so that the project can automatically download and add features again. There will be a great chance to solve this error.</p>
-
+            <h2 id="搜狐面试真题"><a href="#搜狐面试真题" class="headerlink" title="搜狐面试真题"></a>搜狐面试真题</h2><p>人生参加的第一次校招，还是sohu这样的大厂，遇到一道不错的好题分享给大家：<br>求数组[6,3,1,2,5]中最长的数值连续子序列的长度<br>本人答案如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def mergeSort(lyst):</span><br><span class="line">    copyBuffer = np.zeros(len(lyst), dtype=int)</span><br><span class="line">    mergeSortHelper(lyst, copyBuffer, 0, len(lyst) - 1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def mergeSortHelper(lyst, copyBuffer, low, high):</span><br><span class="line">    if low &lt; high:</span><br><span class="line">        middle = (low + high) // 2</span><br><span class="line">        mergeSortHelper(lyst, copyBuffer, low, middle)</span><br><span class="line">        mergeSortHelper(lyst, copyBuffer, middle + 1, high)</span><br><span class="line">        merge(lyst, copyBuffer, low, middle, high)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def merge(lyst, copyBuffer, low, middle, high):</span><br><span class="line">    i1 = low</span><br><span class="line">    i2 = middle + 1</span><br><span class="line"></span><br><span class="line">    for i in range(low, high + 1):</span><br><span class="line">        if i1 &gt; middle:</span><br><span class="line">            copyBuffer[i] = lyst[i2]</span><br><span class="line">            i2 += 1</span><br><span class="line">        elif i2 &gt; high:</span><br><span class="line">            copyBuffer[i] = lyst[i1]</span><br><span class="line">            i1 += 1</span><br><span class="line">        elif lyst[i1] &lt; lyst[i2]:</span><br><span class="line">            copyBuffer[i] = lyst[i1]</span><br><span class="line">            i1 += 1</span><br><span class="line">        else:</span><br><span class="line">            copyBuffer[i] = lyst[i2]</span><br><span class="line">            i2 += 1</span><br><span class="line">    for i in range(low, high + 1):</span><br><span class="line">        lyst[i] = copyBuffer[i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def search(lyst):</span><br><span class="line">    mergeSort(lyst)</span><br><span class="line">    i = 0</span><br><span class="line">    start = i</span><br><span class="line">    sum = 0</span><br><span class="line">    lengest = 0</span><br><span class="line">    while i &lt; len(lyst)-1:</span><br><span class="line">        if lyst[i + 1] == lyst[i] + 1:</span><br><span class="line">            i += 1</span><br><span class="line">        else:</span><br><span class="line">            sum = i - start + 1</span><br><span class="line">            if sum &gt; lengest:</span><br><span class="line">                lengest = sum</span><br><span class="line">            i += 1</span><br><span class="line">            start = i</span><br><span class="line">    sum = i - start + 1</span><br><span class="line">    if sum &gt; lengest:</span><br><span class="line">        lengest = sum</span><br><span class="line">    return lengest</span><br></pre></td></tr></table></figure>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
@@ -155,6 +156,13 @@ It is very likely that some,">
             </div>
             
                 
+                
+                    <div class="box sticky animated fadeInRight faster">
+                        <div id="toc" class="subbox">
+                            <h4>目录</h4>
+                            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#搜狐面试真题"><span class="toc-number">1.</span> <span class="toc-text">搜狐面试真题</span></a></li></ol>
+                        </div>
+                    </div>
                 
             
         </div>
