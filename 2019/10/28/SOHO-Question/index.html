@@ -11,7 +11,9 @@
     <meta name="google" content="notranslate">
     <meta name="keywords" content="hanjiaxing,"> 
     <meta name="description" content="搜狐面试真题人生参加的第一次校招，还是sohu这样的大厂，遇到一道不错的好题分享给大家：求数组[6,3,1,2,5]中最长的数值连续子序列的长度本人答案如下
-12345678910111213141,"> 
+import numpy as np
+
+,"> 
     <meta name="author" content="Justin Han"> 
     <link rel="alternative" href="atom.xml" title="Just In Star" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -78,13 +80,13 @@
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        5.1k
+                        1.6k
                     </span>
                     
                     
                         <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        5 mins.
+                        1 mins.
                     </span>
                     
                     
@@ -119,7 +121,63 @@
     <div class="main">
         <div class="content markdown animated fadeIn slower">
             <h2 id="搜狐面试真题"><a href="#搜狐面试真题" class="headerlink" title="搜狐面试真题"></a>搜狐面试真题</h2><p>人生参加的第一次校招，还是sohu这样的大厂，遇到一道不错的好题分享给大家：<br>求数组[6,3,1,2,5]中最长的数值连续子序列的长度<br>本人答案如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def mergeSort(lyst):</span><br><span class="line">    copyBuffer = np.zeros(len(lyst), dtype=int)</span><br><span class="line">    mergeSortHelper(lyst, copyBuffer, 0, len(lyst) - 1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def mergeSortHelper(lyst, copyBuffer, low, high):</span><br><span class="line">    if low &lt; high:</span><br><span class="line">        middle = (low + high) // 2</span><br><span class="line">        mergeSortHelper(lyst, copyBuffer, low, middle)</span><br><span class="line">        mergeSortHelper(lyst, copyBuffer, middle + 1, high)</span><br><span class="line">        merge(lyst, copyBuffer, low, middle, high)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def merge(lyst, copyBuffer, low, middle, high):</span><br><span class="line">    i1 = low</span><br><span class="line">    i2 = middle + 1</span><br><span class="line"></span><br><span class="line">    for i in range(low, high + 1):</span><br><span class="line">        if i1 &gt; middle:</span><br><span class="line">            copyBuffer[i] = lyst[i2]</span><br><span class="line">            i2 += 1</span><br><span class="line">        elif i2 &gt; high:</span><br><span class="line">            copyBuffer[i] = lyst[i1]</span><br><span class="line">            i1 += 1</span><br><span class="line">        elif lyst[i1] &lt; lyst[i2]:</span><br><span class="line">            copyBuffer[i] = lyst[i1]</span><br><span class="line">            i1 += 1</span><br><span class="line">        else:</span><br><span class="line">            copyBuffer[i] = lyst[i2]</span><br><span class="line">            i2 += 1</span><br><span class="line">    for i in range(low, high + 1):</span><br><span class="line">        lyst[i] = copyBuffer[i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def search(lyst):</span><br><span class="line">    mergeSort(lyst)</span><br><span class="line">    i = 0</span><br><span class="line">    start = i</span><br><span class="line">    sum = 0</span><br><span class="line">    lengest = 0</span><br><span class="line">    while i &lt; len(lyst)-1:</span><br><span class="line">        if lyst[i + 1] == lyst[i] + 1:</span><br><span class="line">            i += 1</span><br><span class="line">        else:</span><br><span class="line">            sum = i - start + 1</span><br><span class="line">            if sum &gt; lengest:</span><br><span class="line">                lengest = sum</span><br><span class="line">            i += 1</span><br><span class="line">            start = i</span><br><span class="line">    sum = i - start + 1</span><br><span class="line">    if sum &gt; lengest:</span><br><span class="line">        lengest = sum</span><br><span class="line">    return lengest</span><br></pre></td></tr></table></figure>
+<pre><code>import numpy as np
+
+
+def mergeSort(lyst):
+    copyBuffer = np.zeros(len(lyst), dtype=int)
+    mergeSortHelper(lyst, copyBuffer, 0, len(lyst) - 1)
+
+
+def mergeSortHelper(lyst, copyBuffer, low, high):
+    if low &lt; high:
+        middle = (low + high) // 2
+        mergeSortHelper(lyst, copyBuffer, low, middle)
+        mergeSortHelper(lyst, copyBuffer, middle + 1, high)
+        merge(lyst, copyBuffer, low, middle, high)
+
+
+def merge(lyst, copyBuffer, low, middle, high):
+    i1 = low
+    i2 = middle + 1
+
+    for i in range(low, high + 1):
+        if i1 &gt; middle:
+            copyBuffer[i] = lyst[i2]
+            i2 += 1
+        elif i2 &gt; high:
+            copyBuffer[i] = lyst[i1]
+            i1 += 1
+        elif lyst[i1] &lt; lyst[i2]:
+            copyBuffer[i] = lyst[i1]
+            i1 += 1
+        else:
+            copyBuffer[i] = lyst[i2]
+            i2 += 1
+    for i in range(low, high + 1):
+        lyst[i] = copyBuffer[i]
+
+
+def search(lyst):
+    mergeSort(lyst)
+    i = 0
+    start = i
+    sum = 0
+    lengest = 0
+    while i &lt; len(lyst)-1:
+        if lyst[i + 1] == lyst[i] + 1:
+            i += 1
+        else:
+            sum = i - start + 1
+            if sum &gt; lengest:
+                lengest = sum
+            i += 1
+            start = i
+    sum = i - start + 1
+    if sum &gt; lengest:
+        lengest = sum
+    return lengest
+</code></pre>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
