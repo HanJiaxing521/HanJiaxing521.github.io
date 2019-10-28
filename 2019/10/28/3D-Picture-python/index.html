@@ -90,11 +90,11 @@ from mpl_toolkits.mplot3d import Axe,">
                     </span>
                     
                     
-                    
-                        <span id="busuanzi_container_page_pv">
+                        <span id="/2019/10/28/3D-Picture-python/" class="leancloud_visitors" data-flag-title="Python绘制3D图像">
                             <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                            <span id="busuanzi_value_page_pv">0</span>
+                            <i class="leancloud-visitors-count">1000000</i>
                         </span>
+                    
                     
                 </p>
             
@@ -190,6 +190,8 @@ ax.set_xlabel(&apos;X&apos;, fontdict={&apos;size&apos;: 15, &apos;color&apos;: 
             
             
             
+                <div id="vcomments"></div>
+            
         </div>
         <div class="sidebar">
             <div class="box animated fadeInRight">
@@ -249,15 +251,6 @@ ax.set_xlabel(&apos;X&apos;, fontdict={&apos;size&apos;: 15, &apos;color&apos;: 
 <script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 
-
-    <script src="/js/busuanzi.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            if ($('span[id^="busuanzi_"]').length) {
-                initialBusuanzi();
-            }
-        });
-    </script>
 
 
 <link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
@@ -352,5 +345,37 @@ ax.set_xlabel(&apos;X&apos;, fontdict={&apos;size&apos;: 15, &apos;color&apos;: 
     }
 </script>
 
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+
+        var valine = new Valine();
+
+        function initValine(path) {
+            if (!path) path = window.location.pathname;
+            let language = 'zh-CN';
+            if (!language) {
+                language = 'en';
+            } else {
+                language = language.toLowerCase();
+            }
+            valine.init({
+                el: '#vcomments',
+                appId: '',
+                appKey: '',
+                notify: 'true',
+                verify: 'true',
+                avatar: 'mp',
+                placeholder: 'Leave your throughs behind~',
+                visitor: 'true',
+                path: path,
+                lang: language
+            });
+        }
+
+        $(document).ready(function () {
+            initValine();
+        });
+    </script>
 
 </html>
