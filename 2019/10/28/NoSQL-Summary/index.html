@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>小谈NoSQL - Just In Star</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="hanjiaxing,"> 
+    <meta name="description" content="提纲
+NoSQL简介
+NoSQL兴起的原因
+NoSQL与关系数据库的比较
+NoSQL的四大类型
+NoSQL的三大基石
+从NoSQL到NewSQL数据库
+文档数据库MongoDB
+
+
+NoSQL简介从,"> 
+    <meta name="author" content="Justin Han"> 
+    <link rel="alternative" href="atom.xml" title="Just In Star" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="/font/Rubik-Bold-kern-latin.woff2" as="font" type="font/woff2" crossorigin="">
+    <link href="/font/Rubik-Regular-kern-latin.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nuy6s3evgdk.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css">
+</head>
+</html>
+<body class="loading">
+    <div class="la-ball-atom la-2x">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <span id="config-title" style="display:none">Just In Star</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a id="home-icon" class="image-icon icon-home iconfont animated fadeIn" href="javascript:;" data-url="https://hanjiaxing521.github.io"></a>
+    <div id="play-icon" title="Play/Pause" class="iconfont icon-play animated fadeIn"></div>
+    <h3 class="subtitle">小谈NoSQL</h3>
+    <div class="social">
+<!--        <div class="like-icon">-->
+<!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+<!--        </div>-->
+        <div>
+            <div class="share animated fadeIn">
+                
+                    <a href="javascript:;" class="iconfont icon-share1"></a>
+                    <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class="article-header-wrapper">
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                    <a href="javascript:;"><b>「 </b>文章<b> 」</b></a>
+                
+                十月 28, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/10/28/NoSQL-Summary/" title="小谈NoSQL">小谈NoSQL</a></h3>
+            
+                <p class="post-count animated fadeInDown">
+                    
+                        <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        5.7k
+                    </span>
+                    
+                    
+                        <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        5 mins.
+                    </span>
+                    
+                    
+                    
+                        <span id="busuanzi_container_page_pv">
+                            <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                            <span id="busuanzi_value_page_pv">0</span>
+                        </span>
+                    
+                </p>
+            
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/DataBase/">DataBase</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span></span>  
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class="main">
+        <div class="content markdown animated fadeIn slower">
+            <h3 id="提纲"><a href="#提纲" class="headerlink" title="提纲"></a>提纲</h3><ul>
+<li>NoSQL简介</li>
+<li>NoSQL兴起的原因</li>
+<li>NoSQL与关系数据库的比较</li>
+<li>NoSQL的四大类型</li>
+<li>NoSQL的三大基石</li>
+<li>从NoSQL到NewSQL数据库</li>
+<li>文档数据库MongoDB</li>
+</ul>
+<hr>
+<h3 id="NoSQL简介"><a href="#NoSQL简介" class="headerlink" title="NoSQL简介"></a>NoSQL简介</h3><p>从最初表示的“反SQL”运动，用新型的非关系型数据库取代关系型数据库，发展为现在表示关系和非关系型数据库各有优缺点彼此都无法互相取代，即“Not only SQL”。</p>
+<p>通常，NoSQL数据库具有以下特点：</p>
+<ul>
+<li>灵活的可扩展性</li>
+<li>灵活的数据模型</li>
+<li>与云计算紧密融合</li>
+</ul>
+<hr>
+<h3 id="NoSQL兴起的原因"><a href="#NoSQL兴起的原因" class="headerlink" title="NoSQL兴起的原因"></a>NoSQL兴起的原因</h3><ul>
+<li>关系数据库已经无法满足Web2.0的需求。主要表现在：<ul>
+<li>无法满足海量数据的管理需求</li>
+<li>无法满足数据高并发的需求</li>
+<li>无法满足高可拓展性和高可用性的需求</li>
+</ul>
+</li>
+<li>MySQL集群存在的问题：<ul>
+<li><strong>复杂性</strong>：部署、管理、配置很复杂</li>
+<li><strong>数据库复制</strong>：MySQL主备之间采用复制方式，只能是异步复制，当主库压力较大时可能产生较大延迟，主备切换会丢失最后一部分更新事务，这时往往需要人工介入，备份和恢复不方便。</li>
+<li><strong>扩容问题</strong>：如果系统压力过大需要增加新的机器，这个过程涉及数据重新划分，整个过程比较复杂，且容易出错。</li>
+<li><strong>动态数据迁移问题</strong>：如果某个数据库组压力过大，需要将其中部分数据迁移出去，迁移过程需要总控节点整体协调，以及数据库节点的配合。这个过程很难做到自动化。</li>
+</ul>
+</li>
+<li>“One size fits all”模式很难适用于截然不同的业务场景。比如Hadoop针对数据分析，强调高吞吐，而MongoDB、Redis等是针对在线业务，强调低延时，两者都抛弃了关系模型。</li>
+<li>关系数据库引以为傲的关键特性——完善的事务机制和高效的查询机制到了Web2.0时代却成了鸡肋，主要表现在以下几个方面：<ul>
+<li>Web2.0网站系统通常不要求严格的数据库事务</li>
+<li>Web2.0并不要求严格的读写实时性</li>
+<li>Web2.0通常不包含大量复杂的SQL查询（去结构化，存储空间更换更好的查询性能）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="NoSQL与关系数据库的比较"><a href="#NoSQL与关系数据库的比较" class="headerlink" title="NoSQL与关系数据库的比较"></a>NoSQL与关系数据库的比较</h3><ul>
+<li>关系数据库<ul>
+<li><strong>优势</strong>：以完善的关系代数理论作为基础，有严格的标准，支持事务ACID四性，借助索引机制可以实现高效的查询，技术成熟，有专业公司的技术支持</li>
+<li><strong>劣势</strong>：可扩展性较差，无法较好支持海量数据存储，数据模型过于死板、无法较好支持Web2.0应用，事务机制影响了系统的整体性能等</li>
+<li><strong>应用场景</strong>：电信、银行等领域的关键业务系统，需要保证强事务一致性。</li>
+</ul>
+</li>
+<li>NoSQL数据库<ul>
+<li><strong>优势</strong>：可以支持超大规模数据存储，灵活的数据模型可以很好地支持Web2.0应用，具有强大的横向扩展能力等</li>
+<li><strong>劣势</strong>：缺乏数学理论基础，复杂查询性能不高，大都不能实现事务强一致性，很难实现数据完整性，技术尚不成熟，缺乏专业团队的技术支持，维护较困难等</li>
+<li><strong>应用场景</strong>：互联网企业、传统企业的非关键业务（比如数据分析）</li>
+</ul>
+</li>
+</ul>
+<p>当然也可以采用混合架构</p>
+<h3 id="NoSQL的四大类型"><a href="#NoSQL的四大类型" class="headerlink" title="NoSQL的四大类型"></a>NoSQL的四大类型</h3><ul>
+<li><p>文档数据库：MarkLogic，Couchbase，mongoDB</p>
+<ul>
+<li><p>数据模型：键/值</p>
+<p>​                   值（value）是版本化的文档</p>
+</li>
+<li><p>典型应用：存储、索引并管理面向文档的数据或者类似的半结构化数据</p>
+<p>比如，用于后台具有大量读写操作的网站、使用JSON数据结构的应用、使用嵌套结构等非规范化数据的应用程序</p>
+</li>
+<li><p>优点：性能好（高并发），灵活性高，复杂性低，数据结构灵活</p>
+<p>提供嵌入式文档功能，将经常查询的数据存储在同一个文档中</p>
+<p>既可以根据键来构建索引，也可以根据内容构建索引</p>
+</li>
+<li><p>缺点：缺乏统一的查询语法</p>
+</li>
+<li><p>不适用情形：在不同的文档上添加事务。文档数据库并不支持文档间的事务，如果对这方面有需求则不应该选用这个解决方案</p>
+</li>
+</ul>
+</li>
+<li><p>图数据库：Neo4j，InfiniteGraph</p>
+<ul>
+<li>数据模型：图结构</li>
+<li>典型应用：专门用于处理具有高度相互关联关系的数据，比较适合于社交网络、模式识别、依赖分析、推荐系统以及路径寻找等问题</li>
+<li>优点：灵活性高，支持复杂的图形算法，可用于构建复杂的关系图谱</li>
+<li>缺点：复杂性高，只能支持一定的数据规模</li>
+</ul>
+</li>
+<li><p>键值数据库：redis、amazonDynameDB、riak、aerospike</p>
+<ul>
+<li><p>数据模型：键/值对</p>
+<p>​                   键是一个字符串对象</p>
+<p>​                   值可以是任意类型的数据，比如整型、字符型、数组、列表、集合等</p>
+</li>
+<li><p>典型应用：涉及频繁读写、拥有简单数据模型的应用</p>
+<p>​                   内容缓存，比如会话、配置文件、参数、购物车等</p>
+<p>​                   存储配置和用户数据信息的移动应用</p>
+</li>
+<li><p>优点：扩展性好，灵活性好，大量写操作时性能高</p>
+</li>
+<li><p>缺点：无法存储结构化信息，条件查询效率较低</p>
+</li>
+<li><p>不适用情形：不是通过键而是通过值来查：键值数据库根本没有通过值查询的途径</p>
+<p>需要存储数据之间的关系：在键值数据库中，不能通过两个或两个以上的键来关联数据 </p>
+<p>需要事务的支持：在一些键值数据库中，产生故障时，不可以回滚</p>
+</li>
+</ul>
+</li>
+<li><p>列族数据库：accumulo、Hypertable、cassandra、HBase、Amazon SimipleDB</p>
+<ul>
+<li><p>数据模型：列族</p>
+</li>
+<li><p>典型应用：分布式数据存储与管理</p>
+<p>​                   数据在地理上分布于多个数据中心的应用程序</p>
+<p>​                   可以容忍副本中存在短期不一致情况的应用程序</p>
+<p>​                   拥有动态字段的应用程序</p>
+<p>​                   拥有潜在大量数据的应用程序，大到几百TB的数据</p>
+</li>
+<li><p>优点：查找速度快，可扩展性强，容易进行分布式扩展，复杂性低</p>
+</li>
+<li><p>缺点：功能较少，大都不支持强事务一致性</p>
+</li>
+<li><p>不适用情形：需要ACID事务支持的情形，Cassandra等产品就不适用</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="NoSQL三大基石"><a href="#NoSQL三大基石" class="headerlink" title="NoSQL三大基石"></a>NoSQL三大基石</h3><p><strong>CAP</strong></p>
+<ul>
+<li><strong>C（Consistency）</strong>：一致性，是指任何一个读操作总是能够读到之前完成的写操作的结果，也就是在分布式环境中，多点的数据是一致的，或者说，所有节点在同一时间具有相同的数据</li>
+<li><strong>A（Availability）</strong>：可用性，是指快速获取数据，可以在确定的时间内返回操作结果，保证每个请求不管成功或者失败都有响应</li>
+<li><strong>P（Tolerance of Network Partition）</strong>：分区容忍性，是指当出现网络分区的情况时（即系统中的一部分节点无法和其他节点进行通信），分离的系统也能够正常运行，也就是说，系统中任意信息的丢失或失败不会影响系统的继续运作。</li>
+</ul>
+<p>CAP理论告诉我们，一个分布式系统不可能同时满足一致性、可用性和分区容忍性这三个需求，最多只能同时满足其中两个，正所谓“鱼和熊掌不可兼得”。</p>
+<p>当处理CAP的问题时，可以有几个明显的选择：</p>
+<ul>
+<li><p><strong>CA</strong>：也就是强调一致性（C）和可用性（A），放弃分区容忍性（P），最简单的做法是把所有与事务相关的内容都放到同一台机器上。很显然，这种做法会严重影响系统的可扩展性。传统的关系数据库（MySQL、SQL Server和PostgreSQL），都采用了这种设计原则，因此，扩展性都比较差</p>
+</li>
+<li><p><strong>CP</strong>：也就是强调一致性（C）和分区容忍性（P），放弃可用性（A），当出现网络分区的情况时，受影响的服务需要等待数据一致，因此在等待期间就无法对外提供服务</p>
+</li>
+<li><p><strong>AP</strong>：也就是强调可用性（A）和分区容忍性（P），放弃一致性（C），允许系统返回不一致的数据</p>
+</li>
+</ul>
+<p><strong>BASE</strong></p>
+<p>一个数据库事务具有ACID四性：</p>
+<ul>
+<li><p>A（Atomicity）：原子性，是指事务必须是原子工作单元，对于其数据修改，要么全都执行，要么全都不执行</p>
+</li>
+<li><p>C（Consistency）：一致性，是指事务在完成时，必须使所有的数据都保持一致状态</p>
+</li>
+<li><p>I（Isolation）：隔离性，是指由并发事务所做的修改必须与任何其它并发事务所做的修改隔离</p>
+</li>
+<li><p>D（Durability）：持久性，是指事务完成之后，它对于系统的影响是永久性的，该修改即使出现致命的系统故障也将一直保持</p>
+</li>
+</ul>
+<p>BASE的基本含义是</p>
+<ul>
+<li>基本可用（Basically Availble）：基本可用，是指一个分布式系统的一部分发生问题变得不可用时，其他部分仍然可以正常使用，也就是允许分区失败的情形出现</li>
+<li>软状态（Soft-state）：“软状态（soft-state）”是与“硬状态（hard-state）”相对应的一种提法。数据库保存的数据是“硬状态”时，可以保证数据一致性，即保证数据一直是正确的。“软状态”是指状态可以有一段时间不同步，具有一定的滞后性</li>
+<li>最终一致性（Eventual consistency）：一致性的类型包括强一致性和弱一致性，二者的主要区别在于高并发的数据访问操作下，后续操作是否能够获取最新的数据。对于强一致性而言，当执行完一次更新操作后，后续的其他读操作就可以保证读到更新后的最新数据；反之，如果不能保证后续访问读到的都是更新后的最新数据，那么就是弱一致性。而最终一致性只不过是弱一致性的一种特例，允许后续的访问操作可以暂时读不到更新后的数据，但是经过一段时间之后，必须最终读到更新后的数据。</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="/statics/chengdu.mp3"></li>
+                        
+                    
+                </ul>
+            
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1571154379/TriDiamondLogoCircleLighting_llbad2.png" height="300" width="300">
+                    <p>Justin Han</p>
+                    <span>This world will be changed certainly</span>
+                    <dl>
+                        <dd><a href="https://hanjiaxing521.github.io/" target="_blank"><span class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/han_jiaxing" target="_blank"><span class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">6 <p>文章</p></a></li>
+                    <li><a href="/categories">0 <p>分类</p></a></li>
+                    <li><a href="/tags">3 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+                
+                
+                    <div class="box sticky animated fadeInRight faster">
+                        <div id="toc" class="subbox">
+                            <h4>目录</h4>
+                            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#提纲"><span class="toc-number">1.</span> <span class="toc-text">提纲</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NoSQL简介"><span class="toc-number">2.</span> <span class="toc-text">NoSQL简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NoSQL兴起的原因"><span class="toc-number">3.</span> <span class="toc-text">NoSQL兴起的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NoSQL与关系数据库的比较"><span class="toc-number">4.</span> <span class="toc-text">NoSQL与关系数据库的比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NoSQL的四大类型"><span class="toc-number">5.</span> <span class="toc-text">NoSQL的四大类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NoSQL三大基石"><span class="toc-number">6.</span> <span class="toc-text">NoSQL三大基石</span></a></li></ol>
+                        </div>
+                    </div>
+                
+            
+        </div>
+    </div>
+</div>
+
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            Justin Han
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.3.1" target="_blank" rel="noopener">v1.3.1</a></small>
+    </p>
+</footer>
+
+<script src="//cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="/css/dracula.css">
+    <script src="//cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js">
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["This world will be changed certainly", "这个世界肯定会变的"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+</html>
