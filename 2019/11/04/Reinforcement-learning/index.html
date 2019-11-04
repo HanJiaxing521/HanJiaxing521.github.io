@@ -145,7 +145,9 @@
 <li><p><strong>ε -贪心</strong></p>
 <p>基于概率来对探索和利用折中：每次尝试以ε的概率进行探索，即以均匀概率随机选取一个摇臂；即选择当前平均奖赏最高的摇臂（若有多个则随机选取）以1-ε的概率进行利用。</p>
 <p>令Q(k)记录摇臂k的平均奖赏。若摇臂k被尝试了n次，得到的奖赏为vi，则平均奖赏为</p>
-<p><img src="https://github.com/HanJiaxing521/HanJiaxing521.github.io/raw/master/img/qhxx-1.png" alt="Aaron Swartz"><br><img src="https://github.com/HanJiaxing521/HanJiaxing521.github.io/raw/master/img/qhxx-2.png" alt="Aaron Swartz"><br>可见无论摇臂被尝试多少次都仅需记录两个值：已尝试次数n-1和最近平均奖赏Qn-1(k)。</p>
+<p><img src="https://github.com/HanJiaxing521/HanJiaxing521.github.io/raw/master/img/qhxx-1.png" alt="qhxx-1"></p>
+<p><img src="https://github.com/HanJiaxing521/HanJiaxing521.github.io/raw/master/img/qhxx-2.png" alt="qhxx-2"></p>
+<p>可见无论摇臂被尝试多少次都仅需记录两个值：已尝试次数n-1和最近平均奖赏Qn-1(k)。</p>
 <p>ε-贪心算法如下：</p>
 <p>输入：摇臂数K；</p>
 <p>​            奖赏函数R；</p>
@@ -171,7 +173,7 @@
 <li><p><strong>Softmax算法</strong></p>
 <p>Softmax算法基于当前已知的摇臂平均奖赏来对探索和利用进行折中。若某些摇臂的平均奖赏明显高于其他摇臂，则它们被选取的概率也明显更高。</p>
 <p>Softmax算法中摇臂概率的分配基于Boltzmann分布：</p>
-<p><img src="https://github.com/HanJiaxing521/HanJiaxing521.github.io/raw/master/img/qhxx-3.png" alt="Aaron Swartz"></p>
+<p><img src="https://github.com/HanJiaxing521/HanJiaxing521.github.io/raw/master/img/qhxx-3.png" alt="qhxx-3"></p>
 <p>Q(i)记录当前摇臂的平均奖赏； τ &gt;0称为“温度”， τ 越小则平均奖赏高的摇臂被选取的概率越高。特别的， τ -&gt;0时Softmax将趋于“仅利用”，  τ -&gt;无穷大时Softmax将趋于“仅探索”。</p>
 <p>Softmax算法描述：</p>
 <p>输入：摇臂数K；</p>
