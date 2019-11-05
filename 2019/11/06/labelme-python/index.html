@@ -80,7 +80,7 @@ pip instal,">
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.2k
+                        2.1k
                     </span>
                     
                     
@@ -129,8 +129,8 @@ pip instal,">
 <p>​                pip install pyqt5</p>
 <p>​                pip install labelme</p>
 <p><strong>Ubuntu16.04系统下采用自带的python2.7环境：</strong></p>
-<p>​                 sudo apt-get install python-qt4 pyqt4-dev-tools </p>
-<p>​                 sudo pip install labelme  <em># python2 works</em></p>
+<pre><code>sudo apt-get install python-qt4 pyqt4-dev-tools 
+</code></pre><p>​                sudo pip install labelme  <em># python2 works</em></p>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>在终端中进入labelme.exe所在文件夹，执行命令：</p>
 <p>​                labelme</p>
 <p>出现界面后，点击open， 打开需要标注的图像，选择对目标区域进行标注</p>
@@ -141,18 +141,18 @@ pip instal,">
 <p>​                def getAllJson(path):</p>
 <p>​                “””获取所有json文件名\n</p>
 <p>​                path: 文件夹路径字符串”””</p>
-<p>​                                dirs = os.listdir(path)</p>
-<p>​                                dirList = []</p>
-<p>​                                for d in dirs:</p>
-<p>​                                                if os.path.splitext(d)[1] == “.json”:</p>
-<p>​                                                                dirList.append(d)</p>
-<p>​                                return dirList</p>
+<p>​                    dirs = os.listdir(path)</p>
+<p>​                    dirList = []</p>
+<p>​                    for d in dirs:</p>
+<p>​                        if os.path.splitext(d)[1] == “.json”:</p>
+<p>​                            dirList.append(d)</p>
+<p>​                    return dirList</p>
 <p>定义生成语义分割文件的函数，命令行中的命令格式为”labelme_json_to_dataset 文件名“：</p>
 <p>​                def generate(fileList):</p>
 <p>​                “””生成数据集图像\n</p>
 <p>​                list: 文件名列表”””</p>
-<p>​                                for f in fileList:</p>
-<p>​                                                s = “labelme_json_to_dataset “ + “F:/ISIC/ISIC-images/json/“ + f</p>
+<p>​                    for f in fileList:</p>
+<p>​                        s = “labelme_json_to_dataset “ + “F:/ISIC/ISIC-images/json/“ + f</p>
 <pre><code>os.system(s)
 </code></pre><p>执行函数：</p>
 <pre><code>fileList = getAllJson(&quot;F:/ISIC/ISIC-images/json&quot;)
