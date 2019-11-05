@@ -10,10 +10,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="hanjiaxing,"> 
-    <meta name="description" content="使用工具：labelme（标注mask数据集用的）GitHub地址： https://github.com/wkentaro/labelme 
-windows：
-python2
-pip instal,"> 
+    <meta name="description" content="使用工具：labelme（标注mask数据集用的）GitHub地址： https://github.com/wkentaro/labelmewindows：python2
+pip install p,"> 
     <meta name="author" content="Justin Han"> 
     <link rel="alternative" href="atom.xml" title="Justin的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -80,7 +78,7 @@ pip instal,">
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.1k
+                        2k
                     </span>
                     
                     
@@ -120,43 +118,19 @@ pip instal,">
 <div class="article">
     <div class="main">
         <div class="content markdown animated fadeIn slower">
-            <h3 id="使用工具：labelme（标注mask数据集用的）"><a href="#使用工具：labelme（标注mask数据集用的）" class="headerlink" title="使用工具：labelme（标注mask数据集用的）"></a>使用工具：labelme（标注mask数据集用的）</h3><p>GitHub地址： <a href="https://github.com/wkentaro/labelme" target="_blank" rel="noopener">https://github.com/wkentaro/labelme</a> </p>
-<p><strong>windows：</strong></p>
-<p>python2</p>
+            <h3 id="使用工具：labelme（标注mask数据集用的）"><a href="#使用工具：labelme（标注mask数据集用的）" class="headerlink" title="使用工具：labelme（标注mask数据集用的）"></a>使用工具：labelme（标注mask数据集用的）</h3><p>GitHub地址： <a href="https://github.com/wkentaro/labelme" target="_blank" rel="noopener">https://github.com/wkentaro/labelme</a><br><strong>windows：</strong><br>python2</p>
 <pre><code>pip install pyqt
-</code></pre><p>​                pip install labelme</p>
-<p>python3</p>
-<p>​                pip install pyqt5</p>
-<p>​                pip install labelme</p>
-<p><strong>Ubuntu16.04系统下采用自带的python2.7环境：</strong></p>
+</code></pre><p>​                pip install labelme<br>python3</p>
+<p>​                pip install pyqt5<br>​                pip install labelme<br><strong>Ubuntu16.04系统下采用自带的python2.7环境：</strong></p>
 <pre><code>sudo apt-get install python-qt4 pyqt4-dev-tools 
 </code></pre><p>​                sudo pip install labelme  <em># python2 works</em></p>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>在终端中进入labelme.exe所在文件夹，执行命令：</p>
-<p>​                labelme</p>
-<p>出现界面后，点击open， 打开需要标注的图像，选择对目标区域进行标注</p>
-<p>标注完后点击会产生json文件</p>
+<p>​                labelme<br>出现界面后，点击open， 打开需要标注的图像，选择对目标区域进行标注<br>标注完后点击会产生json文件</p>
 <h3 id="python自动图像语义分割标注脚本："><a href="#python自动图像语义分割标注脚本：" class="headerlink" title="python自动图像语义分割标注脚本："></a>python自动图像语义分割标注脚本：</h3><p>引入os库实现python在命令行中执行命令：</p>
-<p>​                import os</p>
-<p>定义获取之前制作的全部json文件的文件名的函数</p>
-<p>​                def getAllJson(path):</p>
-<p>​                “””获取所有json文件名\n</p>
-<p>​                path: 文件夹路径字符串”””</p>
-<p>​                    dirs = os.listdir(path)</p>
-<p>​                    dirList = []</p>
-<p>​                    for d in dirs:</p>
-<p>​                        if os.path.splitext(d)[1] == “.json”:</p>
-<p>​                            dirList.append(d)</p>
-<p>​                    return dirList</p>
-<p>定义生成语义分割文件的函数，命令行中的命令格式为”labelme_json_to_dataset 文件名“：</p>
-<p>​                def generate(fileList):</p>
-<p>​                “””生成数据集图像\n</p>
-<p>​                list: 文件名列表”””</p>
-<p>​                    for f in fileList:</p>
-<p>​                        s = “labelme_json_to_dataset “ + “F:/ISIC/ISIC-images/json/“ + f</p>
-<pre><code>os.system(s)
-</code></pre><p>执行函数：</p>
+<p>​                import os<br>定义获取之前制作的全部json文件的文件名的函数</p>
+<p>​                def getAllJson(path):<br>​                “””获取所有json文件名\n<br>​                path: 文件夹路径字符串”””<br>​                    dirs = os.listdir(path)<br>​                    dirList = []<br>​                    for d in dirs:<br>​                        if os.path.splitext(d)[1] == “.json”:<br>​                            dirList.append(d)<br>​                    return dirList<br>定义生成语义分割文件的函数，命令行中的命令格式为”labelme_json_to_dataset 文件名“：</p>
+<p>​                def generate(fileList):<br>​                “””生成数据集图像\n<br>​                list: 文件名列表”””<br>​                    for f in fileList:<br>​                        s = “labelme_json_to_dataset “ + “F:/ISIC/ISIC-images/json/“ + f<br>                         os.system(s)<br>执行函数：</p>
 <pre><code>fileList = getAllJson(&quot;F:/ISIC/ISIC-images/json&quot;)
-
 generate(fileList)
 </code></pre>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
