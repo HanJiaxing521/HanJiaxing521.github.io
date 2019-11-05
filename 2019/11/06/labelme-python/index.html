@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>时空大数据介绍-2 - Justin的博客</title>
+    <title>python脚本自动使用labelme标注数据集 - Justin的博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="hanjiaxing,"> 
-    <meta name="description" content="时空大数据平台何谓时空大数据平台​        时空大数据平台是把各种分散的（点数据）和分割的（条数据）大数据汇聚到一个特定的平台上（时空数据或地理框架数据平台），通过数据多维融合和关联分析与数据,"> 
+    <meta name="description" content="使用工具：labelme（标注mask数据集用的）GitHub地址： https://github.com/wkentaro/labelme 
+windows：
+python2
+pip instal,"> 
     <meta name="author" content="Justin Han"> 
     <link rel="alternative" href="atom.xml" title="Justin的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -38,7 +41,7 @@
     <div class="bar" style="width: 0;"></div>
     <a id="home-icon" class="image-icon icon-home iconfont animated fadeIn" href="javascript:;" data-url="https://hanjiaxing521.github.io"></a>
     <div id="play-icon" title="Play/Pause" class="iconfont icon-play animated fadeIn"></div>
-    <h3 class="subtitle">时空大数据介绍-2</h3>
+    <h3 class="subtitle">python脚本自动使用labelme标注数据集</h3>
     <div class="social">
 <!--        <div class="like-icon">-->
 <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -67,11 +70,11 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                    <a href="/categories/时空大数据"><b>「 </b>时空大数据<b> 」</b></a>
+                    <a href="/categories/深度学习"><b>「 </b>深度学习<b> 」</b></a>
                 
-                十月 28, 2019
+                十一月 06, 2019
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2019/10/28/Time-Space-Big-Data-2/" title="时空大数据介绍-2">时空大数据介绍-2</a></h3>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/11/06/labelme-python/" title="python脚本自动使用labelme标注数据集">python脚本自动使用labelme标注数据集</a></h3>
             
                 <p class="post-count animated fadeInDown">
                     
@@ -87,7 +90,7 @@
                     </span>
                     
                     
-                        <span id="/2019/10/28/Time-Space-Big-Data-2/" class="leancloud_visitors" data-flag-title="时空大数据介绍-2">
+                        <span id="/2019/11/06/labelme-python/" class="leancloud_visitors" data-flag-title="python脚本自动使用labelme标注数据集">
                             <b class="iconfont icon-read"></b> <i>阅读次数</i>
                             <i class="leancloud-visitors-count">1000000</i>
                         </span>
@@ -96,7 +99,7 @@
                 </p>
             
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Big-Data/">Big Data</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/python/">python</a></li></ul>
             
         </div>
     </div>
@@ -117,58 +120,43 @@
 <div class="article">
     <div class="main">
         <div class="content markdown animated fadeIn slower">
-            <h2 id="时空大数据平台"><a href="#时空大数据平台" class="headerlink" title="时空大数据平台"></a>时空大数据平台</h2><h3 id="何谓时空大数据平台"><a href="#何谓时空大数据平台" class="headerlink" title="何谓时空大数据平台"></a>何谓时空大数据平台</h3><p>​        时空大数据平台是把各种分散的（点数据）和分割的（条数据）大数据汇聚到一个特定的平台上（时空数据或地理框架数据平台），通过数据多维融合和关联分析与数据挖掘，揭示事物的本质规律，对事物做出更加快捷、更加全面、更加精准和更加有效的研判和预判，从而使之发生持续的聚合效应。</p>
-<h3 id="“通用时空大数据平台-”模式"><a href="#“通用时空大数据平台-”模式" class="headerlink" title="“通用时空大数据平台+”模式"></a>“通用时空大数据平台+”模式</h3><ul>
-<li><p>通用时空大数据平台：</p>
-<p>“大数据”之“大”就在于将各种分散的数据彼此联系，由“点”而“线”，由“线”而“面”，由“面”而“层次”，以形成更完整的覆盖面，更清楚的理解事物的本质和未来的趋势。这就是“数聚力量”。</p>
-<p>包括：时空基准数据，GNSS与CORS数据，天空地海一体遥感数据，数字高程模型数据，数字正射影像数据，矢量数字地图数据，海洋测绘与海图数据，全球地名数据，时空基准数据。</p>
-</li>
-<li><p>通用时空大数据平台+军用</p>
-<p>由天空地海一体传感网将数据传入大数据平台，处理过后将数据传出到一体化指挥的时空大数据平台、公共作战态势图（COP）、地理空间情报等。</p>
-<p>包括：战场工程数据、战场兵要数据、战场移动目标数据、战场态势数据、战场兵力数据、情报数据、战场固定基地数据等。</p>
-</li>
-<li><p>“通用时空大数据平台+”民用</p>
-<p>由天空地海一体传感网将数据传入大数据平台，处理后将数据传出到新型智慧城市各部门业务应用系统、政府综合决策支持系统。</p>
-<p>包括：人社数据、水利数据、交通数据、公安数据、人口数据、电力数据、资源数据、教育数据等。</p>
-</li>
-</ul>
-<h3 id="时空大数据平台的基本功能"><a href="#时空大数据平台的基本功能" class="headerlink" title="时空大数据平台的基本功能"></a>时空大数据平台的基本功能</h3><ul>
-<li>传感器网分类接入（实时动态）</li>
-<li>时空大数据分布式存储和管理</li>
-<li>时空数据与各部门（行业）多源异构时空大数据聚合、共享、交换</li>
-<li>时空大数据统计分析、数据挖掘与知识发现</li>
-<li>时空大数据可视化</li>
-<li>知识服务和辅助指挥决策</li>
-<li>时空大数据网络空间安全监控与防范</li>
-</ul>
-<h3 id="时空大数据平台构建"><a href="#时空大数据平台构建" class="headerlink" title="时空大数据平台构建"></a>时空大数据平台构建</h3><ul>
-<li><p>构建一个开放的体系架构，强化公用，整合通用，开放应用</p>
-<p>由三个角色和四个基本操作构成：</p>
-<ul>
-<li>服务注册（描述/发布）</li>
-<li>服务查找（访问/定位）</li>
-<li>绑定服务</li>
-<li>调用服务</li>
-</ul>
-</li>
-<li><p>构建一个通用的功能平台，通过服务化封装，实现各类信息资源的高效调用、支撑信息服务的智能化。</p>
-</li>
-<li><p>构建一个开放共享的数据体系，通过多源异构时空大数据的融合（整合或聚合），形成一致性的数据集（全球一致、陆海一体、无缝连续），通过统计分析和挖掘，进一步提升治理体系和指挥决策的现代化水平。</p>
-<p>由传感网和各部门（行业）数据库接入时空大数据（中心），进行分布式存储管理，再提取数据到多源异构时空大数据融合，形成一致性数据集，再对其进行数据统计分析与数据挖掘，将数据化为知识，从而辅助决策，达到指挥决策智能化。</p>
-</li>
-<li><p>构建一个高效运行的管理指挥体系，实现信息资源的汇聚共享和跨部门的协调联动，为时空大数据平台安全可靠运行提供支撑。</p>
-</li>
-<li><p>构建一个高效运行的管理指挥体系，实现信息资源的汇聚共享和跨部门的协调联动，为时空大数据平台安全可靠运行提供支撑。</p>
-</li>
-<li><p>建立一套统一的标准体系，保证时空大数据平台规范、有序、健康、安全、可持续运行。</p>
-</li>
-</ul>
-<p>现状：</p>
-<ul>
-<li>国外：地理信息标准和网络/网格（栅格网）服务的标准基本已成体系。</li>
-<li>国内：地理信息标准已基本成体系，但网络/网格服务标准基本上参照国外的，未形成自主的体系。</li>
-</ul>
-<p>​       </p>
+            <h3 id="使用工具：labelme（标注mask数据集用的）"><a href="#使用工具：labelme（标注mask数据集用的）" class="headerlink" title="使用工具：labelme（标注mask数据集用的）"></a>使用工具：labelme（标注mask数据集用的）</h3><p>GitHub地址： <a href="https://github.com/wkentaro/labelme" target="_blank" rel="noopener">https://github.com/wkentaro/labelme</a> </p>
+<p><strong>windows：</strong></p>
+<p>python2</p>
+<pre><code>pip install pyqt
+</code></pre><p>​                pip install labelme</p>
+<p>python3</p>
+<p>​                pip install pyqt5</p>
+<p>​                pip install labelme</p>
+<p><strong>Ubuntu16.04系统下采用自带的python2.7环境：</strong></p>
+<p>​                 sudo apt-get install python-qt4 pyqt4-dev-tools </p>
+<p>​                 sudo pip install labelme  <em># python2 works</em></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>在终端中进入labelme.exe所在文件夹，执行命令：</p>
+<p>​                labelme</p>
+<p>出现界面后，点击open， 打开需要标注的图像，选择对目标区域进行标注</p>
+<p>标注完后点击会产生json文件</p>
+<h3 id="python自动图像语义分割标注脚本："><a href="#python自动图像语义分割标注脚本：" class="headerlink" title="python自动图像语义分割标注脚本："></a>python自动图像语义分割标注脚本：</h3><p>引入os库实现python在命令行中执行命令：</p>
+<p>​                import os</p>
+<p>定义获取之前制作的全部json文件的文件名的函数</p>
+<p>​                def getAllJson(path):</p>
+<p>​                “””获取所有json文件名\n</p>
+<p>​                path: 文件夹路径字符串”””</p>
+<p>​                                dirs = os.listdir(path)</p>
+<p>​                                dirList = []</p>
+<p>​                                for d in dirs:</p>
+<p>​                                                if os.path.splitext(d)[1] == “.json”:</p>
+<p>​                                                                dirList.append(d)</p>
+<p>​                                return dirList</p>
+<p>定义生成语义分割文件的函数，命令行中的命令格式为”labelme_json_to_dataset 文件名“：</p>
+<p>​                def generate(fileList):</p>
+<p>​                “””生成数据集图像\n</p>
+<p>​                list: 文件名列表”””</p>
+<p>​                                for f in fileList:</p>
+<p>​                                                s = “labelme_json_to_dataset “ + “F:/ISIC/ISIC-images/json/“ + f</p>
+<pre><code>os.system(s)
+</code></pre><p>执行函数：</p>
+<p>fileList = getAllJson(“F:/ISIC/ISIC-images/json”)</p>
+<p>generate(fileList)</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
@@ -212,7 +200,7 @@
                     <div class="box sticky animated fadeInRight faster">
                         <div id="toc" class="subbox">
                             <h4>目录</h4>
-                            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#时空大数据平台"><span class="toc-number">1.</span> <span class="toc-text">时空大数据平台</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#何谓时空大数据平台"><span class="toc-number">1.1.</span> <span class="toc-text">何谓时空大数据平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#“通用时空大数据平台-”模式"><span class="toc-number">1.2.</span> <span class="toc-text">“通用时空大数据平台+”模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时空大数据平台的基本功能"><span class="toc-number">1.3.</span> <span class="toc-text">时空大数据平台的基本功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时空大数据平台构建"><span class="toc-number">1.4.</span> <span class="toc-text">时空大数据平台构建</span></a></li></ol></li></ol>
+                            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用工具：labelme（标注mask数据集用的）"><span class="toc-number">1.</span> <span class="toc-text">使用工具：labelme（标注mask数据集用的）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python自动图像语义分割标注脚本："><span class="toc-number">3.</span> <span class="toc-text">python自动图像语义分割标注脚本：</span></a></li></ol>
                         </div>
                     </div>
                 
