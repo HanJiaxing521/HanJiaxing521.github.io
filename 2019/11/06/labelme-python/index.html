@@ -132,10 +132,17 @@ pip install p,">
 <h3 id="python自动图像语义分割标注脚本："><a href="#python自动图像语义分割标注脚本：" class="headerlink" title="python自动图像语义分割标注脚本："></a>python自动图像语义分割标注脚本：</h3><p>引入os库实现python在命令行中执行命令：</p>
 <p>​    import os</p>
 <p>定义获取之前制作的全部json文件的文件名的函数</p>
-<p>​    def getAllJson(path):<br>​    “””获取所有json文件名\n<br>​    path: 文件夹路径字符串”””<br>​        dirs = os.listdir(path)<br>​        dirList = []<br>​        for d in dirs:<br>​            if os.path.splitext(d)[1] == “.json”:<br>​                dirList.append(d)<br>​        return dirList</p>
-<p>定义生成语义分割文件的函数，命令行中的命令格式为”labelme_json_to_dataset 文件名“：</p>
-<p>​    def generate(fileList):<br>​    “””生成数据集图像\n<br>​    list: 文件名列表”””<br>​        for f in fileList:<br>​            s = “labelme_json_to_dataset “ + “F:/ISIC/ISIC-images/json/“ + f<br>             os.system(s)</p>
-<p>执行函数：</p>
+<pre><code>def getAllJson(path):
+    &quot;&quot;&quot;获取所有json文件名\n
+    path : 文件夹路径字符串&quot;&quot;&quot;
+    dirs = os.listdir(path)
+    dirList = []
+    for d in dirs :
+        if os.path.splitext(d)[1] == &quot;.json&quot; :
+            dirList.append(d)
+    return dirList
+</code></pre><p>定义生成语义分割文件的函数，命令行中的命令格式为”labelme_json_to_dataset 文件名“：</p>
+<p>​    def generate(fileList) :<br>        “””生成数据集图像\n<br>        list : 文件名列表”””<br>        for f in fileList :<br>            s = “labelme_json_to_dataset “ + “F:/ISIC/ISIC-images/json/“ + f<br>            os.system(s)<br>执行函数：</p>
 <pre><code>fileList = getAllJson(&quot;F:/ISIC/ISIC-images/json&quot;)
 generate(fileList)
 </code></pre>
