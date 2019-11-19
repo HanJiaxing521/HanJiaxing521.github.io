@@ -142,7 +142,8 @@ pip install p,">
             dirList.append(d)
     return dirList
 </code></pre><p>定义生成语义分割文件的函数，命令行中的命令格式为”labelme_json_to_dataset 文件名“：</p>
-<p>​    def generate(fileList) :<br>        “””生成数据集图像\n<br>        list : 文件名列表”””<br>        for f in fileList :<br>            s = “labelme_json_to_dataset “ + “F:/ISIC/ISIC-images/json/“ + f<br>            os.system(s)<br>执行函数：</p>
+<p>​    def generate(fileList) :<br>        “””生成数据集图像\n<br>        list : 文件名列表”””<br>        for f in fileList :<br>            s = “labelme_json_to_dataset “ + “F:/ISIC/ISIC-images/json/“ + f<br>            os.system(s)</p>
+<p>执行函数：</p>
 <pre><code>fileList = getAllJson(&quot;F:/ISIC/ISIC-images/json&quot;)
 generate(fileList)
 </code></pre>
