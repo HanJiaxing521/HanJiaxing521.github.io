@@ -5,22 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>腾讯TEG云架构后台开发实习面经 - Justin的博客</title>
+    <title>HBase Meta表与Root表 - Justin的博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="hanjiaxing,"> 
-    <meta name="description" content="废话不多说直奔主题：
-一面
-自我介绍
+    <meta name="description" content="Meta表的作用
+记录的信息：
 
-问项目：
+数据的Rowkey在哪个Region的范围
+Region在哪个RegionServer上
 
-旅游大数据项目：
-项目内容以及自己负责的部分
-为什么采用HBase存储数据
-在项目中对比过HBase和MySQL的性能表现吗
-基于HBase的时空,"> 
+（Region是HBase中分布式存储和负载均衡的最小单元）
+Meta表,"> 
     <meta name="author" content="Justin Han"> 
     <link rel="alternative" href="atom.xml" title="Justin的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -48,7 +45,7 @@
     <div class="bar" style="width: 0;"></div>
     <a id="home-icon" class="image-icon icon-home iconfont animated fadeIn" href="javascript:;" data-url="https://hanjiaxing521.github.io"></a>
     <div id="play-icon" title="Play/Pause" class="iconfont icon-play animated fadeIn"></div>
-    <h3 class="subtitle">腾讯TEG云架构后台开发实习面经</h3>
+    <h3 class="subtitle">HBase Meta表与Root表</h3>
     <div class="social">
 <!--        <div class="like-icon">-->
 <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -77,27 +74,27 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                    <a href="/categories/面经"><b>「 </b>面经<b> 」</b></a>
+                    <a href="/categories/时空大数据"><b>「 </b>时空大数据<b> 」</b></a>
                 
-                二月 02, 2020
+                二月 08, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2020/02/02/Tencent-Interview/" title="腾讯TEG云架构后台开发实习面经">腾讯TEG云架构后台开发实习面经</a></h3>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/02/08/HBase-Meta-Root/" title="HBase Meta表与Root表">HBase Meta表与Root表</a></h3>
             
                 <p class="post-count animated fadeInDown">
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        4.2k
+                        1.1k
                     </span>
                     
                     
                         <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        4 mins.
+                        1 mins.
                     </span>
                     
                     
-                        <span id="/2020/02/02/Tencent-Interview/" class="leancloud_visitors" data-flag-title="腾讯TEG云架构后台开发实习面经">
+                        <span id="/2020/02/08/HBase-Meta-Root/" class="leancloud_visitors" data-flag-title="HBase Meta表与Root表">
                             <b class="iconfont icon-read"></b> <i>阅读次数</i>
                             <i class="leancloud-visitors-count">1000000</i>
                         </span>
@@ -106,7 +103,7 @@
                 </p>
             
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/HBase/">HBase</a></li></ul>
             
         </div>
     </div>
@@ -127,237 +124,38 @@
 <div class="article">
     <div class="main">
         <div class="content markdown animated fadeIn slower">
-            <p>废话不多说直奔主题：</p>
-<h3 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h3><ol>
-<li><p>自我介绍</p>
-</li>
-<li><p>问项目：</p>
-<ul>
-<li>旅游大数据项目：<ul>
-<li>项目内容以及自己负责的部分</li>
-<li>为什么采用HBase存储数据</li>
-<li>在项目中对比过HBase和MySQL的性能表现吗</li>
-<li>基于HBase的时空数据索引是怎么设计的</li>
-<li>数据获取方式</li>
-<li>数据都存了哪些字段</li>
-<li>了解MySQL吗</li>
-</ul>
-</li>
-<li>区块链项目：<ul>
-<li>项目内容以及自己负责的部分</li>
-<li>怎么实现区块的互连</li>
-<li>Merkle树构建方式</li>
-<li>集群通信怎么实现</li>
-<li>怎么实现一个节点向所有节点发消息</li>
-<li>数据怎么存储</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>计网：</p>
-<ul>
-<li>三次握手</li>
-<li>四次分手</li>
-</ul>
-</li>
-<li><p>编程语言：</p>
-<ul>
-<li>会不会C/C++</li>
-<li>Java的HashMap和HashTable的区别</li>
-<li>Java实现线程安全的机制</li>
-</ul>
-</li>
-<li><p>操作系统：</p>
-<ul>
-<li>Linux查看CPU/内存占用情况的命令</li>
-<li>Linux查看端口占用情况的命令</li>
-<li>Linux查看磁盘存储情况的命令</li>
-<li>……</li>
-</ul>
-</li>
-<li><p>设计模式了解吗（不了解）</p>
-</li>
-<li><p>数据结构与算法</p>
-<ul>
-<li>都熟悉哪些数据结构</li>
-<li>熟悉优先队列吗</li>
-<li>腾讯在线文档手写快排</li>
-<li>简述快排的思想</li>
-<li>快排和分治法的对比</li>
-<li>阐述快排的时间复杂度</li>
-</ul>
-</li>
-<li><p>其他：</p>
-<ul>
-<li>从什么时候开始学自己的这套技术栈</li>
-<li>学校教了哪些课程</li>
-<li>平时逛哪些网站</li>
-<li>有什么问题要问他的（我问了他负责的部门，对我的建议，对我面试的评价）：<ul>
-<li>面试官在TEG云架构组做海量数据存储，总体评价良好，建议多学习C++、数据结构和操作系统</li>
-</ul>
-</li>
-</ul>
-</li>
+            <p><strong>Meta表的作用</strong></p>
+<p>记录的信息：</p>
+<ol>
+<li>数据的Rowkey在哪个Region的范围</li>
+<li>Region在哪个RegionServer上</li>
 </ol>
-<h3 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h3><ol>
-<li>目前的学业情况以及将来的安排</li>
-<li>自己从什么时候开始有意识学习自己的技术体系</li>
-<li>学习过程中都看了哪些书籍</li>
-<li>除Java外还会什么编程语言</li>
-<li>C的结构体对齐</li>
-<li>协程</li>
-<li>项目中在后端开发方面做了什么工作</li>
-<li>Spring和SpringBoot的区别</li>
-<li>在项目中怎么对接后端和前端</li>
-<li>HBase数据备份几份</li>
-<li>HBase备份的数据出错该怎么恢复</li>
-<li>HDFS怎么实现删除</li>
-<li>谈一下学习过程中对你影响最大的人</li>
-<li>对他有什么想问的（心里感觉凉透，贼不要脸的问了后面还有面试吗，面试官居然淡定说等HR再问你点后续问题吧……）</li>
+<p>（Region是HBase中分布式存储和负载均衡的最小单元）</p>
+<p><strong>Meta表的Rowkey</strong></p>
+<p>region所在的表名+region的StartKey+时间戳</p>
+<p>这三者的MD5值也是HBase在HDFS上存储的region名字</p>
+<p><strong>Meta表的列族和列</strong></p>
+<p>表中最主要的Family：info</p>
+<p>info里包含三个Column：regioninfo，server，serverstartcode</p>
+<p>regioninfo就是region的详细信息，包括Startkey、Endkey以及每个Family的信息等。</p>
+<p>server存储的是管理该region的RegionServer地址</p>
+<p>因此当Region被拆分、合并或者重新分配的时候都需要修改这张表的内容。</p>
+<p><strong>Region的定位</strong></p>
+<p>如果是第一次读取：</p>
+<ol>
+<li>读取zookeeper中root表的位置</li>
+<li>从root表中读取包含所需用户表的meta表的位置</li>
+<li>读取Meta表中用户表的位置</li>
+<li>读取数据</li>
 </ol>
-<h3 id="HR面"><a href="#HR面" class="headerlink" title="HR面"></a>HR面</h3><ol>
-<li>将来的规划</li>
-<li>对工作的理解</li>
-<li>老家在哪</li>
-</ol>
-<h3 id="前期自己准备的考点"><a href="#前期自己准备的考点" class="headerlink" title="前期自己准备的考点"></a>前期自己准备的考点</h3><ol>
-<li><p>旅游大数据项目：</p>
+<p>如果已经读取过一次，则root表和Meta表都会缓存到本地，直接去用户表的位置读取数据</p>
+<p>Client端在访问数据的过程中并没有涉及到Master节点，也就是说HBase日常的数据操作并不需要Master，不会造成Master的负担。</p>
+<p>从存储结构和操作方法的角度来说，-ROOT-、.META.与其他表没有任何区别。它们与众不同的地方是HBase用它们来存贮一个重要的系统信息：</p>
 <ul>
-<li>客流统计阐述（如何使用HBase）</li>
-<li>舆情分析阐述</li>
+<li>-ROOT-：记录.META.表的Region信息。</li>
+<li>.META.：记录用户表的Region信息。</li>
 </ul>
-</li>
-<li><p>区块链项目：</p>
-<ul>
-<li>公有链、联盟链、私有链阐述</li>
-<li>SHA-256等各种加密算法</li>
-<li>Merkle树</li>
-<li>WebSocket协议</li>
-<li>P2P</li>
-<li>PBFT算法</li>
-</ul>
-</li>
-<li><p>HBase数据库与大数据：</p>
-<ul>
-<li>HBase全分布搭建流程</li>
-<li>HBase内存配置优化</li>
-<li>Hadoop架构</li>
-<li>Hadoop高可用</li>
-<li>HBase索引算法（各种树）</li>
-<li>Z曲线</li>
-<li>GeoHash（Base32编码)</li>
-<li>读写阻塞</li>
-<li>朱丽叶暂停</li>
-<li>NTP/crond</li>
-<li>HBase架构                                  </li>
-<li>LSM树</li>
-<li>B+树</li>
-<li>WAL</li>
-<li>读机制</li>
-<li>写机制</li>
-<li>BlockCache缓存</li>
-<li>Region拆分与合并</li>
-<li>HFile合并</li>
-<li>Zookeeper架构与机制</li>
-<li>MapReduce原理和代码</li>
-</ul>
-</li>
-<li><p>Java:</p>
-<ul>
-<li>Java多线程通信机制</li>
-<li>进程间通信</li>
-<li>线程池</li>
-<li>Java线程安全</li>
-<li>Java集合继承关系</li>
-<li>HashMap</li>
-<li>HashTable</li>
-<li>HashTree</li>
-</ul>
-</li>
-<li><p>操作系统：</p>
-<ul>
-<li>进程线程区别</li>
-<li>Linux内核线程</li>
-<li>进程同步</li>
-<li>线程同步</li>
-<li>死锁</li>
-<li>进程状态</li>
-<li>线程状态</li>
-<li>进程调度策略</li>
-<li>分页和分段</li>
-<li>页面置换算法</li>
-<li>虚拟内存</li>
-<li>颠簸</li>
-<li>局部性原理</li>
-<li>常用Linux命令</li>
-</ul>
-</li>
-<li><p>Java后端：</p>
-<ul>
-<li>SSM</li>
-<li>Spring完整交互流程</li>
-<li>IOC</li>
-<li>Linux服务器上部署Java后端</li>
-<li>AOP</li>
-</ul>
-</li>
-<li><p>计网：</p>
-<ul>
-<li>三次握手</li>
-<li>四次分手</li>
-<li>常考报文内容</li>
-<li>Http与Https</li>
-<li>DNS</li>
-<li>拥塞控制</li>
-<li>阻塞I/O网络编程</li>
-<li>非阻塞I/O网络编程</li>
-<li>select网络编程</li>
-</ul>
-</li>
-<li><p>数据结构：</p>
-<ul>
-<li>二分查找</li>
-<li>基本排序</li>
-<li>快排、归并、堆排</li>
-<li>二叉树</li>
-<li>算法时空分析</li>
-<li>分治法</li>
-<li>图遍历</li>
-<li>字符串算法</li>
-<li>各种进制转换及编码实现</li>
-</ul>
-</li>
-<li><p>JVM：</p>
-<ul>
-<li>Java运行时数据区域</li>
-<li>程序计数器</li>
-<li>JVM栈</li>
-<li>本地方法栈</li>
-<li>堆</li>
-<li>方法区</li>
-<li>运行时常量池</li>
-<li>直接内存</li>
-<li>垃圾回收</li>
-<li>判断对象是否可回收</li>
-<li>引用类型</li>
-<li>GC算法</li>
-<li>垃圾回收器</li>
-<li>内存分配与回收策略</li>
-<li>Minor GC与Full GC</li>
-<li>内存分配策略</li>
-<li>Full GC触发条件</li>
-<li>类加载机制</li>
-<li>类生命周期类加载过程</li>
-<li>类初始化时机</li>
-<li>类与类加载器</li>
-<li>类加载器分类</li>
-<li>双亲委派模型</li>
-<li>自定义类加载器实现</li>
-</ul>
-</li>
-</ol>
-<p>写在最后： </p>
-<p>能收获鹅厂offer是我不敢奢求的结果，一个月前才开始准备，很多东西都是临时东拼西凑学来的。由于前半学期疲于考雅思（还没通过），我比周围的小伙伴准备的都晚，又赶上期末考试周，看着别人愉快的收获offer，生活和心理上都充满了极大的压力。真正的勇士，是知其不可而为之，最后的结果如何，不拼怎么知道。准备实习是一场遇强则强的战斗，越是发现自己有缺点，越是尽力去弥补，然后会发现更多的缺点，抓住每一个能完善的机会，直到面试开始的前一秒都不要放弃。非常感谢周围帮助过、鼓励过我的人，是他们一次次把我从崩溃的边缘拉回。这份面经送给未来准备实习的朋友做参考，相信你们一定可以成功。</p>
+<p>其中-ROOT-表本身只会有一个region，这样保证了只需要三次跳转，就能定位到任意region</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
@@ -397,13 +195,6 @@
             </div>
             
                 
-                
-                    <div class="box sticky animated fadeInRight faster">
-                        <div id="toc" class="subbox">
-                            <h4>目录</h4>
-                            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一面"><span class="toc-number">1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二面"><span class="toc-number">2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HR面"><span class="toc-number">3.</span> <span class="toc-text">HR面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前期自己准备的考点"><span class="toc-number">4.</span> <span class="toc-text">前期自己准备的考点</span></a></li></ol>
-                        </div>
-                    </div>
                 
             
         </div>
