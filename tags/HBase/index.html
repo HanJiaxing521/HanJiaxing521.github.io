@@ -100,7 +100,70 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/时空大数据"><b>「 </b>时空大数据<b> 」</b></a>
+                <a href="/categories/HBase"><b>「 </b>HBASE<b> 」</b></a>
+            
+            二月 13, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2020/02/13/HBase-basic-operations/" title="HBase基本操作" class="posttitle">HBase基本操作</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        3.6k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        3 mins.
+                    </span>
+                
+                
+                    <span id="/2020/02/13/HBase-basic-operations/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+        
+        
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/HBase/">HBase</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据库/">数据库</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/时空大数据/">时空大数据</a></li></ul>
+        
+        <div class="md-content animated fadeIn">
+            
+                <h3 id="HBase-shell的使用"><a href="#HBase-shell的使用" class="headerlink" title="HBase shell的使用"></a>HBase shell的使用</h3><p>HBase自带的shell是用JRuby（Java写的Ruby解释器）写的命令行的工具，是用ruby语言实现的，其shell脚本也是ruby实现的。<br>执行以下命令进入HBase...</p>
+            
+            <span class="read-more gradient-text"><a href="/2020/02/13/HBase-basic-operations/" title="查看全文" class="posttitle">查看全文</a></span>
+        </div>
+    </div>
+    
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                  <span class="typed-text"></span>
+                </p> 
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="primary">
+        
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/HBase"><b>「 </b>HBASE<b> 」</b></a>
             
             二月 08, 2020
         </p>
@@ -126,9 +189,9 @@
                     </span>
                 
             </p>
-        
-        
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/HBase/">HBase</a></li></ul>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/HBase/">HBase</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据库/">数据库</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/时空大数据/">时空大数据</a></li></ul>
+            
         
         <div class="md-content animated fadeIn">
             
@@ -139,28 +202,105 @@
 <li>Region在哪个RegionServer上</li>
 </ol>
 <p>（Region是HBase中分布式存储和负载均衡的最小单元）</p>
-<p><strong>Meta表的...</strong></p>
+<p><strong>Meta表的Rowkey</strong></p>
+<p>region所在的表名+region的StartKey+时间戳</p>
+<p>这三者的MD5值也是HBase在HDFS上存储的region名字</p>
+<p><strong>Meta表的列族和列</strong></p>
+<p>表中最主要的Family：info</p>
+<p>info里包含三个Column：regioninfo，server，serverstartcode...</p>
             
             <span class="read-more gradient-text"><a href="/2020/02/08/HBase-Meta-Root/" title="查看全文" class="posttitle">查看全文</a></span>
         </div>
     </div>
-    
 </div>
 
-<div class="screen-gradient-after">
-    <div class="screen-gradient-content">
-        <div class="screen-gradient-content-inside">
-            <div class="bold-underline-links screen-gradient-sponsor">
-                <p>
-                  <span class="typed-text"></span>
-                </p> 
-            </div>
+
+
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/面经"><b>「 </b>面经<b> 」</b></a>
+            
+            二月 02, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2020/02/02/Tencent-Interview/" title="腾讯TEG云架构后台开发实习面经" class="posttitle">腾讯TEG云架构后台开发实习面经</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        4.2k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        4 mins.
+                    </span>
+                
+                
+                    <span id="/2020/02/02/Tencent-Interview/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C-C/">C/C++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/HBase/">HBase</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java后端/">Java后端</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/操作系统/">操作系统</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/时空大数据/">时空大数据</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/算法/">算法</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/面经/">面经</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/项目/">项目</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>废话不多说直奔主题：</p>
+<h3 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h3><ol>
+<li><p>自我介绍</p>
+</li>
+<li><p>问项目：</p>
+<ul>
+<li>旅游大数据项目：<ul>
+<li>项目内容以及自己负责的部分</li>
+<li>为什么采用HBase存储数据</li>
+<li>在项目中对比过HBase和MySQL的性能表现吗</li>
+<li>基于HBase的时空数据索引是怎么设计的</li>
+<li>数据获取方式</li>
+<li>数据都存了哪些字段</li>
+<li>了解MySQL吗</li>
+</ul>
+</li>
+<li>区块链项目：<ul>
+<li>项目内容以及自己负责的部分</li>
+<li>怎么实现区块的互连</li>
+<li>Merkle树构建方式</li>
+<li>集群通信怎么实现</li>
+<li>怎么实现一个节点向所有节点发消息</li>
+<li>数据怎么存储</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>计网：</p>
+<ul>
+<li>三次握手</li>
+<li>四次分手</li>
+</ul>
+</li>
+<li><p>编程语言：</p>
+<ul>
+<li>会不会C/C++...</li></ul></li></ol>
+            
+            <span class="read-more gradient-text"><a href="/2020/02/02/Tencent-Interview/" title="查看全文" class="posttitle">查看全文</a></span>
         </div>
     </div>
 </div>
 
-    <div id="primary">
-        
+
+
     </div>
     
 </div>

@@ -100,27 +100,27 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/时空大数据"><b>「 </b>时空大数据<b> 」</b></a>
+                <a href="/categories/Python"><b>「 </b>PYTHON<b> 」</b></a>
             
             十月 28, 2019
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/10/28/NoSQL-Summary/" title="小谈NoSQL" class="posttitle">小谈NoSQL</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/10/28/3D-Picture-python/" title="Python绘制3D图像" class="posttitle">Python绘制3D图像</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        5.7k
+                        2.9k
                     </span>
                 
                 
                     <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        5 mins.
+                        3 mins.
                     </span>
                 
                 
-                    <span id="/2019/10/28/NoSQL-Summary/" class="leancloud_visitors" data-flag-title="">
+                    <span id="/2019/10/28/3D-Picture-python/" class="leancloud_visitors" data-flag-title="">
                         <b class="iconfont icon-read"></b> <i>阅读次数</i>
                         <i class="leancloud-visitors-count">1000000</i>
                     </span>
@@ -128,23 +128,16 @@
             </p>
         
         
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/DataBase/">DataBase</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据可视化/">数据可视化</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据科学/">数据科学</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-                <h3 id="提纲"><a href="#提纲" class="headerlink" title="提纲"></a>提纲</h3><ul>
-<li>NoSQL简介</li>
-<li>NoSQL兴起的原因</li>
-<li>NoSQL与关系数据库的比较</li>
-<li>NoSQL的四大类型</li>
-<li>NoSQL的三大基石</li>
-<li>从NoSQL到NewSQL数据库</li>
-<li>文档数据库MongoDB</li>
-</ul>
-<hr>
-<h3 id="NoSQL简介"><a href="#NoSQL简介" class="headerlink" title="NoSQL简介"></a>NoSQL简介</h3><p>从最...</p>
+                <p>首先导入需要的第三方库</p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D...</code></pre>
             
-            <span class="read-more gradient-text"><a href="/2019/10/28/NoSQL-Summary/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more gradient-text"><a href="/2019/10/28/3D-Picture-python/" title="查看全文" class="posttitle">查看全文</a></span>
         </div>
     </div>
     
@@ -173,7 +166,62 @@
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/时空大数据"><b>「 </b>时空大数据<b> 」</b></a>
+                <a href="/categories/Python"><b>「 </b>PYTHON<b> 」</b></a>
+            
+            十月 28, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/10/28/3D-Picture-python/" title="Python绘制3D图像" class="posttitle">Python绘制3D图像</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        2.9k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        3 mins.
+                    </span>
+                
+                
+                    <span id="/2019/10/28/3D-Picture-python/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据可视化/">数据可视化</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据科学/">数据科学</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>首先导入需要的第三方库</p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+</code></pre><p>然后创建数据集</p>
+<pre><code>dataSet = [[91, 85, 52, 2], [40, 55, 13, 1], [41, 36, 93, 4], [52, 10, 63, 4], [1, [52, 74, 40, 2], [70, 7, 1, 1], [94, 97, 82, 2], [15, 100...</code></pre>
+            
+            <span class="read-more gradient-text"><a href="/2019/10/28/3D-Picture-python/" title="查看全文" class="posttitle">查看全文</a></span>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/数据库"><b>「 </b>数据库<b> 」</b></a>
             
             十月 28, 2019
         </p>
@@ -200,7 +248,7 @@
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/DataBase/">DataBase</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据库/">数据库</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/时空大数据/">时空大数据</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
@@ -242,66 +290,7 @@
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/时空大数据"><b>「 </b>时空大数据<b> 」</b></a>
-            
-            十月 28, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/10/28/Time-Space-Big-Data-1/" title="时空大数据介绍-1" class="posttitle">时空大数据介绍-1</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.9k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        3 mins.
-                    </span>
-                
-                
-                    <span id="/2019/10/28/Time-Space-Big-Data-1/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <i class="leancloud-visitors-count">1000000</i>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Big-Data/">Big Data</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <h3 id="从哲学层面看"><a href="#从哲学层面看" class="headerlink" title="从哲学层面看"></a>从哲学层面看</h3><p>​        空间与时间一起构成运动着的物质存在的两种基本形式。空间指物质存在的广延性；时间指物质运动过程的持续性和顺序性。空间和时间具有客观性，同运动着的物质不可分割。没有脱离物质运动的空间和时间，也没有不在空间和时间中运动的物质。空间和时间也是相互联系的。现代物理学的发展，特别是相对论，证明空间和时间同运动着的物质的不可分割的联系。</p>
-<h3 id="从运动着的万事万物表达的层面看"><a href="#从运动着的万事万物表达的层面看" class="headerlink" title="从运动着的万事万物表达的层面看"></a>从运动着的万事万物表达的层面看</h3><ul>
-<li><p>时间维（T）</p>
-<blockquote>
-<p>指地理信息随时间变化，具有时态性，需要有一个精确的时间基准。</p>
-</blockquote>
-</li>
-<li><p>空间维（S-XYZ）</p>
-<blockquote>
-<p>指地理信息具有精确的...</p></blockquote></li></ul>
-            
-            <span class="read-more gradient-text"><a href="/2019/10/28/Time-Space-Big-Data-1/" title="查看全文" class="posttitle">查看全文</a></span>
-        </div>
-    </div>
-</div>
-
-
-
-<div class="post" id="post">
-    <div class="post-cover" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/时空大数据"><b>「 </b>时空大数据<b> 」</b></a>
+                <a href="/categories/大数据"><b>「 </b>大数据<b> 」</b></a>
             
             十月 28, 2019
         </p>
@@ -328,7 +317,7 @@
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Big-Data/">Big Data</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/大数据/">大数据</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/时空大数据/">时空大数据</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
@@ -339,6 +328,65 @@
 <p>“大数据”之“大”就在于将各种分散的数据彼此联系，由“点”而“线”，由“线”而“面”，由“面”而“层次”，以形成更完整的覆盖面，更清楚的理解事物的本质和未来的趋...</p></li></ul>
             
             <span class="read-more gradient-text"><a href="/2019/10/28/Time-Space-Big-Data-2/" title="查看全文" class="posttitle">查看全文</a></span>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/大数据"><b>「 </b>大数据<b> 」</b></a>
+            
+            十月 28, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2019/10/28/Time-Space-Big-Data-1/" title="时空大数据介绍-1" class="posttitle">时空大数据介绍-1</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        2.9k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        3 mins.
+                    </span>
+                
+                
+                    <span id="/2019/10/28/Time-Space-Big-Data-1/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/大数据/">大数据</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/时空大数据/">时空大数据</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <h3 id="从哲学层面看"><a href="#从哲学层面看" class="headerlink" title="从哲学层面看"></a>从哲学层面看</h3><p>​        空间与时间一起构成运动着的物质存在的两种基本形式。空间指物质存在的广延性；时间指物质运动过程的持续性和顺序性。空间和时间具有客观性，同运动着的物质不可分割。没有脱离物质运动的空间和时间，也没有不在空间和时间中运动的物质。空间和时间也是相互联系的。现代物理学的发展，特别是相对论，证明空间和时间同运动着的物质的不可分割的联系。</p>
+<h3 id="从运动着的万事万物表达的层面看"><a href="#从运动着的万事万物表达的层面看" class="headerlink" title="从运动着的万事万物表达的层面看"></a>从运动着的万事万物表达的层面看</h3><ul>
+<li><p>时间维（T）</p>
+<blockquote>
+<p>指地理信息随时间变化，具有时态性，需要有一个精确的时间基准。</p>
+</blockquote>
+</li>
+<li><p>空间维（S-XYZ）</p>
+<blockquote>
+<p>指地理信息具有精确的...</p></blockquote></li></ul>
+            
+            <span class="read-more gradient-text"><a href="/2019/10/28/Time-Space-Big-Data-1/" title="查看全文" class="posttitle">查看全文</a></span>
         </div>
     </div>
 </div>
@@ -381,7 +429,7 @@
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/算法/">算法</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/面经/">面经</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
@@ -413,7 +461,7 @@ def mergeSortHelper(lyst, copyBuffer, low...</code></pre>
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/技术"><b>「 </b>技术<b> 」</b></a>
+                <a href="/categories/计算机网络"><b>「 </b>计算机网络<b> 」</b></a>
             
             十一月 18, 2018
         </p>
@@ -440,7 +488,7 @@ def mergeSortHelper(lyst, copyBuffer, low...</code></pre>
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/SDN/">SDN</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/SDN/">SDN</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
             
         
         <div class="md-content animated fadeIn">

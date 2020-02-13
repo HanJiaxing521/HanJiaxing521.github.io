@@ -100,27 +100,27 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/技术"><b>「 </b>技术<b> 」</b></a>
+                <a href="/categories/HBase"><b>「 </b>HBASE<b> 」</b></a>
             
             二月 13, 2020
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2020/02/13/System-null/" title="为什么Java的System.int/out/err值为null？" class="posttitle">为什么Java的System.int/out/err值为null？</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2020/02/13/HBase-basic-operations/" title="HBase基本操作" class="posttitle">HBase基本操作</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        803
+                        3.6k
                     </span>
                 
                 
                     <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        1 mins.
+                        3 mins.
                     </span>
                 
                 
-                    <span id="/2020/02/13/System-null/" class="leancloud_visitors" data-flag-title="">
+                    <span id="/2020/02/13/HBase-basic-operations/" class="leancloud_visitors" data-flag-title="">
                         <b class="iconfont icon-read"></b> <i>阅读次数</i>
                         <i class="leancloud-visitors-count">1000000</i>
                     </span>
@@ -128,15 +128,13 @@
             </p>
         
         
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/HBase/">HBase</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据库/">数据库</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/时空大数据/">时空大数据</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-                <p>例：<br>System源码中这样写：</p>
-<p>​    public final static PrintStream out = null;</p>
-<p>System.out是PrintStream类型的变量，引用的是null，还...</p>
+                <h3 id="HBase-shell的使用"><a href="#HBase-shell的使用" class="headerlink" title="HBase shell的使用"></a>HBase shell的使用</h3><p>HBase自带的shell是用JRuby（Java写的Ruby解释器）写的命令行的工具，是用ruby语言实现的，其shell脚本也是ruby实现的。<br>执行以下命令进入HBase...</p>
             
-            <span class="read-more gradient-text"><a href="/2020/02/13/System-null/" title="查看全文" class="posttitle">查看全文</a></span>
+            <span class="read-more gradient-text"><a href="/2020/02/13/HBase-basic-operations/" title="查看全文" class="posttitle">查看全文</a></span>
         </div>
     </div>
     
@@ -165,7 +163,61 @@
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/时空大数据"><b>「 </b>时空大数据<b> 」</b></a>
+                <a href="/categories/Java"><b>「 </b>JAVA<b> 」</b></a>
+            
+            二月 13, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2020/02/13/System-null/" title="为什么Java的System.int/out/err值为null？" class="posttitle">为什么Java的System.int/out/err值为null？</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        803
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        1 mins.
+                    </span>
+                
+                
+                    <span id="/2020/02/13/System-null/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/笔记/">笔记</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>例：<br>System源码中这样写：</p>
+<p>​    public final static PrintStream out = null;</p>
+<p>System.out是PrintStream类型的变量，引用的是null，还被final修饰为不可更改，为什么在调用PrintStream中的println()方法时没有报错呢？<br>实际上在System类的开头有静态代码块：</p>
+<p>​    static {<br>​        registerNatives()；<br>​    }</p>
+<p>在加载System类的时候先调用了System类中的静态方法registerNatives...</p>
+            
+            <span class="read-more gradient-text"><a href="/2020/02/13/System-null/" title="查看全文" class="posttitle">查看全文</a></span>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/HBase"><b>「 </b>HBASE<b> 」</b></a>
             
             二月 08, 2020
         </p>
@@ -192,7 +244,7 @@
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/HBase/">HBase</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/HBase/">HBase</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据库/">数据库</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/时空大数据/">时空大数据</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
@@ -254,7 +306,7 @@
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C-C/">C/C++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/HBase/">HBase</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java后端/">Java后端</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/操作系统/">操作系统</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/时空大数据/">时空大数据</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/算法/">算法</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/面经/">面经</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/项目/">项目</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
@@ -312,7 +364,7 @@
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/技术"><b>「 </b>技术<b> 」</b></a>
+                <a href="/categories/C/C++"><b>「 </b>C/C++<b> 」</b></a>
             
             十一月 19, 2019
         </p>
@@ -339,7 +391,7 @@
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C/">C</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C-C/">C/C++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/项目/">项目</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
@@ -379,7 +431,7 @@ const char...</code></pre>
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/技术"><b>「 </b>技术<b> 」</b></a>
+                <a href="/categories/Java"><b>「 </b>JAVA<b> 」</b></a>
             
             十一月 16, 2019
         </p>
@@ -406,7 +458,7 @@ const char...</code></pre>
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/笔记/">笔记</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
@@ -446,7 +498,7 @@ const char...</code></pre>
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/深度学习"><b>「 </b>深度学习<b> 」</b></a>
+                <a href="/categories/机器学习"><b>「 </b>机器学习<b> 」</b></a>
             
             十一月 06, 2019
         </p>
@@ -473,7 +525,7 @@ const char...</code></pre>
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据科学/">数据科学</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
@@ -502,7 +554,7 @@ const char...</code></pre>
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/强化学习"><b>「 </b>强化学习<b> 」</b></a>
+                <a href="/categories/机器学习"><b>「 </b>机器学习<b> 」</b></a>
             
             十一月 04, 2019
         </p>
@@ -529,7 +581,7 @@ const char...</code></pre>
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/算法/">算法</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/强化学习/">强化学习</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/算法/">算法</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
@@ -562,7 +614,7 @@ const char...</code></pre>
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/随想"><b>「 </b>随想<b> 」</b></a>
+                <a href="/categories/杂文"><b>「 </b>杂文<b> 」</b></a>
             
             十月 31, 2019
         </p>
@@ -589,7 +641,7 @@ const char...</code></pre>
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/书评/">书评</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/书评/">书评</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/杂文/">杂文</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/随想/">随想</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
@@ -617,7 +669,7 @@ const char...</code></pre>
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/竞赛"><b>「 </b>竞赛<b> 」</b></a>
+                <a href="/categories/Python"><b>「 </b>PYTHON<b> 」</b></a>
             
             十月 28, 2019
         </p>
@@ -644,7 +696,7 @@ const char...</code></pre>
                 
             </p>
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/竞赛/">竞赛</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/项目/">项目</a></li></ul>
             
         
         <div class="md-content animated fadeIn">
@@ -660,61 +712,6 @@ def minCmp(a, b):
         if a &lt...</code></pre>
             
             <span class="read-more gradient-text"><a href="/2019/10/28/Huaweicoder/" title="查看全文" class="posttitle">查看全文</a></span>
-        </div>
-    </div>
-</div>
-
-
-
-<div class="post" id="post">
-    <div class="post-cover" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/技术"><b>「 </b>技术<b> 」</b></a>
-            
-            十月 28, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/10/28/3D-Picture-python/" title="Python绘制3D图像" class="posttitle">Python绘制3D图像</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.9k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        3 mins.
-                    </span>
-                
-                
-                    <span id="/2019/10/28/3D-Picture-python/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <i class="leancloud-visitors-count">1000000</i>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>首先导入需要的第三方库</p>
-<pre><code>import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-</code></pre><p>然后创建数据集</p>
-<pre><code>dataSet = [[91, 85, 52, 2], [40, 55, 13, 1], [41, 36, 93, 4], [52, 10, 63, 4], [1, [52, 74, 40, 2], [70, 7, 1, 1], [94, 97, 82, 2], [15, 100...</code></pre>
-            
-            <span class="read-more gradient-text"><a href="/2019/10/28/3D-Picture-python/" title="查看全文" class="posttitle">查看全文</a></span>
         </div>
     </div>
 </div>
