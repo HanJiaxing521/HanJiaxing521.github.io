@@ -5,19 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>K摇臂赌博机 - Justin的博客</title>
+    <title>为什么Java的System.int/out/err值为null？ - Justin的博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="hanjiaxing,"> 
-    <meta name="description" content="
-探索与利用
-强化学习与监督学习的不同：
-没有训练数据告诉机器应当做哪个动作，需通过尝试得出各个动作产生的结果，从而得到最终奖赏。
-最大化单步奖赏：
-
-需要知道每个动作带来的奖赏
-执行奖赏最大的动作,"> 
+    <meta name="description" content="例：System源码中这样写：
+​    public final static PrintStream out = null;
+System.out是PrintStream类型的变量，引用的是nu,"> 
     <meta name="author" content="Justin Han"> 
     <link rel="alternative" href="atom.xml" title="Justin的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -45,7 +40,7 @@
     <div class="bar" style="width: 0;"></div>
     <a id="home-icon" class="image-icon icon-home iconfont animated fadeIn" href="javascript:;" data-url="https://hanjiaxing521.github.io"></a>
     <div id="play-icon" title="Play/Pause" class="iconfont icon-play animated fadeIn"></div>
-    <h3 class="subtitle">K摇臂赌博机</h3>
+    <h3 class="subtitle">为什么Java的System.int/out/err值为null？</h3>
     <div class="social">
 <!--        <div class="like-icon">-->
 <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -74,27 +69,27 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                    <a href="/categories/强化学习"><b>「 </b>强化学习<b> 」</b></a>
+                    <a href="/categories/技术"><b>「 </b>技术<b> 」</b></a>
                 
-                十一月 04, 2019
+                二月 13, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2019/11/04/Reinforcement-learning/" title="K摇臂赌博机">K摇臂赌博机</a></h3>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/02/13/System-null/" title="为什么Java的System.int/out/err值为null？">为什么Java的System.int/out/err值为null？</a></h3>
             
                 <p class="post-count animated fadeInDown">
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.7k
+                        803
                     </span>
                     
                     
                         <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        2 mins.
+                        1 mins.
                     </span>
                     
                     
-                        <span id="/2019/11/04/Reinforcement-learning/" class="leancloud_visitors" data-flag-title="K摇臂赌博机">
+                        <span id="/2020/02/13/System-null/" class="leancloud_visitors" data-flag-title="为什么Java的System.int/out/err值为null？">
                             <b class="iconfont icon-read"></b> <i>阅读次数</i>
                             <i class="leancloud-visitors-count">1000000</i>
                         </span>
@@ -103,7 +98,7 @@
                 </p>
             
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/算法/">算法</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li></ul>
             
         </div>
     </div>
@@ -124,75 +119,13 @@
 <div class="article">
     <div class="main">
         <div class="content markdown animated fadeIn slower">
-            <ol>
-<li><p><strong>探索与利用</strong></p>
-<p><strong>强化学习与监督学习的不同：</strong></p>
-<p>没有训练数据告诉机器应当做哪个动作，需通过尝试得出各个动作产生的结果，从而得到最终奖赏。</p>
-<p><strong>最大化单步奖赏：</strong></p>
-<ul>
-<li>需要知道每个动作带来的奖赏</li>
-<li>执行奖赏最大的动作</li>
-</ul>
-<p><strong>算法背景：</strong></p>
-<p>一般情况下，每个单步动作的奖赏值来自于一个概率分布，仅通过一次尝试不能确切地获得平均奖赏值。因此，单步强化学习任务对应了一个理论模型——K-摇臂赌博机。K-摇臂赌博机有K个摇臂，赌徒在投入一个硬币后可选择按下其中一个摇臂， 每个摇臂以一定的概率吐出硬币，但这个概率赌徒并不知道。赌徒的目标是通过一定的策略最大化自己的奖赏，即获得最多的硬币。</p>
-<p><strong>仅探索法：</strong></p>
-<p>若仅为获知每个摇臂的期望奖赏，则可将所有的尝试机会平均分配给每个摇臂（即轮流按下每个摇臂），最后以每个摇臂各自的平均吐币概率作为其奖赏期望的近似估计。仅探索法能很好的估计每个摇臂的奖赏，却会失去很多选择最优摇臂的机会。</p>
-<p><strong>仅利用法：</strong></p>
-<p>若仅为执行奖赏最大的动作，则可按下目前最优的（即到目前为止平均奖赏最大的）摇臂，若有多个摇臂同为最优，则从中随机选取一个。仅利用法没有很好的估计摇臂期望奖赏，很可能经常选不到最优摇臂。仅利用与仅探索这两种方法都难以使最终的累积奖赏最大化。</p>
-<p><strong>探索-利用窘境：</strong></p>
-<p>由于尝试次数有限，探索和利用是矛盾的，加强一方则会削弱另一方。欲累积奖赏最大，则必须在探索与利用之间达成较好的折中。</p>
-</li>
-<li><p><strong>ε -贪心</strong></p>
-<p>基于概率来对探索和利用折中：每次尝试以ε的概率进行探索，即以均匀概率随机选取一个摇臂；即选择当前平均奖赏最高的摇臂（若有多个则随机选取）以1-ε的概率进行利用。</p>
-<p>令Q(k)记录摇臂k的平均奖赏。若摇臂k被尝试了n次，得到的奖赏为vi，则平均奖赏为</p>
-<p><img src="https://github.com/HanJiaxing521/HanJiaxing521.github.io/raw/master/img/qhxx-1.png" alt=""></p>
-<p><img src="https://github.com/HanJiaxing521/HanJiaxing521.github.io/raw/master/img/qhxx-2.png" alt=""></p>
-<p>可见无论摇臂被尝试多少次都仅需记录两个值：已尝试次数n-1和最近平均奖赏Qn-1(k)。</p>
-<p>ε-贪心算法如下：</p>
-<p>输入：摇臂数K；</p>
-<p>​            奖赏函数R；</p>
-<p>​            尝试次数T；</p>
-<p>​             探索概率ε</p>
-<p>过程：</p>
-<p>r=0；</p>
-<p>任意i=1，2，……K：Q(i)=0， count(i) = 0;</p>
-<p>for t = 1,2,……,T do</p>
-<p>​    if rand()&lt;ε then</p>
-<p>​        k = 从1，2，……K中以均匀分布随机选取</p>
-<p>​    else</p>
-<p>​        k=argmaxiQ(i)</p>
-<p>​    end if</p>
-<p>​    v = R(k);</p>
-<p>​    r = r+v;</p>
-<p>​    Q(k) = (Q(k)*count(k)+v)/count(k)+1;</p>
-<p>​    count(k) = count(k)+1;</p>
-<p>end for</p>
-<p>输出：累积奖赏r</p>
-<p>由于摇臂奖赏的不确定性较大，则概率分布较宽时需要更大的ε值，分布较集中时需要较小的ε值，一段时间后需要尝试的次数逐渐减少，可令ε=1/(t^(1/2))</p>
-</li>
-<li><p><strong>Softmax算法</strong></p>
-<p>Softmax算法基于当前已知的摇臂平均奖赏来对探索和利用进行折中。若某些摇臂的平均奖赏明显高于其他摇臂，则它们被选取的概率也明显更高。</p>
-<p>Softmax算法中摇臂概率的分配基于Boltzmann分布：</p>
-<p><img src="https://github.com/HanJiaxing521/HanJiaxing521.github.io/raw/master/img/qhxx-3.png" alt=""></p>
-<p>Q(i)记录当前摇臂的平均奖赏； τ &gt;0称为“温度”， τ 越小则平均奖赏高的摇臂被选取的概率越高。特别的， τ -&gt;0时Softmax将趋于“仅利用”，  τ -&gt;无穷大时Softmax将趋于“仅探索”。</p>
-<p>Softmax算法描述：</p>
-<p>输入：摇臂数K；</p>
-<p>​            奖赏函数R；</p>
-<p>​            尝试次数T；</p>
-<p>​            温度参数 τ </p>
-<p>过程：</p>
-<p>r=0；</p>
-<p>任意vi=1，2，K：Q(i) = 0, count(i) = 0;</p>
-<p>for t = 1,2,3,……,T do</p>
-<p>​    k = 从1，2，……，K中根据Boltzmann分布随机选取</p>
-<p>​    v= R(k);</p>
-<p>​    r = r+v;</p>
-<p>​    Q(k) = (Q(k)*count(k) + v)/(count(k) + 1)</p>
-<p>​    count(k) = count(k)+1</p>
-<p>end for</p>
-<p>输出：累积奖赏r</p>
-</li>
-</ol>
+            <p>例：<br>System源码中这样写：</p>
+<p>​    public final static PrintStream out = null;</p>
+<p>System.out是PrintStream类型的变量，引用的是null，还被final修饰为不可更改，为什么在调用PrintStream中的println()方法时没有报错呢？<br>实际上在System类的开头有静态代码块：</p>
+<p>​    static {<br>​        registerNatives()；<br>​    }</p>
+<p>在加载System类的时候先调用了System类中的静态方法registerNatives()，<br>它在虚拟机里注册System需要使用的一些本地代码，<br>在System类中这样定义registerNatives()方法：</p>
+<p>​    private static native void registerNatives()；</p>
+<p>也使用了native修饰符,这意味着该方法对应的实现不是在当前文件，而是在用其他语言（如C和C++）实现的文件中。<br>Java语言本身不能对操作系统底层进行访问和操作，但是可以通过JNI接口调用其他语言来实现对底层的访问。<br>它会告诉虚拟机到哪些文件中找到相应的实现。In，out，err先初始化为null（防止编译器内联访问它们），然后由initializeSystemClass()方法类使用setInt0，setOut0，setErr0把实际连接到输入输出设备的句柄传给虚拟机并赋值给in，out，err。<br>因此System类是首先声明了in/out(实际上还有err)静态成员常量,然后在registerNatives()中对其进行赋值，使得能够调用println等方法。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">

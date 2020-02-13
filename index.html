@@ -100,6 +100,71 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
+                <a href="/categories/技术"><b>「 </b>技术<b> 」</b></a>
+            
+            二月 13, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2020/02/13/System-null/" title="为什么Java的System.int/out/err值为null？" class="posttitle">为什么Java的System.int/out/err值为null？</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        803
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        1 mins.
+                    </span>
+                
+                
+                    <span id="/2020/02/13/System-null/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+        
+        
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/">Java</a></li></ul>
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>例：<br>System源码中这样写：</p>
+<p>​    public final static PrintStream out = null;</p>
+<p>System.out是PrintStream类型的变量，引用的是null，还...</p>
+            
+            <span class="read-more gradient-text"><a href="/2020/02/13/System-null/" title="查看全文" class="posttitle">查看全文</a></span>
+        </div>
+    </div>
+    
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                  <span class="typed-text"></span>
+                </p> 
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="primary">
+        
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
                 <a href="/categories/时空大数据"><b>「 </b>时空大数据<b> 」</b></a>
             
             二月 08, 2020
@@ -126,9 +191,9 @@
                     </span>
                 
             </p>
-        
-        
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/HBase/">HBase</a></li></ul>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/HBase/">HBase</a></li></ul>
+            
         
         <div class="md-content animated fadeIn">
             
@@ -139,28 +204,20 @@
 <li>Region在哪个RegionServer上</li>
 </ol>
 <p>（Region是HBase中分布式存储和负载均衡的最小单元）</p>
-<p><strong>Meta表的...</strong></p>
+<p><strong>Meta表的Rowkey</strong></p>
+<p>region所在的表名+region的StartKey+时间戳</p>
+<p>这三者的MD5值也是HBase在HDFS上存储的region名字</p>
+<p><strong>Meta表的列族和列</strong></p>
+<p>表中最主要的Family：info</p>
+<p>info里包含三个Column：regioninfo，server，serverstartcode...</p>
             
             <span class="read-more gradient-text"><a href="/2020/02/08/HBase-Meta-Root/" title="查看全文" class="posttitle">查看全文</a></span>
         </div>
     </div>
-    
 </div>
 
-<div class="screen-gradient-after">
-    <div class="screen-gradient-content">
-        <div class="screen-gradient-content-inside">
-            <div class="bold-underline-links screen-gradient-sponsor">
-                <p>
-                  <span class="typed-text"></span>
-                </p> 
-            </div>
-        </div>
-    </div>
-</div>
 
-    <div id="primary">
-        
+
 <div class="post" id="post">
     <div class="post-cover" style="
             background-image:
@@ -658,75 +715,6 @@ from mpl_toolkits.mplot3d import Axes3D
 <pre><code>dataSet = [[91, 85, 52, 2], [40, 55, 13, 1], [41, 36, 93, 4], [52, 10, 63, 4], [1, [52, 74, 40, 2], [70, 7, 1, 1], [94, 97, 82, 2], [15, 100...</code></pre>
             
             <span class="read-more gradient-text"><a href="/2019/10/28/3D-Picture-python/" title="查看全文" class="posttitle">查看全文</a></span>
-        </div>
-    </div>
-</div>
-
-
-
-<div class="post" id="post">
-    <div class="post-cover" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/时空大数据"><b>「 </b>时空大数据<b> 」</b></a>
-            
-            十月 28, 2019
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2019/10/28/NoSQL-Summary/" title="小谈NoSQL" class="posttitle">小谈NoSQL</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        5.7k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        5 mins.
-                    </span>
-                
-                
-                    <span id="/2019/10/28/NoSQL-Summary/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <i class="leancloud-visitors-count">1000000</i>
-                    </span>
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/DataBase/">DataBase</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <h3 id="提纲"><a href="#提纲" class="headerlink" title="提纲"></a>提纲</h3><ul>
-<li>NoSQL简介</li>
-<li>NoSQL兴起的原因</li>
-<li>NoSQL与关系数据库的比较</li>
-<li>NoSQL的四大类型</li>
-<li>NoSQL的三大基石</li>
-<li>从NoSQL到NewSQL数据库</li>
-<li>文档数据库MongoDB</li>
-</ul>
-<hr>
-<h3 id="NoSQL简介"><a href="#NoSQL简介" class="headerlink" title="NoSQL简介"></a>NoSQL简介</h3><p>从最初表示的“反SQL”运动，用新型的非关系型数据库取代关系型数据库，发展为现在表示关系和非关系型数据库各有优缺点彼此都无法互相取代，即“Not only SQL”。</p>
-<p>通常，NoSQL数据库具有以下特点：</p>
-<ul>
-<li>灵活的可扩展性</li>
-<li>灵活的数据模型</li>
-<li>与云计算紧密融合</li>
-</ul>
-<hr>
-<h3 id="NoSQL兴起的原因"><a href="#NoSQL兴起的原因" class="headerlink" title="NoSQL兴起的原因"></a>NoSQL兴起的原因</h3><ul>
-<li>关系数据库已经无法满...</li></ul>
-            
-            <span class="read-more gradient-text"><a href="/2019/10/28/NoSQL-Summary/" title="查看全文" class="posttitle">查看全文</a></span>
         </div>
     </div>
 </div>
