@@ -105,11 +105,11 @@
       
         <tags>
             
+            <tag> 计算机网络 </tag>
+            
             <tag> HBase </tag>
             
             <tag> 时空大数据 </tag>
-            
-            <tag> 计算机网络 </tag>
             
             <tag> 算法 </tag>
             
@@ -194,8 +194,6 @@
       
       
       <categories>
-          
-          <category> 机器学习 </category>
           
           <category> Python </category>
           
