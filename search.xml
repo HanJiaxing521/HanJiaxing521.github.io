@@ -22,7 +22,7 @@
             
             <tag> C/C++ </tag>
             
-            <tag> 项目 </tag>
+            <tag> 编译原理 </tag>
             
         </tags>
       
@@ -132,15 +132,15 @@
       
         <tags>
             
+            <tag> 计算机网络 </tag>
+            
             <tag> HBase </tag>
             
             <tag> 时空大数据 </tag>
             
-            <tag> 计算机网络 </tag>
+            <tag> 算法 </tag>
             
             <tag> 面经 </tag>
-            
-            <tag> 算法 </tag>
             
             <tag> Java </tag>
             
@@ -177,7 +177,7 @@
             
             <tag> C/C++ </tag>
             
-            <tag> 项目 </tag>
+            <tag> 编译原理 </tag>
             
         </tags>
       
@@ -260,9 +260,9 @@
             
             <tag> 机器学习 </tag>
             
-            <tag> 算法 </tag>
-            
             <tag> 强化学习 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -459,9 +459,9 @@
             
             <tag> Python </tag>
             
-            <tag> 面经 </tag>
-            
             <tag> 算法 </tag>
+            
+            <tag> 面经 </tag>
             
         </tags>
       
