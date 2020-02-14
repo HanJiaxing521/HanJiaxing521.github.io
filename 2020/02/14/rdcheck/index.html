@@ -1,0 +1,1502 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>递归下降分析法 - Justin的博客</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="hanjiaxing,"> 
+    <meta name="description" content="自己写的递归下降语法分析器（很遗憾没能生成语法树）
+/**
+* rdcheck.cpp: Don&amp;apos;t generate syntax tree
+* author: Justin Han
+*,"> 
+    <meta name="author" content="Justin Han"> 
+    <link rel="alternative" href="atom.xml" title="Justin的博客" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="/font/Rubik-Bold-kern-latin.woff2" as="font" type="font/woff2" crossorigin="">
+    <link href="/font/Rubik-Regular-kern-latin.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nuy6s3evgdk.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css">
+</head>
+</html>
+<body class="loading">
+    <div class="la-ball-atom la-2x">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <span id="config-title" style="display:none">Justin的博客</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a id="home-icon" class="image-icon icon-home iconfont animated fadeIn" href="javascript:;" data-url="https://hanjiaxing521.github.io"></a>
+    <div id="play-icon" title="Play/Pause" class="iconfont icon-play animated fadeIn"></div>
+    <h3 class="subtitle">递归下降分析法</h3>
+    <div class="social">
+<!--        <div class="like-icon">-->
+<!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+<!--        </div>-->
+        <div>
+            <div class="share animated fadeIn">
+                
+                    <a href="javascript:;" class="iconfont icon-share1"></a>
+                    <div class="share-component-cc" data-disabled=""></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class="article-header-wrapper">
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                    <a href="/categories/C/C++"><b>「 </b>C/C++<b> 」</b></a>
+                
+                二月 14, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/02/14/rdcheck/" title="递归下降分析法">递归下降分析法</a></h3>
+            
+                <p class="post-count animated fadeInDown">
+                    
+                        <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        30k
+                    </span>
+                    
+                    
+                        <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        27 mins.
+                    </span>
+                    
+                    
+                        <span id="/2020/02/14/rdcheck/" class="leancloud_visitors" data-flag-title="递归下降分析法">
+                            <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                            <i class="leancloud-visitors-count">1000000</i>
+                        </span>
+                    
+                    
+                </p>
+            
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C-C/">C/C++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/项目/">项目</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span></span>  
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class="main">
+        <div class="content markdown animated fadeIn slower">
+            <p>自己写的递归下降语法分析器（很遗憾没能生成语法树）</p>
+<pre><code>/**
+* rdcheck.cpp: Don&apos;t generate syntax tree
+* author: Justin Han
+* time: 2019/11/22
+*/
+
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+/**
+* define the VN
+*/
+#define A program
+#define A1 A1
+#define B external_declaration
+#define C decl_or_stmt
+#define C1 C1
+#define D declarator_list
+#define D1 D1
+#define E intstr_list
+#define E1 E1
+#define F initializer
+#define G declarator
+#define G1 G1
+#define G2 G2
+#define G3 G3
+#define G4 G4
+#define H parameter_list
+#define H1 H1
+#define I parameter
+#define J Type
+#define K statement
+#define K1 K1
+#define K2 K2
+#define K3 K3
+#define L statement_list
+#define L1 L1
+#define M expression_statement
+#define N expr
+#define O cmp_expr
+#define O1 O1
+#define P add_expr
+#define P1 P1
+#define P2 P2
+#define Q mul_expr
+#define Q1 Q1
+#define Q2 Q2
+#define R primary_expr
+#define R1 R1
+#define R2 R2
+#define R3 R3
+#define S expr_list
+#define S1 S1
+#define T id_list
+#define T1 T1
+
+/**
+* define class-numbers of symbols
+*/
+#define ALPHABET 0
+#define DEGIT 1
+#define WHITESPACE 2
+#define SEPCHAR 3
+#define MATHCHAR 4
+#define STRING 5
+
+/**
+* define classes of symbols
+*/
+const char alphabet[52] = { &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;, &apos;f&apos;, &apos;g&apos;, &apos;h&apos;, &apos;i&apos;, &apos;j&apos;, &apos;k&apos;, 
+&apos;l&apos;, &apos;m&apos;, &apos;n&apos;, &apos;o&apos;, &apos;p&apos;, &apos;q&apos;, &apos;r&apos;, &apos;s&apos;, &apos;t&apos;, &apos;u&apos;, &apos;v&apos;, &apos;w&apos;, &apos;x&apos;, &apos;y&apos;, &apos;z&apos;, &apos;A&apos;, &apos;B&apos;, 
+&apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;, &apos;H&apos;, &apos;I&apos;, &apos;J&apos;, &apos;K&apos;, &apos;L&apos;, &apos;M&apos;, &apos;N&apos;, &apos;O&apos;, &apos;P&apos;, &apos;Q&apos;, &apos;R&apos;, 
+&apos;S&apos;, &apos;T&apos;, &apos;U&apos;, &apos;V&apos;, &apos;W&apos;, &apos;X&apos;, &apos;Y&apos;, &apos;Z&apos; };
+const char degit[10] = { &apos;0&apos;, &apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;, &apos;6&apos;, &apos;7&apos;, &apos;8&apos;, &apos;9&apos; };
+const char whitespace[3] = { &apos; &apos;, &apos;\n&apos;, &apos;\t&apos; };
+const char sepchar[10] = { &apos;{&apos;, &apos;}&apos;, &apos;;&apos;, &apos;,&apos;, &apos;.&apos;, &apos;(&apos;, &apos;)&apos; ,&apos;&quot;&apos;, &apos;[&apos;, &apos;]&apos; };
+const char mathchar[9] = { &apos;&gt;&apos;, &apos;&lt;&apos;, &apos;=&apos;, &apos;+&apos;, &apos;-&apos;, &apos;|&apos;, &apos;/&apos;, &apos;*&apos;, &apos;%&apos; };
+
+/*define class-numbers of words
+* INT 19
+* FLOAT 20
+* STRING 21
+* SPECIAL_WORD sepchar_subscript_index+30
+* MATHCHAR mathchar_subscript_index+40
+* ID 22
+* annotation 23
+*/
+
+/**
+* define IDs and mathwords 
+*/
+const char* tokens[19] = { &quot;args&quot;, &quot;class&quot;, &quot;else&quot;, &quot;for&quot;, &quot;if&quot;, &quot;int&quot;, &quot;main&quot;, &quot;new&quot;, &quot;out&quot;, &quot;package&quot;, &quot;private&quot;, &quot;public&quot;, &quot;print&quot;, &quot;println&quot;, &quot;return&quot;, &quot;static&quot;, &quot;String&quot;, &quot;System&quot;, &quot;void&quot; };
+const char* mathWords[17] = { &quot;&gt;&quot;, &quot;&lt;&quot;, &quot;=&quot;, &quot;+&quot;, &quot;-&quot;, &quot;|&quot;, &quot;/&quot;, &quot;*&quot;, &quot;%&quot;, &quot;&gt;=&quot;, &quot;&lt;=&quot;, &quot;++&quot;, &quot;--&quot;, &quot;==&quot; ,&quot;||&quot;, &quot;-=&quot;, &quot;+=&quot; };
+
+/**
+* define the VT
+* n NUMBER
+* s STRING
+* i ID
+* a INT
+* b STR
+* c VOID
+* d IF
+* e ELSE
+* f WHILE
+* g RETURN
+* h PRINT
+* j SCAN
+* k CMP
+* l ASSIGN
+*/
+
+/**
+* Define the FIRST set
+*/
+const char FIRST_A[3] = { &apos;a&apos;,&apos;b&apos;,&apos;c&apos; };
+const char FIRST_A1[4] = { &apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;\n&apos; };
+const char FIRST_B[3] = { &apos;a&apos;,&apos;b&apos;,&apos;c&apos; };
+const char FIRST_C[3] = { &apos;{&apos;,&apos;,&apos;,&apos;;&apos; };
+const char FIRST_C1[16] = { &apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;{&apos;,&apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;d&apos;,&apos;f&apos;,&apos;g&apos;,&apos;h&apos;,&apos;j&apos;,&apos;}&apos; };
+const char FIRST_D[1] = { &apos;i&apos; };
+const char FIRST_D1[2] = { &apos;,&apos;,&apos;\n&apos; };
+const char FIRST_E[2] = { &apos;n&apos;,&apos;s&apos; };
+const char FIRST_E1[2] = { &apos;,&apos;, &apos;\n&apos; };
+const char FIRST_F[2] = { &apos;n&apos;,&apos;s&apos; };
+const char FIRST_G[1] = { &apos;i&apos; };
+const char FIRST_G1[4] = { &apos;=&apos;,&apos;(&apos;,&apos;[&apos;,&apos;\n&apos; };
+const char FIRST_G2[4] = { &apos;)&apos;,&apos;a&apos;,&apos;b&apos;,&apos;c&apos; };
+const char FIRST_G3[6] = { &apos;]&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos; };
+const char FIRST_G4[2] = { &apos;{&apos;,&apos;\n&apos; };
+const char FIRST_H[3] = { &apos;a&apos;,&apos;b&apos;,&apos;c&apos; };
+const char FIRST_H1[2] = { &apos;,&apos;,&apos;\n&apos; };
+const char FIRST_I[3] = {&apos;a&apos;,&apos;b&apos;,&apos;c&apos;};
+const char FIRST_J[3] = { &apos;a&apos;,&apos;b&apos;,&apos;c&apos; };
+const char FIRST_K[15] = { &apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;{&apos;,&apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;d&apos;,&apos;f&apos;,&apos;g&apos;,&apos;h&apos;,&apos;j&apos; };
+const char FIRST_K1[2] = { &apos;e&apos;,&apos;\n&apos; };
+const char FIRST_K2[] = { &apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos; };
+const char FIRST_K3[] = { &apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos; };
+const char FIRST_L[] = { &apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;{&apos;,&apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;d&apos;,&apos;f&apos;,&apos;g&apos;,&apos;h&apos;,&apos;j&apos; };
+const char FIRST_L1[] = { &apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;{&apos;,&apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;d&apos;,&apos;f&apos;,&apos;g&apos;,&apos;h&apos;,&apos;j&apos; ,&apos;\n&apos; };
+const char FIRST_M[] = { &apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos; };
+const char FIRST_N[] = { &apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos; };
+const char FIRST_O[] = { &apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos; };
+const char FIRST_O1[] = { &apos;k&apos;,&apos;\n&apos; };
+const char FIRST_P[] = { &apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos; };
+const char FIRST_P1[] = { &apos;+&apos;,&apos;-&apos; };
+const char FIRST_P2[] = { &apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;+&apos;};
+const char FIRST_Q[] = { &apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos; };
+const char FIRST_Q1[] = { &apos;*&apos;,&apos;/&apos;,&apos;%&apos; };
+const char FIRST_Q2[] = { &apos;*&apos;,&apos;/&apos;,&apos;%&apos;,&apos;\n&apos; };
+const char FIRST_R[] = { &apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos; };
+const char FIRST_R1[] = { &apos;(&apos;,&apos;l&apos;,&apos;=&apos;,&apos;[&apos;,&apos;\n&apos; };
+const char FIRST_R2[] = { &apos;i&apos;,&apos;(&apos;,&apos;)&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos; };
+const char FIRST_R3[] = { &apos;=&apos;,&apos;\n&apos; };
+const char FIRST_S[] = { &apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos; };
+const char FIRST_S1[] = { &apos;,&apos;,&apos;\n&apos; };
+const char FIRST_T[] = { &apos;i&apos; };
+const char FIRST_T1[] = { &apos;,&apos;,&apos;\n&apos; };
+
+/**
+* Define the FOLLOW set
+*/
+const char FOLLOW_A[] = { &apos;#&apos; };
+const char FOLLOW_A1[] = { &apos;#&apos; };
+const char FOLLOW_B[] = { &apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;#&apos; };
+const char FOLLOW_C[] = { &apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;#&apos; };
+const char FOLLOW_C1[] = { &apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;#&apos; };
+const char FOLLOW_D[] = { &apos;;&apos; };
+const char FOLLOW_D1[] = { &apos;;&apos; };
+const char FOLLOW_E[] = { &apos;}&apos; };
+const char FOLLOW_E1[] = { &apos;}&apos; };
+const char FOLLOW_F[] = { &apos;}&apos;,&apos;,&apos; };
+const char FOLLOW_G[] = { &apos;;&apos;,&apos;{&apos;,&apos;,&apos; };
+const char FOLLOW_G1[] = { &apos;;&apos;,&apos;{&apos;,&apos;,&apos; };
+const char FOLLOW_G2[] = { &apos;;&apos;,&apos;{&apos;,&apos;,&apos; };
+const char FOLLOW_G3[] = { &apos;;&apos;,&apos;{&apos;,&apos;,&apos; };
+const char FOLLOW_G4[] = { &apos;;&apos;,&apos;{&apos;,&apos;,&apos; };
+const char FOLLOW_H[] = { &apos;)&apos; };
+const char FOLLOW_H1[] = { &apos;)&apos; };
+const char FOLLOW_I[] = { &apos;,&apos;,&apos;)&apos; };
+const char FOLLOW_J[] = { &apos;i&apos; };
+const char FOLLOW_K[] = { &apos;}&apos;,&apos;e&apos;,&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;{&apos;,&apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;d&apos;,&apos;f&apos;,&apos;g&apos;,&apos;h&apos;,&apos;j&apos; };
+const char FOLLOW_K1[] = { &apos;}&apos;,&apos;e&apos;,&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;{&apos;,&apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;d&apos;,&apos;f&apos;,&apos;g&apos;,&apos;h&apos;,&apos;j&apos; };
+const char FOLLOW_K2[] = { &apos;}&apos;,&apos;e&apos;,&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;{&apos;,&apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;d&apos;,&apos;f&apos;,&apos;g&apos;,&apos;h&apos;,&apos;j&apos; };
+const char FOLLOW_K3[] = { &apos;}&apos;,&apos;e&apos;,&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;{&apos;,&apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;d&apos;,&apos;f&apos;,&apos;g&apos;,&apos;h&apos;,&apos;j&apos; };
+const char FOLLOw_L[] = { &apos;}&apos; };
+const char FOLLOW_L1[] = { &apos;}&apos; };
+const char FOLLOW_M[] = { &apos;}&apos;,&apos;e&apos;,&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;{&apos;,&apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;d&apos;,&apos;f&apos;,&apos;g&apos;,&apos;h&apos;,&apos;j&apos; };
+const char FOLLOW_N[] = { &apos;]&apos;,&apos;)&apos;,&apos;;&apos;,&apos;{&apos;,&apos;,&apos;,&apos;*&apos;,&apos;/&apos;,&apos;%&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;k&apos; ,&apos;+&apos; };
+const char FOLLOW_O[] = { &apos;]&apos;,&apos;)&apos;,&apos;;&apos;,&apos;{&apos;,&apos;,&apos;,&apos;*&apos;,&apos;/&apos;,&apos;%&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;k&apos; ,&apos;+&apos; };
+const char FOLLOW_O1[] = { &apos;]&apos;,&apos;)&apos;,&apos;;&apos;,&apos;{&apos;,&apos;,&apos;,&apos;*&apos;,&apos;/&apos;,&apos;%&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;k&apos; ,&apos;+&apos; };
+const char FOLLOW_P[] = { &apos;]&apos;,&apos;)&apos;,&apos;;&apos;,&apos;{&apos;,&apos;,&apos;,&apos;*&apos;,&apos;/&apos;,&apos;%&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;k&apos; ,&apos;+&apos; };
+const char FOLLOW_P1[] = { &apos;]&apos;,&apos;)&apos;,&apos;;&apos;,&apos;{&apos;,&apos;,&apos;,&apos;*&apos;,&apos;/&apos;,&apos;%&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;k&apos; ,&apos;+&apos; };
+const char FOLLOW_P2[] = { &apos;]&apos;,&apos;)&apos;,&apos;;&apos;,&apos;{&apos;,&apos;,&apos;,&apos;*&apos;,&apos;/&apos;,&apos;%&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;k&apos; ,&apos;+&apos; };
+const char FOLLOW_Q[] = { &apos;]&apos;,&apos;)&apos;,&apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;k&apos;,&apos;{&apos;,&apos;,&apos;,&apos;+&apos;,&apos;*&apos;,&apos;/&apos;,&apos;%&apos; };
+const char FOLLOW_Q1[] = { &apos;]&apos;,&apos;)&apos;,&apos;;&apos;,&apos;*&apos;,&apos;/&apos;,&apos;%&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;k&apos;,&apos;{&apos;,&apos;,&apos;,&apos;+&apos; };
+const char FOLLOW_Q2[] = { &apos;]&apos;,&apos;)&apos;,&apos;;&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;k&apos;,&apos;{&apos;,&apos;,&apos;,&apos;+&apos;,&apos;*&apos;,&apos;/&apos;,&apos;%&apos; };
+const char FOLLOW_R[] = { &apos;]&apos;,&apos;)&apos;,&apos;;&apos;,&apos;*&apos;,&apos;/&apos;,&apos;%&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;k&apos;,&apos;{&apos;,&apos;,&apos; ,&apos;+&apos;};
+const char FOLLOW_R1[] = { &apos;]&apos;,&apos;)&apos;,&apos;;&apos;,&apos;*&apos;,&apos;/&apos;,&apos;%&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;k&apos;,&apos;{&apos;,&apos;,&apos; ,&apos;+&apos;};
+const char FOLLOW_R2[] = { &apos;]&apos;,&apos;)&apos;,&apos;;&apos;,&apos;*&apos;,&apos;/&apos;,&apos;%&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;k&apos;,&apos;{&apos;,&apos;,&apos; ,&apos;+&apos;};
+const char FOLLOW_R3[] = { &apos;]&apos;,&apos;)&apos;,&apos;;&apos;,&apos;*&apos;,&apos;/&apos;,&apos;%&apos;,&apos;i&apos;,&apos;(&apos;,&apos;n&apos;,&apos;s&apos;,&apos;-&apos;,&apos;k&apos;,&apos;{&apos;,&apos;,&apos; ,&apos;+&apos;};
+const char FOLLOW_S[] = { &apos;;&apos;,&apos;)&apos; };
+const char FOLLOW_S1[] = { &apos;;&apos;,&apos;)&apos; };
+const char FOLLOW_T[] = { &apos;;&apos; };
+const char FOLLOW_T1[] = { &apos;;&apos; };
+
+/**
+* The symbolList, symbol to be matched and its index
+*/
+char sym = &apos;0&apos;;
+int i = 0;
+char result[5000];
+
+/**
+* transform char to string
+*/
+char* toString(char ch)
+{
+    char str[2];
+    str[0] = ch;
+    str[1] = 0;
+    return str;
+}
+
+/**
+* generate symbols
+*/
+char* token(char* symbol, int charClass)
+{
+    char ch = &apos;0&apos;;
+
+    if (charClass == 0)
+        if (strcmp(symbol, &quot;int&quot;) == 0)
+            ch = &apos;a&apos;;
+        else if (strcmp(symbol, &quot;str&quot;) == 0)
+            ch = &apos;b&apos;;
+        else if (strcmp(symbol, &quot;void&quot;) == 0)
+            ch = &apos;c&apos;;
+        else if (strcmp(symbol, &quot;if&quot;) == 0)
+            ch = &apos;d&apos;;
+        else if (strcmp(symbol, &quot;else&quot;) == 0)
+            ch = &apos;e&apos;;
+        else if (strcmp(symbol, &quot;while&quot;) == 0)
+            ch = &apos;f&apos;;
+        else if (strcmp(symbol, &quot;return&quot;) == 0)
+            ch = &apos;g&apos;;
+        else if (strcmp(symbol, &quot;print&quot;) == 0)
+            ch = &apos;h&apos;;
+        else if (strcmp(symbol, &quot;scan&quot;) == 0)
+            ch = &apos;j&apos;;
+        else
+            ch = &apos;i&apos;;
+
+    else if (charClass == 11 || charClass == 12)
+        ch = &apos;n&apos;;
+
+    else if (charClass == 3)
+    {
+        for (int i = 0; i &lt; 10; i++)
+            if (strcmp(symbol, toString(sepchar[i])) == 0)
+            {
+                ch = sepchar[i];
+            }
+    }
+
+    else if (charClass == 4)
+    {
+        for (int i = 0; i &lt; 17; i++)
+            if (strcmp(symbol, &quot;&gt;&quot;) == 0 || strcmp(symbol, &quot;&lt;&quot;) == 0 || strcmp(symbol, &quot;&gt;=&quot;) == 0 || strcmp(symbol, &quot;&lt;=&quot;) == 0 || strcmp(symbol, &quot;==&quot;) == 0)
+                ch = &apos;k&apos;;
+            else if (strcmp(symbol, mathWords[i]) == 0)
+            {
+                ch = mathWords[i][0];
+                break;
+            }
+
+    }
+
+    else if (charClass == 5)
+        ch = &apos;s&apos;;
+
+    return toString(ch);
+}
+
+// Judge class-names of symbols
+int type(char ch)
+{
+    for (int i = 0; i &lt; 52; i++)
+        if (ch == alphabet[i])
+            return ALPHABET;
+
+    for (int i = 0; i &lt; 10; i++)
+        if (ch == degit[i])
+            return DEGIT;
+
+    for (int i = 0; i &lt; 3; i++)
+        if (ch == whitespace[i])
+            return WHITESPACE;
+
+    for (int i = 0; i &lt; 10; i++)
+        if (ch == sepchar[i])
+            if (ch == &apos;&quot;&apos;) 
+                return STRING;
+            else
+                return SEPCHAR;
+
+    for (int i = 0; i &lt; 9; i++)
+        if (ch == mathchar[i])
+            return MATHCHAR;
+}
+
+/**
+* generate symbolList
+*/
+char* tokenise(char* symbolList, char* symbol, char* fileName)
+{
+    FILE* fp;
+    char ch;
+
+    //如果没有找到文件，给出提升并退出
+    if ((fp = fopen(fileName, &quot;rt&quot;)) == NULL)
+    {
+        printf(&quot;没有找到文件，按任意键退出&quot;);
+        getchar();
+        exit(1);
+    }
+
+    ch = fgetc(fp);
+    while (ch != EOF)
+    {
+        switch (type(ch))
+        {
+
+        case WHITESPACE:
+            ch = fgetc(fp);
+            break;
+
+        case ALPHABET:
+            strcat(symbol, toString(ch));
+            ch = fgetc(fp);
+            while (type(ch) == 0 || type(ch) == 1)
+            {
+                strcat(symbol, toString(ch));
+                ch = fgetc(fp);
+            }
+            strcat(symbolList, token(symbol, ALPHABET));
+            symbol[0] = &apos;\0&apos;;
+            break;
+
+        case DEGIT:
+            strcat(symbol, toString(ch));
+            ch = fgetc(fp);
+            int isFloat = 11;
+            while (type(ch) == 1)
+            {
+                strcat(symbol, toString(ch));
+                ch = fgetc(fp);
+            }
+            if (ch == &apos;.&apos;)
+            {
+                isFloat = 12;
+                strcat(symbol, toString(ch));
+                ch = fgetc(fp);
+                while (type(ch) == 1)
+                {
+                    strcat(symbol, toString(ch));
+                    ch = fgetc(fp);
+                }
+            }
+            strcat(symbolList, token(symbol, isFloat));
+            symbol[0] = &apos;\0&apos;;
+            break;
+
+        case MATHCHAR:
+            strcat(symbol, toString(ch));
+            ch = fgetc(fp);
+            if (type(ch) == 4)
+            {
+                strcat(symbol, toString(ch));
+                ch = fgetc(fp);
+            }
+            if (strcmp(symbol, &quot;//&quot;) == 0)
+                while (ch != &apos;\n&apos;)
+                    ch = fgetc(fp);
+            else
+                strcat(symbolList, token(symbol, MATHCHAR));
+            symbol[0] = &apos;\0&apos;;
+            break;
+
+        case SEPCHAR:
+            strcat(symbol, toString(ch));
+            ch = fgetc(fp);
+            strcat(symbolList, token(symbol, SEPCHAR));
+            symbol[0] = &apos;\0&apos;;
+            break;
+
+        case STRING:
+            ch = fgetc(fp);
+            while (ch != &apos;&quot;&apos;)
+            {
+                strcat(symbol, toString(ch));
+                ch = fgetc(fp);
+            }
+            strcat(symbolList, token(symbol, STRING));
+            ch = fgetc(fp);
+            symbol[0] = &apos;\0&apos;;
+            break;
+
+        default:
+            printf(&quot;ERROR: Unknown Char: %c\n&quot;, ch);
+            ch = fgetc(fp);
+            break;
+        }
+    }
+
+    fclose(fp);
+    strcat(symbolList, &quot;#&quot;);
+
+    return symbolList;
+}
+
+/**
+* Judge if an atom in an array
+*/
+int isIn(char ch, char array[], int len)
+{
+    for (int i = 0; i &lt; len; i++)
+    {
+        if (ch == array[i])
+            return 1;
+    }
+    return 0;
+}
+
+/**
+* take the next symbol
+*/
+void advance()
+{
+    sym = result[i];
+    printf(&quot;%c&quot;, sym);
+    i++;
+}
+
+/**
+* error function
+*/
+void error()
+{
+    printf(&quot;error&quot;);
+    exit(0);
+}
+
+/**
+* define the generation functions
+*/
+
+void A();
+void A1();
+void B();
+void C();
+void C1();
+void D();
+void D1();
+void E();
+void E1();
+void F();
+void G();
+void G1();
+void G2();
+void G3();
+void G4();
+void H();
+void H1();
+void I();
+void J();
+void K();
+void K1();
+void K2();
+void K3();
+void L();
+void L1();
+void M();
+void N();
+void O();
+void O1();
+void P();
+void P1();
+void P2();
+void Q();
+void Q1();
+void Q2();
+void R();
+void R1();
+void R2();
+void R3();
+void S();
+void S1();
+void T();
+void T1();
+
+void J()
+{
+    if (sym == &apos;a&apos;)
+        advance();
+    else if (sym == &apos;b&apos;)
+        advance();
+    else if (sym == &apos;c&apos;)
+        advance();
+    else
+        error();
+}
+
+void I()
+{
+    J();
+    if (sym == &apos;i&apos;)
+        advance();
+    else
+        error();
+}
+
+void H1()
+{
+    if (sym == &apos;,&apos;)
+    {
+        advance();
+        I();
+        H1();
+    }
+    else if (isIn(sym, FOLLOW_H1, sizeof(FOLLOW_H1)/sizeof(FOLLOW_H1[0])))
+        ;
+    else
+        error();
+}
+
+void H()
+{
+    I();
+    H1();
+}
+
+void G4()
+{
+    if (sym == &apos;=&apos;)
+    {
+        advance();
+        if (sym == &apos;{&apos;)
+            advance();
+        else
+            error();
+        E();
+        if (sym == &apos;}&apos;)
+            advance();
+        else
+            error();
+    }
+    else if (isIn(sym, FOLLOW_G4, sizeof(FOLLOW_G4)/sizeof(FOLLOW_G4[0])))
+        ;
+    else
+        error();
+}
+
+void G3()
+{
+    if (isIn(sym, FIRST_N, sizeof(FIRST_N)/sizeof(FIRST_N[0])))
+    {
+        N();
+        if (sym == &apos;]&apos;)
+            advance();
+        else
+            error();
+        G4();
+    }
+    else if (sym == &apos;]&apos;)
+    {
+        advance();
+        G4();
+    }
+    else
+        error();
+}
+
+void G2()
+{
+    if (isIn(sym, FIRST_H, sizeof(FIRST_H)/sizeof(FIRST_H[1])))
+    {
+        H();
+        if (sym == &apos;)&apos;)
+            advance();
+        else
+            error();
+    }
+    else if (sym == &apos;)&apos;)
+        advance();
+    else
+        error();
+}
+
+void G1()
+{
+    if (sym == &apos;=&apos;)
+    {
+        advance();
+        N();
+    }
+    else if (sym == &apos;(&apos;)
+    {
+        advance();
+        G2();
+    }
+    else if (sym == &apos;[&apos;)
+    {
+        advance();
+        G3();
+    }
+    else if (isIn(sym, FOLLOW_G1, sizeof(FOLLOW_G1)/sizeof(FOLLOW_G1[0])))
+        ;
+    else
+        error();
+}
+
+void G()
+{
+    if (sym == &apos;i&apos;)
+    {
+        advance();
+        G1();
+    }
+    else
+        error();
+}
+
+
+void D1()
+{
+    if (sym == &apos;,&apos;)
+    {
+        advance();
+        G();
+        D1();
+    }
+    else if (isIn(sym, FOLLOW_D1, sizeof(FOLLOW_D1)/sizeof(FOLLOW_D1[0])))
+        ;
+    else
+        error();
+}
+
+void D()
+{
+    G();
+    D1();
+}
+
+void K3()
+{
+    if (sym == &apos;;&apos;)
+        advance();
+    else if (isIn(sym, FIRST_S, sizeof(FIRST_S)/sizeof(FIRST_S[0])))
+    {
+        S();
+        if (sym == &apos;;&apos;)
+            advance();
+        else
+            error();
+    }
+    else
+        error();
+}
+
+
+void K2()
+{
+    if (sym == &apos;;&apos;)
+        advance();
+    else if (isIn(sym, FIRST_N, sizeof(FIRST_N)/sizeof(FIRST_N[0])))
+    {
+        N();
+        if (sym == &apos;;&apos;)
+            advance();
+        else
+            error();
+    }
+    else
+        error();
+}
+
+void K()
+{
+    if (isIn(sym, FIRST_J, sizeof(FIRST_J)/sizeof(FIRST_J[0])))
+    {
+        J();
+        D();
+        if (sym == &apos;;&apos;)
+            advance();
+        else
+            error();
+    }
+    else if (sym == &apos;{&apos;)
+    {
+        advance();
+        L();
+        if (sym == &apos;}&apos;)
+            advance();
+        else
+            error();
+    }
+    else if (isIn(sym, FIRST_M, sizeof(FIRST_M)/sizeof(FIRST_M[0])))
+        M();
+    else if (sym == &apos;d&apos;)
+    {
+        advance();
+        if (sym == &apos;(&apos;)
+            advance();
+        else
+            error();
+        N();
+        if (sym == &apos;)&apos;)
+            advance();
+        else
+            error();
+        K();
+        K1();
+    }
+    else if (sym == &apos;f&apos;)
+    {
+        advance();
+        if (sym == &apos;(&apos;)
+            advance();
+        else
+            error();
+        N();
+        if (sym == &apos;)&apos;)
+            advance();
+        else
+            error();
+        K();
+    }
+    else if (sym == &apos;g&apos;)
+    {
+        advance();
+        K2();
+    }
+    else if (sym == &apos;h&apos;)
+    {
+        advance();
+        K3();
+    }
+    else if (sym == &apos;j&apos;)
+    {
+        advance();
+        T();
+        if (sym == &apos;;&apos;)
+            advance();
+        else
+            error();
+    }
+    else
+        error();
+}
+
+void K1()
+{
+    if (sym == &apos;e&apos;)
+    {
+        advance();
+        K();
+    }
+    else if (isIn(sym, FOLLOW_K1, sizeof(FOLLOW_K1)/sizeof(FOLLOW_K1[0])))
+        ;
+    else
+        error();
+}
+
+void L1()
+{
+    if (isIn(sym, FIRST_K, sizeof(FIRST_K)/sizeof(FIRST_K[0])))
+    {
+        K();
+        L1();
+    }
+    else if (isIn(sym, FOLLOW_L1, sizeof(FOLLOW_L1)/sizeof(FOLLOW_L1[0])))
+        ;
+    else
+        error();
+}
+
+void L()
+{
+    K();
+    L1();
+}
+
+void F()
+{
+    if (sym == &apos;n&apos;)
+        advance();
+    else if (sym == &apos;s&apos;)
+        advance();
+    else
+        error();
+}
+
+void E1()
+{
+    if (sym == &apos;,&apos;)
+    {
+        advance();
+        F();
+        E1();
+    }
+    else if (isIn(sym, FOLLOW_E1, sizeof(FOLLOW_E1)/sizeof(FOLLOW_E1[0])))
+        ;
+    else
+        error();
+}
+
+void E()
+{
+    F();
+    E1();
+}
+
+
+
+void C1()
+{
+    if (isIn(sym, FIRST_L, sizeof(FIRST_L)/sizeof(FIRST_L[0])))
+    {
+        L();
+        if (sym == &apos;}&apos;)
+            advance();
+        else
+            error();
+    }
+    else if (sym == &apos;}&apos;)
+        advance();
+    else
+        error();
+}
+
+void C()
+{
+    if (sym == &apos;{&apos;)
+    {
+        advance();
+        C1();
+    }
+    else if (sym == &apos;,&apos;)
+    {
+        advance();
+        D();
+        if (sym == &apos;;&apos;)
+            advance();
+        else
+            error();
+    }
+    else if (sym == &apos;;&apos;)
+        advance();
+    else
+        error();
+}
+
+void B()
+{
+    J();
+    G();
+    C();
+}
+
+void A1()
+{
+    if (isIn(sym, FIRST_B, sizeof(FIRST_B)/sizeof(FIRST_B[0])))
+    {
+        B();
+        A1();
+    }
+    else if (isIn(sym, FOLLOW_A1, sizeof(FOLLOW_A1)/sizeof(FOLLOW_A1[0])))
+        ;
+    else
+        error();
+}
+
+void A()
+{
+    B();
+    A1();
+}
+
+void M()
+{
+    if (sym == &apos;;&apos;)
+        advance();
+    else if (isIn(sym, FIRST_N, sizeof(FIRST_N)/sizeof(FIRST_N[0])))
+    {
+        N();
+        if (sym == &apos;;&apos;)
+            advance();
+        else
+            error();
+    }
+    else
+        error();
+}
+
+void N()
+{
+    O();
+}
+
+void O()
+{
+    P();
+    O1();
+}
+
+void O1()
+{
+    if (sym == &apos;k&apos;)
+    {
+        advance();
+        P();
+        O1();
+    }
+    else if (isIn(sym, FOLLOW_O1, sizeof(FOLLOW_O1)/sizeof(FOLLOW_O1[0])))
+        ;
+    else
+        error();
+}
+
+void P()
+{
+    Q();
+    P2();
+}
+
+void P1()
+{
+    if (sym == &apos;+&apos;)
+    {
+        advance();
+        Q();
+    }
+    else if (sym == &apos;-&apos;)
+    {
+        advance();
+        Q();
+    }
+    else
+        error();
+}
+
+void P2()
+{
+    if (isIn(sym, FIRST_P1, sizeof(FIRST_P1)/sizeof(FIRST_P1[0])))
+    {
+        P1();
+        P2();
+    }
+    else if (isIn(sym, FOLLOW_P2, sizeof(FOLLOW_P2)/sizeof(FOLLOW_P2[0])))
+        ;
+    else
+        error;
+}
+
+void Q()
+{
+    if (isIn(sym, FIRST_R, sizeof(FIRST_R) / sizeof(FIRST_R[0])))
+    {
+        R();
+        Q2();
+    }
+    else if (sym == &apos;-&apos;)
+    {
+        advance();
+        R();
+        Q2();
+    }
+    else
+        error();
+}
+
+void Q1()
+{
+    if (sym == &apos;*&apos;)
+    {
+        advance();
+        R();
+    }
+    else if (sym == &apos;/&apos;)
+    {
+        advance();
+        R();
+    }
+    else if (sym == &apos;%&apos;)
+    {
+        advance();
+        R();
+    }
+    else
+        error();
+}
+
+void Q2()
+{
+    if (isIn(sym, FIRST_Q1, sizeof(FIRST_Q1) / sizeof(FIRST_Q1[0])))
+    {
+        Q1();
+        Q2();
+    }
+    else if (isIn(sym, FOLLOW_Q2, sizeof(FOLLOW_Q2) / sizeof(FOLLOW_Q2[0])))
+        ;
+    else
+        error();
+}
+
+void R()
+{
+    if (sym == &apos;i&apos;)
+    {
+        advance();
+        R1();
+    }
+    else if (sym == &apos;(&apos;)
+    {
+        advance();
+        N();
+    }
+    else if (sym == &apos;n&apos;)
+        advance();
+    else if (sym == &apos;s&apos;)
+        advance();
+    else
+        error();
+}
+
+void R1()
+{
+    if (sym == &apos;(&apos;)
+    {
+        advance();
+        R2();
+    }
+    else if (sym == &apos;l&apos;)
+        advance();
+    else if (sym == &apos;=&apos;)
+    {
+        advance();
+        N();
+    }
+    else if (sym == &apos;[&apos;)
+    {
+        advance();
+        N();
+        if (sym == &apos;]&apos;)
+            advance();
+        else
+            error();
+        R3();
+    }
+    else if (isIn(sym, FOLLOW_R1, sizeof(FOLLOW_R1) / sizeof(FOLLOW_R1[0])))
+        ;
+    else
+        error();
+}
+
+void R2()
+{
+    if (isIn(sym, FIRST_S, sizeof(FIRST_S) / sizeof(FIRST_S[0])))
+    {
+        S();
+        if (sym == &apos;)&apos;)
+            advance();
+        else
+            error();
+    }
+    else if (sym == &apos;)&apos;)
+        advance();
+    else
+        error();
+}
+
+void R3()
+{
+    if (sym == &apos;=&apos;)
+    {
+        advance();
+        N();
+    }
+    else if (isIn(sym, FOLLOW_R3, sizeof(FOLLOW_R3) / sizeof(FOLLOW_R3[0])))
+        ;
+    else
+        error();
+}
+
+void S()
+{
+    N();
+    S1();
+}
+
+void S1()
+{
+    if (sym == &apos;,&apos;)
+    {
+        advance();
+        N();
+        S1();
+    }
+    else if (isIn(sym, FOLLOW_S1, sizeof(FOLLOW_S1) / sizeof(FOLLOW_S1[0])))
+        ;
+    else
+        error();
+}
+
+void T()
+{
+    if (sym == &apos;i&apos;)
+    {
+        advance();
+        T1();
+    }
+    else
+        error;
+}
+
+void T1()
+{
+    if (sym == &apos;,&apos;)
+    {
+        advance();
+        if (sym == &apos;i&apos;)
+            advance();
+        else
+            error();
+        T1();
+    }
+    else if (isIn(sym, FOLLOW_T1, sizeof(FOLLOW_T1) / sizeof(FOLLOW_T1[0])))
+        ;
+    else
+        error();
+}
+
+int main()
+{
+    char* symbolList[6200];
+    symbolList[0] = &apos;\0&apos;;
+    result[0] = &apos;\0&apos;;
+
+    //char fileName[40];
+    char* symbol[20];
+    symbol[0] = &apos;\0&apos;;
+
+    //printf(&quot;请输入源文件路径(不超过40个字符)：&quot;);
+    //scanf(&quot;%s&quot;, &amp;fileName);
+    char* fileName = &quot;F:\\编译技术实验\\实验2\\test.c&quot;;
+    strcat(result, tokenise(symbolList, symbol, fileName));
+
+    advance();
+    A();
+    if (sym != &apos;#&apos;)
+        error();
+
+    return 0;
+}
+</code></pre>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="/statics/chengdu.mp3"></li>
+                        
+                    
+                </ul>
+            
+            
+            
+                <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1571154379/TriDiamondLogoCircleLighting_llbad2.png" height="300" width="300">
+                    <p>Justin Han</p>
+                    <span>This world will be changed certainly</span>
+                    <dl>
+                        <dd><a href="https://github.com/HanJiaxing521" target="_blank"><span class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/han_jiaxing" target="_blank"><span class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="https://stackoverflow.com/users/12593503/justinstar" target="_blank"><span class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">17 <p>文章</p></a></li>
+                    <li><a href="/categories">10 <p>分类</p></a></li>
+                    <li><a href="/tags">23 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+                
+                
+            
+        </div>
+    </div>
+</div>
+
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <span class="gradient-text">
+            Justin Han
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.3.1" target="_blank" rel="noopener">v1.3.1</a></small>
+    </p>
+</footer>
+
+<script src="//cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="/css/dracula.css">
+    <script src="//cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js">
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["This world will be changed certainly", "这个世界肯定会变的"],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+
+        var valine = new Valine();
+
+        function initValine(path) {
+            if (!path) path = window.location.pathname;
+            let language = 'zh-CN';
+            if (!language) {
+                language = 'en';
+            } else {
+                language = language.toLowerCase();
+            }
+            valine.init({
+                el: '#vcomments',
+                appId: 'Dsxok5t4JNjlBRIJTPOTzcxS-gzGzoHsz',
+                appKey: 'EdCVi6JkYsfeEqx9gnMlMnC5',
+                notify: 'true',
+                verify: 'true',
+                avatar: 'mp',
+                placeholder: 'Leave your throughs behind~',
+                visitor: 'true',
+                path: path,
+                lang: language
+            });
+        }
+
+        $(document).ready(function () {
+            initValine();
+        });
+    </script>
+
+</html>
