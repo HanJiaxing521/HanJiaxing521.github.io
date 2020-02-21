@@ -5,19 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HBase Meta表与Root表 - Justin的博客</title>
+    <title>Redis内置数据结构之简单动态字符串 - Justin的博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="hanjiaxing,"> 
-    <meta name="description" content="Meta表的作用
-记录的信息：
-
-数据的Rowkey在哪个Region的范围
-Region在哪个RegionServer上
-
-（Region是HBase中分布式存储和负载均衡的最小单元）
-Meta表,"> 
+    <meta name="description" content="简单动态字符串（simple dynamic string，以下简称SDS）是Redis的一个内置数据结构。Redis默认字符串并不是C字符串，而是SDS，Redis只会使用C字符串作为字面量用在一,"> 
     <meta name="author" content="Justin Han"> 
     <link rel="alternative" href="atom.xml" title="Justin的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -45,7 +38,7 @@ Meta表,">
     <div class="bar" style="width: 0;"></div>
     <a id="home-icon" class="image-icon icon-home iconfont animated fadeIn" href="javascript:;" data-url="https://hanjiaxing521.github.io"></a>
     <div id="play-icon" title="Play/Pause" class="iconfont icon-play animated fadeIn"></div>
-    <h3 class="subtitle">HBase Meta表与Root表</h3>
+    <h3 class="subtitle">Redis内置数据结构之简单动态字符串</h3>
     <div class="social">
 <!--        <div class="like-icon">-->
 <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -74,27 +67,27 @@ Meta表,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                    <a href="/categories/HBase"><b>「 </b>HBASE<b> 」</b></a>
+                    <a href="/categories/Redis"><b>「 </b>REDIS<b> 」</b></a>
                 
-                二月 08, 2020
+                二月 21, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2020/02/08/HBase-Meta-Root/" title="HBase Meta表与Root表">HBase Meta表与Root表</a></h3>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/02/21/Redis2/" title="Redis内置数据结构之简单动态字符串">Redis内置数据结构之简单动态字符串</a></h3>
             
                 <p class="post-count animated fadeInDown">
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        1.1k
+                        3.4k
                     </span>
                     
                     
                         <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        1 mins.
+                        3 mins.
                     </span>
                     
                     
-                        <span id="/2020/02/08/HBase-Meta-Root/" class="leancloud_visitors" data-flag-title="HBase Meta表与Root表">
+                        <span id="/2020/02/21/Redis2/" class="leancloud_visitors" data-flag-title="Redis内置数据结构之简单动态字符串">
                             <b class="iconfont icon-read"></b> <i>阅读次数</i>
                             <i class="leancloud-visitors-count">1000000</i>
                         </span>
@@ -103,7 +96,7 @@ Meta表,">
                 </p>
             
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/HBase/">HBase</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据库/">数据库</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/时空大数据/">时空大数据</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Redis/">Redis</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据库/">数据库</a></li></ul>
             
         </div>
     </div>
@@ -124,38 +117,38 @@ Meta表,">
 <div class="article">
     <div class="main">
         <div class="content markdown animated fadeIn slower">
-            <p><strong>Meta表的作用</strong></p>
-<p>记录的信息：</p>
-<ol>
-<li>数据的Rowkey在哪个Region的范围</li>
-<li>Region在哪个RegionServer上</li>
+            <p><strong>简单动态字符串</strong>（simple dynamic string，以下简称<strong>SDS</strong>）是Redis的一个内置数据结构。Redis默认字符串并不是C字符串，而是SDS，Redis只会使用C字符串作为字面量用在一些无需更改字符串值的地方。</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
+<li>是Redis的默认字符串表示</li>
+<li>保存数据库中的字符串值</li>
+<li>用作AOF缓冲区以及客户端状态中的输入缓冲区</li>
 </ol>
-<p>（Region是HBase中分布式存储和负载均衡的最小单元）</p>
-<p><strong>Meta表的Rowkey</strong></p>
-<p>region所在的表名+region的StartKey+时间戳</p>
-<p>这三者的MD5值也是HBase在HDFS上存储的region名字</p>
-<p><strong>Meta表的列族和列</strong></p>
-<p>表中最主要的Family：info</p>
-<p>info里包含三个Column：regioninfo，server，serverstartcode</p>
-<p>regioninfo就是region的详细信息，包括Startkey、Endkey以及每个Family的信息等。</p>
-<p>server存储的是管理该region的RegionServer地址</p>
-<p>因此当Region被拆分、合并或者重新分配的时候都需要修改这张表的内容。</p>
-<p><strong>Region的定位</strong></p>
-<p>如果是第一次读取：</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>SDS定义在sds.h中，以结构体的形式定义，每个sdshdr结构体表示一个SDS值：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sdshdr</span>&#123;</span></span><br><span class="line">    <span class="comment">// 记录buf数组中已使用字节的数量，等于SDS所保存字符串的长度</span></span><br><span class="line">    <span class="keyword">int</span> len;</span><br><span class="line">    <span class="comment">// 记录buf数组中未使用字节的数量</span></span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">free</span>;</span><br><span class="line">    <span class="comment">// 字节数组，用于保存字符串</span></span><br><span class="line">    <span class="keyword">char</span> buf[];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>下面给出一个保存了一个5字节长度的字符串、空闲空间为0的SDS示例：</p>
+<p><img src="https://s2.ax1x.com/2020/02/21/3u4Q74.png" alt="avatar"></p>
+<p>SDS遵循C字符串以空字符结尾的惯例，保存空字符的1字节空间不计算在len属性里，为空字符分配空间、添加空字符到字符串末尾等操作都由SDS函数自动完成，因此这个空字符对于SDS使用者来说可谓完全透明。遵循惯例是因为SDS可以直接重用一部分C字符串函数（比如printf）。</p>
+<h3 id="SDS与C字符串的区别"><a href="#SDS与C字符串的区别" class="headerlink" title="SDS与C字符串的区别"></a>SDS与C字符串的区别</h3><h4 id="常数复杂度获取字符串长度"><a href="#常数复杂度获取字符串长度" class="headerlink" title="常数复杂度获取字符串长度"></a>常数复杂度获取字符串长度</h4><p>C字符串不记录自身长度，在C语言中为获取字符串长度需要遍历整个字符串直到遇到‘\0’，复杂度O(N)。对于SDS来说，只需访问len属性便可获知长度，复杂度O(N)，提升了Redis的性能。</p>
+<h4 id="杜绝缓冲区溢出"><a href="#杜绝缓冲区溢出" class="headerlink" title="杜绝缓冲区溢出"></a>杜绝缓冲区溢出</h4><p>同样由于C字符串不记录自身长度，容易因为不内置检查机制使得在操作字符串时忘记考虑空间是否足够，往往导致缓冲区溢出，比如strcat()函数就具有这个隐患。而当SDS API需要对SDS进行修改时，API会先检查SDS的空间是否满足需求，不满足则自动拓展其空间才执行修改操作，因而避免缓冲区溢出问题，比如sdscat()函数。</p>
+<h4 id="减少修改字符串时带来的内存重分配次数"><a href="#减少修改字符串时带来的内存重分配次数" class="headerlink" title="减少修改字符串时带来的内存重分配次数"></a>减少修改字符串时带来的内存重分配次数</h4><p>C字符串在进行修改操作时，为避免缓冲区溢出或者内存泄漏，往往需要进行复杂的内存重分配，SDS由于具有free空间和len属性，使其可以通过某些优化策略来减少重分配内存的次数，从而提高性能。</p>
 <ol>
-<li>读取zookeeper中root表的位置</li>
-<li>从root表中读取包含所需用户表的meta表的位置</li>
-<li>读取Meta表中用户表的位置</li>
-<li>读取数据</li>
-</ol>
-<p>如果已经读取过一次，则root表和Meta表都会缓存到本地，直接去用户表的位置读取数据</p>
-<p>Client端在访问数据的过程中并没有涉及到Master节点，也就是说HBase日常的数据操作并不需要Master，不会造成Master的负担。</p>
-<p>从存储结构和操作方法的角度来说，-ROOT-、.META.与其他表没有任何区别。它们与众不同的地方是HBase用它们来存贮一个重要的系统信息：</p>
+<li><p>空间预分配：</p>
+<p>用于优化SDS的字符串增长操作：SDS API先检查free是否足够，若不够，不仅分配所必须要的空间，还会分配额外的未使用空间。</p>
 <ul>
-<li>-ROOT-：记录.META.表的Region信息。</li>
-<li>.META.：记录用户表的Region信息。</li>
+<li>if 修改后的SDS长度&lt;1MB then 分配的free = 修改后的len</li>
+<li>else then 分配的free=1MB</li>
 </ul>
-<p>其中-ROOT-表本身只会有一个region，这样保证了只需要三次跳转，就能定位到任意region</p>
+<p>（总空间=free+len+1byte(空字符)）</p>
+</li>
+<li><p>惰性空间释放</p>
+<p>用于优化SDS字符串缩短操作：在需要对SDS进行缩短操作时，SDS API并不直接释放空闲出来的空间，而是将其归入free中，以备后面可能发生的字符串增长操作。</p>
+<p>同时，SDS会提供API使得在需要的时候释放未使用空间，因此不用担心惰性空间释放策略会造成内存浪费。</p>
+</li>
+</ol>
+<h4 id="二进制安全"><a href="#二进制安全" class="headerlink" title="二进制安全"></a>二进制安全</h4><p>C字符串的字符必须符合某种编码（如ASCII），并且除字符串末尾外不能包含空字符，否则会提前结束字符串的读取，这些限制使得C字符串只能保存文本数据，无法保存图片、音频等二进制数据。</p>
+<p>所有SDS API都会以处理二进制的方式处理SDS存放在buf数组里的数据，数据原封不动进行存取，所以被称为字节数组。这也是为什么要用len存放长度的原因，在判断字符串结束时也用len而不是空字符。</p>
+<p>这个机制使得Redis可以保存多种场景的数据。</p>
+<h4 id="兼容部分C字符串函数"><a href="#兼容部分C字符串函数" class="headerlink" title="兼容部分C字符串函数"></a>兼容部分C字符串函数</h4><p>SDS遵循C字符串以空字符结尾的惯例，使得SDS可以重用C语言的字符串函数库里的部分函数，避免重复写相同功能的SDS函数。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
@@ -195,6 +188,13 @@ Meta表,">
             </div>
             
                 
+                
+                    <div class="box sticky animated fadeInRight faster">
+                        <div id="toc" class="subbox">
+                            <h4>目录</h4>
+                            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#作用"><span class="toc-number">1.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-number">2.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SDS与C字符串的区别"><span class="toc-number">3.</span> <span class="toc-text">SDS与C字符串的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#常数复杂度获取字符串长度"><span class="toc-number">3.1.</span> <span class="toc-text">常数复杂度获取字符串长度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#杜绝缓冲区溢出"><span class="toc-number">3.2.</span> <span class="toc-text">杜绝缓冲区溢出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#减少修改字符串时带来的内存重分配次数"><span class="toc-number">3.3.</span> <span class="toc-text">减少修改字符串时带来的内存重分配次数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二进制安全"><span class="toc-number">3.4.</span> <span class="toc-text">二进制安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#兼容部分C字符串函数"><span class="toc-number">3.5.</span> <span class="toc-text">兼容部分C字符串函数</span></a></li></ol></li></ol>
+                        </div>
+                    </div>
                 
             
         </div>
