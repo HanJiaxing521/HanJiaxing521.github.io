@@ -118,6 +118,73 @@
             
                 <a href="/categories/Redis"><b>「 </b>REDIS<b> 」</b></a>
             
+            二月 22, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2020/02/22/Redis3/" title="Redis内置数据结构之链表" class="posttitle">Redis内置数据结构之链表</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        4k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        4 mins.
+                    </span>
+                
+                
+                    <span id="/2020/02/22/Redis3/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <i class="leancloud-visitors-count">1000000</i>
+                    </span>
+                
+            </p>
+        
+        
+            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Redis/">Redis</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据库/">数据库</a></li></ul>
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>编写Redis的C语言没有内置链表数据结构，因此Redis构建了自己的链表实现。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><ol>
+<li>列表键、发布、订阅、慢查询、监视器等功能</li>
+<li>保存多个客户端的状态信息</li>
+<li>构建客户端输出缓冲区（output buffer...</li></ol>
+            
+            <span class="read-more gradient-text"><a href="/2020/02/22/Redis3/" title="查看全文" class="posttitle">查看全文</a></span>
+        </div>
+    </div>
+    
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                  <span class="typed-text"></span>
+                </p> 
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="primary">
+        
+<div class="post" id="post">
+    <div class="post-cover" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/Redis"><b>「 </b>REDIS<b> 」</b></a>
+            
             二月 21, 2020
         </p>
         <h3 class="post-title animated fadeInDown"><a href="/2020/02/21/Redis2/" title="Redis内置数据结构之简单动态字符串" class="posttitle">Redis内置数据结构之简单动态字符串</a></h3>
@@ -142,34 +209,28 @@
                     </span>
                 
             </p>
-        
-        
-            <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Redis/">Redis</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据库/">数据库</a></li></ul>
+            
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Redis/">Redis</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据库/">数据库</a></li></ul>
+            
         
         <div class="md-content animated fadeIn">
             
-                <p><strong>简单动态字符串</strong>（simple dynamic string，以下简称<strong>SDS</strong>）是Redis的一个内置数据结构。Redis默认字符串并不是C字符串，而是SDS，Redis只会使用C字符串作为字面量用在一些...</p>
+                <p><strong>简单动态字符串</strong>（simple dynamic string，以下简称<strong>SDS</strong>）是Redis的一个内置数据结构。Redis默认字符串并不是C字符串，而是SDS，Redis只会使用C字符串作为字面量用在一些无需更改字符串值的地方。</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
+<li>是Redis的默认字符串表示</li>
+<li>保存数据库中的字符串值</li>
+<li>用作AOF缓冲区以及客户端状态中的输入缓冲区</li>
+</ol>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>SDS定义在sds.h中，以结构体的形式定义，每个sdshdr结构体表示一个SDS值：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sdshdr</span>&#123;</span></span><br><span class="line">    <span class="comment">// 记录buf数...</span></span></pre></td></tr></table></figure>
             
             <span class="read-more gradient-text"><a href="/2020/02/21/Redis2/" title="查看全文" class="posttitle">查看全文</a></span>
         </div>
     </div>
-    
 </div>
 
-<div class="screen-gradient-after">
-    <div class="screen-gradient-content">
-        <div class="screen-gradient-content-inside">
-            <div class="bold-underline-links screen-gradient-sponsor">
-                <p>
-                  <span class="typed-text"></span>
-                </p> 
-            </div>
-        </div>
-    </div>
-</div>
 
-    <div id="primary">
-        
+
 <div class="post" id="post">
     <div class="post-cover" style="
             background-image:

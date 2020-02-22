@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Python绘制3D图像 - Justin的博客</title>
+    <title>Redis内置数据结构之链表 - Justin的博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="hanjiaxing,"> 
-    <meta name="description" content="首先导入需要的第三方库
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axe,"> 
+    <meta name="description" content="编写Redis的C语言没有内置链表数据结构，因此Redis构建了自己的链表实现。
+应用
+列表键、发布、订阅、慢查询、监视器等功能
+保存多个客户端的状态信息
+构建客户端输出缓冲区（output buf,"> 
     <meta name="author" content="Justin Han"> 
     <link rel="alternative" href="atom.xml" title="Justin的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -41,7 +42,7 @@ from mpl_toolkits.mplot3d import Axe,">
     <div class="bar" style="width: 0;"></div>
     <a id="home-icon" class="image-icon icon-home iconfont animated fadeIn" href="javascript:;" data-url="https://hanjiaxing521.github.io"></a>
     <div id="play-icon" title="Play/Pause" class="iconfont icon-play animated fadeIn"></div>
-    <h3 class="subtitle">Python绘制3D图像</h3>
+    <h3 class="subtitle">Redis内置数据结构之链表</h3>
     <div class="social">
 <!--        <div class="like-icon">-->
 <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -70,27 +71,27 @@ from mpl_toolkits.mplot3d import Axe,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                    <a href="/categories/Python"><b>「 </b>PYTHON<b> 」</b></a>
+                    <a href="/categories/Redis"><b>「 </b>REDIS<b> 」</b></a>
                 
-                十月 28, 2019
+                二月 22, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2019/10/28/3D-Picture-python/" title="Python绘制3D图像">Python绘制3D图像</a></h3>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/02/22/Redis3/" title="Redis内置数据结构之链表">Redis内置数据结构之链表</a></h3>
             
                 <p class="post-count animated fadeInDown">
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.9k
+                        4k
                     </span>
                     
                     
                         <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        3 mins.
+                        4 mins.
                     </span>
                     
                     
-                        <span id="/2019/10/28/3D-Picture-python/" class="leancloud_visitors" data-flag-title="Python绘制3D图像">
+                        <span id="/2020/02/22/Redis3/" class="leancloud_visitors" data-flag-title="Redis内置数据结构之链表">
                             <b class="iconfont icon-read"></b> <i>阅读次数</i>
                             <i class="leancloud-visitors-count">1000000</i>
                         </span>
@@ -99,7 +100,7 @@ from mpl_toolkits.mplot3d import Axe,">
                 </p>
             
             
-                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据可视化/">数据可视化</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据科学/">数据科学</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+                <ul class="animated fadeInDown post-tags-list"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Redis/">Redis</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/数据库/">数据库</a></li></ul>
             
         </div>
     </div>
@@ -120,61 +121,28 @@ from mpl_toolkits.mplot3d import Axe,">
 <div class="article">
     <div class="main">
         <div class="content markdown animated fadeIn slower">
-            <p>首先导入需要的第三方库</p>
-<pre><code>import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-</code></pre><p>然后创建数据集</p>
-<pre><code>dataSet = [[91, 85, 52, 2], [40, 55, 13, 1], [41, 36, 93, 4], [52, 10, 63, 4], [1, [52, 74, 40, 2], [70, 7, 1, 1], [94, 97, 82, 2], [15, 100, 52, 3], [6, [67, 36, 56, 4], [84, 41, 11, 2], [55, 84, 97, 2], [5, 63, 94, 3], [1 [67, 46, 5, 2], [0, 76, 5, 1], [8, 57, 13, 1], [89, 95, 67, 2], [95, 467, 52, 94, 4], [64, 93, 79, 2], [23, 61, 84, 3], [78, 10, 34, 4], [32, [20, 42, 27, 1], [77, 62, 38, 2], [97, 17, 52, 4], [18, 98, 58, 3], [5 [24, 14, 90, 4], [48, 75, 37, 2], [76, 97, 100, 2], [4, 1, 4, 1], [19,, [36, 68, 70, 3], [30, 33, 7, 1], [89, 70, 70, 2], [98, 71, 69, 2], [3], [57, 36, 95, 4], [34, 87, 24, 3], [1, 78, 66, 3], [76, 27, 52, 4], [], [27, 33, 77, 3], [69, 83, 80, 2], [27, 38, 3, 1], [94, 20, 68, 4], [4], [31, 71, 51, 3], [28, 4, 65, 1], [41, 57, 85, 3], [65, 1, 54, 4], [1], [90, 86, 15, 2], [85, 65, 33, 2], [3, 23, 35, 1], [0, 6, 34, 1], [2, [60, 21, 95, 4], [69, 18, 34, 4], [10, 39, 33, 1]]
-</code></pre><p>由于本实例中的数据集包含四个种类的散点，因此需要分别创建四个散点数据集来分开展示</p>
-<pre><code>dataSet1 = []
-dataSet2 = []
-dataSet3 = []
-dataSet4 = []
-</code></pre><p>分别向4个类别散点集中添加点，将每个点坐标列表末尾的类别数字去除</p>
-<pre><code>for point in list:
-    if point[-1] == 1:
-        dataSet1.append(point[:-1])
-    elif point[-1] == 2:
-        dataSet2.append(point[:-1])
-    elif point[-1] == 3:
-        dataSet3.append(point[:-1])
-    else:
-        dataSet4.append(point[:-1])
-</code></pre><p>分别创建坐标轴数据集</p>
-<pre><code>x1 = np.array(dataSet1)[:, 0]
-y1 = np.array(dataSet1)[:, 1]
-z1 = np.array(dataSet1)[:, 2]
+            <p>编写Redis的C语言没有内置链表数据结构，因此Redis构建了自己的链表实现。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><ol>
+<li>列表键、发布、订阅、慢查询、监视器等功能</li>
+<li>保存多个客户端的状态信息</li>
+<li>构建客户端输出缓冲区（output buffer）</li>
+</ol>
+<h3 id="链表和链表节点的实现"><a href="#链表和链表节点的实现" class="headerlink" title="链表和链表节点的实现"></a>链表和链表节点的实现</h3><p>在adlist.h中，每个链表节点用一个listNode结构体表示：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">listNode</span>&#123;</span></span><br><span class="line">    <span class="comment">// 前置节点</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">listNode</span> *<span class="title">prev</span>;</span></span><br><span class="line">    <span class="comment">// 后置节点</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">listNode</span> *<span class="title">next</span>;</span></span><br><span class="line">    <span class="comment">// 节点的值</span></span><br><span class="line">    <span class="keyword">void</span> *value;</span><br><span class="line">&#125; listNode;</span><br></pre></td></tr></table></figure>
+<p>多个listNode通过prev和next指针组成双端链表。</p>
+<p>在adlist.h中使用list来持有链表，方便操作：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">list</span>&#123;</span></span><br><span class="line">    <span class="comment">// 表头节点</span></span><br><span class="line">    listNode *head;</span><br><span class="line">    <span class="comment">// 表尾节点</span></span><br><span class="line">    listNode *tail;</span><br><span class="line">    <span class="comment">// 节点值复制函数</span></span><br><span class="line">    <span class="keyword">void</span> *(*dup)(<span class="keyword">void</span> *ptr);</span><br><span class="line">    <span class="comment">// 节点值释放函数</span></span><br><span class="line">    <span class="keyword">void</span> (*<span class="built_in">free</span>)(<span class="keyword">void</span> *ptr);</span><br><span class="line">    <span class="comment">// 节点值对比函数</span></span><br><span class="line">    <span class="keyword">int</span> (*match)(<span class="keyword">void</span> *ptr, <span class="keyword">void</span> *key);</span><br><span class="line">    <span class="comment">// 链表所包含的节点数量</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> len;</span><br><span class="line">&#125; <span class="built_in">list</span>;</span><br></pre></td></tr></table></figure>
+<p>下图展示一个list结构体和三个listNode结构体组成的链表：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KgJxO.png" alt="图1 由list结构和listNode结构组成的链表"></p>
+<p>Redis链表实现的特性总结：</p>
+<ol>
+<li>双端：prev和next指针使得获取某个节点的前置节点和后置节点的复杂度都是O(1)。</li>
+<li>无环：表头节点的prev和表尾节点的next都指向NULL，对链表的访问以NULL为终点。</li>
+<li>带head和tail：程序获取表头节点和表尾节点的复杂度都为O(1)。</li>
+<li>带链表长度计数器：使用list的len属性进行计数，程序获得节点数量的复杂度为O(1)。</li>
+<li>多态：节点使用void*指针来保存节点值，list的dup、free、match三个属性都为函数指针，可以将其设置为类型特定函数，所以Redis链表可以用于保存各种不同类型的值并实现各种类型操作。</li>
+</ol>
 
-x2 = np.array(dataSet2)[:, 0]
-y2 = np.array(dataSet2)[:, 1]
-z2 = np.array(dataSet2)[:, 2]
-
-x3 = np.array(dataSet3)[:, 0]
-y3 = np.array(dataSet3)[:, 1]
-z3 = np.array(dataSet3)[:, 2]
-
-x4 = np.array(dataSet4)[:, 0]
-y4 = np.array(dataSet4)[:, 1]
-z4 = np.array(dataSet4)[:, 2]
-</code></pre><p>创建图像</p>
-<pre><code>fig = plt.figure()
-</code></pre><p>创建3D图像对象</p>
-<pre><code>ax = Axes3D(fig)
-</code></pre><p>设计散点图属性</p>
-<pre><code>ax.scatter(x1, y1, z1, marker=&quot;*&quot;, c=&apos;r&apos;, label=&apos;class1&apos;)
-ax.scatter(x2, y2, z2, marker=&quot;*&quot;, c=&apos;g&apos;, label=&apos;class2&apos;)
-ax.scatter(x3, y3, z3, marker=&quot;*&quot;, c=&apos;b&apos;, label=&apos;class3&apos;)
-ax.scatter(x4, y4, z4, marker=&quot;*&quot;, c=&apos;y&apos;, label=&apos;class4&apos;)
-</code></pre><p>绘制图例，best表示图例位置为最适位置</p>
-<pre><code>ax.legend(loc=&apos;best&apos;)
-</code></pre><p>添加坐标轴(注意顺序为Z,Y,X)</p>
-<pre><code>ax.set_zlabel(&apos;Z&apos;, fontdict={&apos;size&apos;: 15, &apos;color&apos;: &apos;red&apos;})
-ax.set_ylabel(&apos;Y&apos;, fontdict={&apos;size&apos;: 15, &apos;color&apos;: &apos;red&apos;})
-ax.set_xlabel(&apos;X&apos;, fontdict={&apos;size&apos;: 15, &apos;color&apos;: &apos;red&apos;})
-</code></pre><p>展示</p>
-<pre><code>plt.show()
-</code></pre>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
@@ -213,6 +181,13 @@ ax.set_xlabel(&apos;X&apos;, fontdict={&apos;size&apos;: 15, &apos;color&apos;: 
             </div>
             
                 
+                
+                    <div class="box sticky animated fadeInRight faster">
+                        <div id="toc" class="subbox">
+                            <h4>目录</h4>
+                            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#应用"><span class="toc-number">1.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链表和链表节点的实现"><span class="toc-number">2.</span> <span class="toc-text">链表和链表节点的实现</span></a></li></ol>
+                        </div>
+                    </div>
                 
             
         </div>
