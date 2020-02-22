@@ -84,7 +84,7 @@
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        2.7k
+                        2.4k
                     </span>
                     
                     
@@ -145,55 +145,55 @@
 <li><p><strong>ε -贪心</strong></p>
 <p>基于概率来对探索和利用折中：每次尝试以ε的概率进行探索，即以均匀概率随机选取一个摇臂；即选择当前平均奖赏最高的摇臂（若有多个则随机选取）以1-ε的概率进行利用。</p>
 <p>令Q(k)记录摇臂k的平均奖赏。若摇臂k被尝试了n次，得到的奖赏为vi，则平均奖赏为</p>
-<p><img src="https://github.com/HanJiaxing521/HanJiaxing521.github.io/raw/master/img/qhxx-1.png" alt=""></p>
-<p><img src="https://github.com/HanJiaxing521/HanJiaxing521.github.io/raw/master/img/qhxx-2.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KXk2F.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KXZr9.png" alt=""></p>
 <p>可见无论摇臂被尝试多少次都仅需记录两个值：已尝试次数n-1和最近平均奖赏Qn-1(k)。</p>
 <p>ε-贪心算法如下：</p>
-<p>输入：摇臂数K；</p>
-<p>​            奖赏函数R；</p>
-<p>​            尝试次数T；</p>
-<p>​             探索概率ε</p>
-<p>过程：</p>
-<p>r=0；</p>
-<p>任意i=1，2，……K：Q(i)=0， count(i) = 0;</p>
-<p>for t = 1,2,……,T do</p>
-<p>​    if rand()&lt;ε then</p>
-<p>​        k = 从1，2，……K中以均匀分布随机选取</p>
-<p>​    else</p>
-<p>​        k=argmaxiQ(i)</p>
-<p>​    end if</p>
-<p>​    v = R(k);</p>
-<p>​    r = r+v;</p>
-<p>​    Q(k) = (Q(k)*count(k)+v)/count(k)+1;</p>
-<p>​    count(k) = count(k)+1;</p>
-<p>end for</p>
-<p>输出：累积奖赏r</p>
-<p>由于摇臂奖赏的不确定性较大，则概率分布较宽时需要更大的ε值，分布较集中时需要较小的ε值，一段时间后需要尝试的次数逐渐减少，可令ε=1/(t^(1/2))</p>
+<pre><code>输入：摇臂数K；
+     奖赏函数R；
+     尝试次数T；
+     探索概率ε
+</code></pre><p>过程：</p>
+<pre><code>r=0；
+任意i=1，2，……K：Q(i)=0， count(i) = 0;
+for t = 1,2,……,T do
+    if rand()&lt;ε then
+        k = 从1，2，……K中以均匀分布随机选取
+    else
+        k=argmaxiQ(i)
+    end if
+    v = R(k);
+    r = r+v;
+    Q(k) = (Q(k)*count(k)+v)/count(k)+1;
+    count(k) = count(k)+1;
+end for
+输出：累积奖赏r
+</code></pre><p>由于摇臂奖赏的不确定性较大，则概率分布较宽时需要更大的ε值，分布较集中时需要较小的ε值，一段时间后需要尝试的次数逐渐减少，可令ε=1/(t^(1/2))</p>
 </li>
 <li><p><strong>Softmax算法</strong></p>
 <p>Softmax算法基于当前已知的摇臂平均奖赏来对探索和利用进行折中。若某些摇臂的平均奖赏明显高于其他摇臂，则它们被选取的概率也明显更高。</p>
 <p>Softmax算法中摇臂概率的分配基于Boltzmann分布：</p>
-<p><img src="https://github.com/HanJiaxing521/HanJiaxing521.github.io/raw/master/img/qhxx-3.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KXnV1.png" alt=""></p>
 <p>Q(i)记录当前摇臂的平均奖赏； τ &gt;0称为“温度”， τ 越小则平均奖赏高的摇臂被选取的概率越高。特别的， τ -&gt;0时Softmax将趋于“仅利用”，  τ -&gt;无穷大时Softmax将趋于“仅探索”。</p>
 <p>Softmax算法描述：</p>
-<p>输入：摇臂数K；</p>
-<p>​            奖赏函数R；</p>
-<p>​            尝试次数T；</p>
-<p>​            温度参数 τ </p>
-<p>过程：</p>
-<p>r=0；</p>
-<p>任意vi=1，2，K：Q(i) = 0, count(i) = 0;</p>
-<p>for t = 1,2,3,……,T do</p>
-<p>​    k = 从1，2，……，K中根据Boltzmann分布随机选取</p>
-<p>​    v= R(k);</p>
-<p>​    r = r+v;</p>
-<p>​    Q(k) = (Q(k)*count(k) + v)/(count(k) + 1)</p>
-<p>​    count(k) = count(k)+1</p>
-<p>end for</p>
-<p>输出：累积奖赏r</p>
 </li>
 </ol>
-
+<pre><code>输入：摇臂数K；
+     奖赏函数R；
+     尝试次数T；
+     温度参数 τ 
+</code></pre><p>   过程：</p>
+<pre><code>r=0；
+任意vi=1，2，K：Q(i) = 0, count(i) = 0;
+for t = 1,2,3,……,T do
+    k = 从1，2，……，K中根据Boltzmann分布随机选取
+    v= R(k);
+    r = r+v;
+    Q(k) = (Q(k)*count(k) + v)/(count(k) + 1)
+    count(k) = count(k)+1
+end for
+输出：累积奖赏r
+</code></pre>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">

@@ -11,8 +11,8 @@
     <meta name="google" content="notranslate">
     <meta name="keywords" content="hanjiaxing,"> 
     <meta name="description" content="例：System源码中这样写：
-​    public final static PrintStream out = null;
-System.out是PrintStream类型的变量，引用的是nu,"> 
+1public final static PrintStream out = null;
+System.out是PrintStream类型的变量，引用的是null，还,"> 
     <meta name="author" content="Justin Han"> 
     <link rel="alternative" href="atom.xml" title="Justin的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -79,13 +79,13 @@ System.out是PrintStream类型的变量，引用的是nu,">
                     
                         <span>
                         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        803
+                        1.8k
                     </span>
                     
                     
                         <span>
                         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        1 mins.
+                        2 mins.
                     </span>
                     
                     
@@ -120,11 +120,11 @@ System.out是PrintStream类型的变量，引用的是nu,">
     <div class="main">
         <div class="content markdown animated fadeIn slower">
             <p>例：<br>System源码中这样写：</p>
-<p>​    public final static PrintStream out = null;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> PrintStream out = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
 <p>System.out是PrintStream类型的变量，引用的是null，还被final修饰为不可更改，为什么在调用PrintStream中的println()方法时没有报错呢？<br>实际上在System类的开头有静态代码块：</p>
-<p>​    static {<br>​        registerNatives()；<br>​    }</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">	registerNatives()；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在加载System类的时候先调用了System类中的静态方法registerNatives()，<br>它在虚拟机里注册System需要使用的一些本地代码，<br>在System类中这样定义registerNatives()方法：</p>
-<p>​    private static native void registerNatives()；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">registerNatives</span><span class="params">()</span>；</span></span><br></pre></td></tr></table></figure>
 <p>也使用了native修饰符,这意味着该方法对应的实现不是在当前文件，而是在用其他语言（如C和C++）实现的文件中。<br>Java语言本身不能对操作系统底层进行访问和操作，但是可以通过JNI接口调用其他语言来实现对底层的访问。<br>它会告诉虚拟机到哪些文件中找到相应的实现。In，out，err先初始化为null（防止编译器内联访问它们），然后由initializeSystemClass()方法类使用setInt0，setOut0，setErr0把实际连接到输入输出设备的句柄传给虚拟机并赋值给in，out，err。<br>因此System类是首先声明了in/out(实际上还有err)静态成员常量,然后在registerNatives()中对其进行赋值，使得能够调用println等方法。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
